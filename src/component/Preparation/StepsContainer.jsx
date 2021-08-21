@@ -45,12 +45,12 @@ const StepsContainer = () => {
         //   },
         // ]}
       >
-        {(fields, { add, remove }, { errors }) => (
+        {(fields, { add }, { errors }) => (
           <>
             {fields.map((field, index) => (
               <Form.Item
-                {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-                label={index === 0 ? "Passengers" : ""}
+                // {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
+                // label={index === 0 ? "Passengers" : ""}
                 required={false}
                 key={field.key}
               >
@@ -82,25 +82,25 @@ const StepsContainer = () => {
 
             <Form.Item>
               <Button
-                type="dashed"
-                onClick={() => add()}
-                style={{ width: "60%" }}
+                type="primary"
+                htmlType="submit"
+                shape={"circle"}
                 icon={<PlusOutlined />}
-              >
-                Add Step
-              </Button>
+                onClick={() => add()}
+              ></Button>
               <Form.ErrorList errors={errors} />
             </Form.Item>
           </>
         )}
       </Form.List>
       <Form.Item>
-        <Button
+        {/* <Button
           type="primary"
           htmlType="submit"
           shape={"circle"}
           icon={<PlusOutlined />}
-        ></Button>
+          onClick={() => add()}
+        ></Button> */}
       </Form.Item>
     </Form>
   );
