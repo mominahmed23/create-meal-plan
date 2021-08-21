@@ -1,10 +1,6 @@
 import React from "react";
 import { Menu } from "antd";
-import {
-  AppstoreOutlined,
-  MailOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const { SubMenu } = Menu;
 const SideBar = () => {
@@ -16,14 +12,21 @@ const SideBar = () => {
         defaultSelectedKeys={["1"]}
         defaultOpenKeys={["sub1"]}
         mode="inline"
+        style={{ marginTop: "20px" }}
       >
         {" "}
         <SubMenu key="sub1" title="Title">
           <Menu.Item key="1">Option 1</Menu.Item>
         </SubMenu>
-        <Menu.Item key="3">Ingredients</Menu.Item>
-        <Menu.Item key="4">Preparation</Menu.Item>
-        <Menu.Item key="5">Description</Menu.Item>
+        <Menu.Item key="3">
+          <Link to="ingredients">Ingredients </Link>
+        </Menu.Item>
+        <Menu.Item key="4">
+          <Link to="preparation">Preparation</Link>
+        </Menu.Item>
+        <Menu.Item key="5">
+          <Link to="description">Description</Link>
+        </Menu.Item>
       </Menu>{" "}
     </div>
   );
