@@ -1,5 +1,9 @@
 import { Form, Input, Button } from "antd";
-import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import {
+  MinusCircleOutlined,
+  PlusOutlined,
+  PlusCircleFilled,
+} from "@ant-design/icons";
 
 const formItemLayout = {
   labelCol: {
@@ -31,15 +35,15 @@ const StepsContainer = () => {
     >
       <Form.List
         name="names"
-        rules={[
-          {
-            validator: async (_, names) => {
-              if (!names || names.length < 2) {
-                return Promise.reject(new Error("At least 2 passengers"));
-              }
-            },
-          },
-        ]}
+        // rules={[
+        //   {
+        //     validator: async (_, names) => {
+        //       if (!names || names.length < 2) {
+        //         return Promise.reject(new Error("At least 2 passengers"));
+        //       }
+        //     },
+        //   },
+        // ]}
       >
         {(fields, { add, remove }, { errors }) => (
           <>
@@ -53,14 +57,14 @@ const StepsContainer = () => {
                 <Form.Item
                   {...field}
                   validateTrigger={["onChange", "onBlur"]}
-                  rules={[
-                    {
-                      required: true,
-                      whitespace: true,
-                      message:
-                        "Please input passenger's name or delete this field.",
-                    },
-                  ]}
+                  // rules={[
+                  //   {
+                  //     required: true,
+                  //     whitespace: true,
+                  //     message:
+                  //       "Please input passenger's name or delete this field.",
+                  //   },
+                  // ]}
                   noStyle
                 >
                   <Input
@@ -68,14 +72,14 @@ const StepsContainer = () => {
                     style={{ width: "60%" }}
                   />
                 </Form.Item>
-                {fields.length > 1 ? (
-                  <MinusCircleOutlined
-                    className="dynamic-delete-button"
-                    onClick={() => remove(field.name)}
-                  />
-                ) : null}
+                {/* INITIALLY THERE WOULD BE ONE INPUT */}
+                {/* {fields.length < 1 ? (
+                  <Input placeholder="passenger name" style={{ width: "60%" }} />
+                ) : null} */}
               </Form.Item>
             ))}
+            {console.log(fields)}
+
             <Form.Item>
               <Button
                 type="dashed"
@@ -83,7 +87,7 @@ const StepsContainer = () => {
                 style={{ width: "60%" }}
                 icon={<PlusOutlined />}
               >
-                Add field
+                Add Step
               </Button>
               <Form.ErrorList errors={errors} />
             </Form.Item>
@@ -91,9 +95,12 @@ const StepsContainer = () => {
         )}
       </Form.List>
       <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
+        <Button
+          type="primary"
+          htmlType="submit"
+          shape={"circle"}
+          icon={<PlusOutlined />}
+        ></Button>
       </Form.Item>
     </Form>
   );
