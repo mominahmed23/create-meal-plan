@@ -1,54 +1,51 @@
-import { Upload } from "antd";
+import { Steps, Upload } from "antd";
 import React, { useState } from "react";
 import { message } from "antd";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
+import "./index.css";
 
-function getBase64(img, callback) {
-  const reader = new FileReader();
-  reader.addEventListener("load", () => callback(reader.result));
-  reader.readAsDataURL(img);
-}
+// import { Upload, message } from 'antd';
+import { InboxOutlined } from "@ant-design/icons";
+import StepsContainer from "./StepsContainer";
+
+const { Dragger } = Upload;
+
+const props = {
+  name: "file",
+  multiple: true,
+  action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+  onChange(info) {
+    const { status } = info.file;
+    if (status !== "uploading") {
+      console.log(info.file, info.fileList);
+    }
+    if (status === "done") {
+      message.success(`${info.file.name} file uploaded successfully.`);
+    } else if (status === "error") {
+      message.error(`${info.file.name} file upload failed.`);
+    }
+  },
+  onDrop(e) {
+    console.log("Dropped files", e.dataTransfer.files);
+  },
+};
 
 const Preparation = () => {
-  const [loading, setLoading] = useState(false);
-  const handleChange = (info) => {
-    if (info.file.status === "uploading") {
-      setLoading(true);
-      return;
-    }
-    if (info.file.status === "done") {
-      // Get this url from response in real world.
-      getBase64(info.file.originFileObj, (imageUrl) =>
-        this.setState({
-          imageUrl,
-          loading: false,
-        })
-      );
-    }
-  };
-
-  const uploadButton = (
-    <div>
-      {loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div style={{ marginTop: 8 }}>Upload</div>
-    </div>
-  );
   return (
-    <Upload
-      name="avatar"
-      listType="picture-card"
-      className="avatar-uploader"
-      showUploadList={false}
-      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-      beforeUpload={beforeUpload}
-      onChange={handleChange}
-    >
-      {imageUrl ? (
-        <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
-      ) : (
-        uploadButton
-      )}
-    </Upload>
+    <>
+      <h2>Preparation</h2>
+      <h3>Media</h3>
+      <div className="draggerContainer">
+        <Dragger {...props} className="DraggerBtn">
+          <p className="ant-upload-drag-icon">
+            <InboxOutlined />
+          </p>
+          <p className="ant-upload-hint">Upload videos and images</p>
+        </Dragger>
+        <hr />
+        <StepsContainer />
+      </div>
+    </>
   );
 };
 
