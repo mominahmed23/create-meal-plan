@@ -1,8 +1,19 @@
 import React from "react";
 import { Menu, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
+import {
+  Input,
+  Col,
+  Row,
+  Select,
+  InputNumber,
+  DatePicker,
+  AutoComplete,
+  Cascader,
+} from "antd";
 
 const Ingredients = () => {
+  const { Option } = Select;
   const onClick = ({ key }) => {
     console.log(`Click on item ${key}`);
   };
@@ -15,11 +26,15 @@ const Ingredients = () => {
   );
   return (
     <>
-      <Dropdown overlay={menu}>
-        <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
-          Click me <DownOutlined />
-        </a>
-      </Dropdown>
+      <h2>How many servings</h2>
+      <Input.Group compact>
+        <Select defaultValue="1">
+          <Option value="1">1</Option>
+          <Option value="2">2</Option>
+          <Option value="3">3</Option>
+          <Option value="4">1</Option>
+        </Select>
+      </Input.Group>
     </>
   );
 };
