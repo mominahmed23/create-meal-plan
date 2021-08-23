@@ -33,38 +33,14 @@ const StepsContainer = () => {
       {...formItemLayoutWithOutLabel}
       onFinish={onFinish}
     >
-      <Form.List
-        name="names"
-        // rules={[
-        //   {
-        //     validator: async (_, names) => {
-        //       if (!names || names.length < 2) {
-        //         return Promise.reject(new Error("At least 2 passengers"));
-        //       }
-        //     },
-        //   },
-        // ]}
-      >
+      <Form.List name="names">
         {(fields, { add }, { errors }) => (
           <>
             {fields.map((field, index) => (
-              <Form.Item
-                // {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-                // label={index === 0 ? "Passengers" : ""}
-                required={false}
-                key={field.key}
-              >
+              <Form.Item required={false} key={field.key}>
                 <Form.Item
                   {...field}
                   validateTrigger={["onChange", "onBlur"]}
-                  // rules={[
-                  //   {
-                  //     required: true,
-                  //     whitespace: true,
-                  //     message:
-                  //       "Please input passenger's name or delete this field.",
-                  //   },
-                  // ]}
                   noStyle
                 >
                   <Input
@@ -72,10 +48,6 @@ const StepsContainer = () => {
                     style={{ width: "60%" }}
                   />
                 </Form.Item>
-                {/* INITIALLY THERE WOULD BE ONE INPUT */}
-                {/* {fields.length < 1 ? (
-                  <Input placeholder="passenger name" style={{ width: "60%" }} />
-                ) : null} */}
               </Form.Item>
             ))}
             {console.log(fields)}
@@ -93,15 +65,7 @@ const StepsContainer = () => {
           </>
         )}
       </Form.List>
-      <Form.Item>
-        {/* <Button
-          type="primary"
-          htmlType="submit"
-          shape={"circle"}
-          icon={<PlusOutlined />}
-          onClick={() => add()}
-        ></Button> */}
-      </Form.Item>
+      <Form.Item></Form.Item>
     </Form>
   );
 };
