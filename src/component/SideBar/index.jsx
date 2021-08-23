@@ -12,7 +12,6 @@ const SideBar = () => {
         defaultSelectedKeys={["1"]}
         defaultOpenKeys={["sub1"]}
         mode="inline"
-        style={{ marginTop: "20px" }}
       >
         {" "}
         <SubMenu key="sub1" title="Title">
