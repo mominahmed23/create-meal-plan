@@ -1,12 +1,23 @@
 import { Button } from "antd";
 import React, { useState } from "react";
 import Description from "../component/Description";
+import Ingredients from "../component/Ingredients";
 import Title from "./../component/Title/index";
 
 const SidebarForm = () => {
   const [view, setView] = useState(null);
 
   const viewHelper = [];
+  if (view === null) {
+    viewHelper.push(
+      <>
+        <Title />
+
+        <p onClick={() => setView("description")}>Description</p>
+        <p onClick={() => setView("ingredients")}>Ingredients</p>
+      </>
+    );
+  }
   if (view === "description") {
     viewHelper.push(
       <>
@@ -15,12 +26,11 @@ const SidebarForm = () => {
       </>
     );
   }
-  if (view === null) {
+  if (view === "ingredients") {
     viewHelper.push(
       <>
-        <Title />
-
-        <p onClick={() => setView("description")}>Description</p>
+        <Button onClick={() => setView(null)}>back</Button>
+        <Ingredients />
       </>
     );
   }
