@@ -28,12 +28,13 @@ const MealCard = ({
   var SingleMealPlan = {};
 
   const finalMealPlanofDay = () => {
-    console.log("=======\nday", dayIndex);
-    console.log(`weak${weakIndex}`, weakIndex);
-    console.log("redux meal item", mealArray);
+    console.log("day", dayIndex);
+    console.log(`weak${weakIndex}`);
+    console.log("meal Array", mealArray);
   };
   const onModalOk = () => {
     handleOk();
+    finalMealPlanofDay();
     const weekplan = { [dayIndex]: mealArray };
     console.log(weekplan);
     SingleMealPlan[`weak${weakIndex}`] = weekplan;
