@@ -46,20 +46,6 @@ const MealCard = ({
     mealArray.push(item);
     console.log("meal Array", mealArray);
   };
-  const FilterByNameInput = (
-    <Input
-      placeholder="Search Name"
-      value={value}
-      onChange={(e) => {
-        const currValue = e.target.value.toLowerCase();
-        setValue(currValue);
-        const filteredData = data.filter((entry) =>
-          entry.name.includes(currValue)
-        );
-        setDataSource(filteredData);
-      }}
-    />
-  );
 
   return (
     <div>
