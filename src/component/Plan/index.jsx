@@ -70,7 +70,7 @@ const Plan = () => {
           )}
         </>
       )}
-      {weekDaysVisible && <WeekDays plan={arrayIndex + 1} />}
+      {weekDaysVisible && <WeekDays weekIndex={arrayIndex + 1} />}
     </div>
   );
 };
