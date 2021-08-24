@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import MealCard from './MealCard';
+import { PlusOutlined, DashOutlined } from '@ant-design/icons';
+import { Divider, Typography } from 'antd';
 import SnackCard from './SnackCard';
 
+const { Title, Text } = Typography;
 const weekItems = [
   'Monday',
   'Tueday',
@@ -43,45 +46,49 @@ const WeekDays = ({ plan }) => {
   };
   return (
     <div>
-      <h2>{plan}</h2>
+      <Title level={3} className="mb-8">{`week ${plan}`}</Title>
       {/* {currentWeak && currentWeak["Monday"].map((item) => <div>{item}</div>)} */}
-      <ul style={{ listStyle: 'none' }}>
-        {weekItems.map((item, i) => (
-          <>
-            <h3 key={i}>{item}</h3>{' '}
-            <h4>
-              {/* {currentWeak !== undefined
+      {weekItems.map((item, i) => (
+        <>
+          <div className="d-flex align-center justify-space-between">
+            <div>
+              <Text strong>{item}</Text>
+            </div>
+            <div>
+              <DashOutlined className="mx-4" />
+              <PlusOutlined
+                onClick={() => {
+                  showModal();
+                  setDayIndex(item);
+                }}
+              />
+            </div>
+          </div>
+          <h4>
+            {/* {currentWeak !== undefined
                 ? currentWeak.hasOwnProperty(item) &&
                   currentWeak[item].map((mealItem) => <div>{mealItem}</div>)
                 : null} */}
-            </h4>
-            <button
-              onClick={() => {
-                showModal();
-                setDayIndex(item);
-              }}
-            >
-              Add
-            </button>
-          </>
-        ))}
-        <MealCard
-          isModalVisible={isModalVisible}
-          handleOk={handleOk}
-          handleCancel={handleCancel}
-          weakIndex={plan}
-          dayIndex={dayIndex}
-          setIsSnackModalVisible={setIsSnackModalVisible}
-        />
-        <SnackCard
-          handleOk={handleOk}
-          isSnackModalVisible={isSnackModalVisible}
-          setIsSnackModalVisible={setIsSnackModalVisible}
-          handleCancelSnack={handleCancelSnack}
-          weakIndex={plan}
-          dayIndex={dayIndex}
-        />
-      </ul>
+          </h4>
+          <Divider style={{ marginTop: '0' }} />
+        </>
+      ))}
+      <MealCard
+        isModalVisible={isModalVisible}
+        handleOk={handleOk}
+        handleCancel={handleCancel}
+        weakIndex={plan}
+        dayIndex={dayIndex}
+      />
+      \
+      <SnackCard
+        handleOk={handleOk}
+        isSnackModalVisible={isSnackModalVisible}
+        setIsSnackModalVisible={setIsSnackModalVisible}
+        handleCancelSnack={handleCancelSnack}
+        weakIndex={plan}
+        dayIndex={dayIndex}
+      />
     </div>
   );
 };

@@ -1,30 +1,30 @@
-import React from 'react';
-import { Form, Button } from 'antd';
-import { Input, Select, InputNumber } from 'antd';
-import { addPlanAction } from '../../redux/actions/categories';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import { Form, Button, Row, Col } from "antd";
+import { Input, Select, InputNumber } from "antd";
+import { addPlanAction } from "../../redux/actions/categories";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 const { Option } = Select;
 
-const SelectPlan = ({ getWeeks }) => {
+const SelectPlan = ({ getWeeks, weekChangeVisible }) => {
   const dispatch = useDispatch();
   const { plan } = useSelector((state) => state.mealPlan);
+  const [weekCount, setWeekCount] = useState("");
 
-  const addPlan = (plan) => {
-    dispatch(addPlanAction(plan));
+  const addPlan = () => {
+    dispatch(addPlanAction(weekCount));
+    weekChangeVisible();
   };
   return (
-    <Form
-      name="basic"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 16 }}
-      initialValues={{ remember: true }}
-      className="select-plan-form pt-16 "
-    >
-      <Form.Item label="plan-length" name="plan-length">
-        <Input.Group compact>
+    <Row>
+      <Form name="" initialValues={{ remember: true }} layout="vertical">
+        {/* <Col span={24}> */}
+        <Form.Item label="Plan length: " name="plan-length">
+          {/* <Input.Group compact> */}
           <Select
-            defaultValue={'1 week' || `${plan} week`}
-            onChange={(e) => addPlan(e)}
+            defaultValue={weekCount || `${plan} week`}
+            onChange={(e) => setWeekCount(e)}
+            style={{ width: "315%" }}
           >
             <Option value="1">1 week</Option>
             <Option value="2">2 week</Option>
@@ -39,15 +39,17 @@ const SelectPlan = ({ getWeeks }) => {
             <Option value="11">11 week</Option>
             <Option value="12">12 week</Option>
           </Select>
-        </Input.Group>
-      </Form.Item>
+          {/* </Input.Group> */}
+        </Form.Item>
+        {/* </Col> */}
 
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary" htmlType="submit" onClick={() => getWeeks(plan)}>
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+        <Form.Item className="text-center">
+          <Button type="primary" htmlType="submit" onClick={addPlan}>
+            Select
+          </Button>
+        </Form.Item>
+      </Form>
+    </Row>
   );
 };
 
