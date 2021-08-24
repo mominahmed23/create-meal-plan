@@ -1,47 +1,54 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import MealCard from "./MealCard";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import MealCard from './MealCard';
+import SnackCard from './SnackCard';
 
 const weekItems = [
-  "Monday",
-  "Tueday",
-  "Wenesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
+  'Monday',
+  'Tueday',
+  'Wenesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
 ];
 
 const WeekDays = ({ plan }) => {
   const { mealPlan } = useSelector((state) => state.mealPlan);
-  console.log("mealPlan", mealPlan);
+  console.log('mealPlan', mealPlan);
   //const { weak } = mealPlan;
-  console.log("meal week", mealPlan[`weak${plan}`]);
+  console.log('meal week', mealPlan[`weak${plan}`]);
   const currentWeak = mealPlan[`weak${plan}`];
-  currentWeak && console.log("cuurent weak", currentWeak["Monday"]);
+  currentWeak && console.log('cuurent weak', currentWeak['Monday']);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [dayIndex, setDayIndex] = useState("");
+  const [isSnackModalVisible, setIsSnackModalVisible] = useState(false);
+  const [dayIndex, setDayIndex] = useState('');
 
   const showModal = () => {
     setIsModalVisible(true);
   };
   const handleOk = () => {
     setIsModalVisible(false);
-    console.log("ok");
+    console.log('ok');
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
-    console.log("cencel");
+    console.log('cencel');
+  };
+
+  const handleCancelSnack = () => {
+    setIsSnackModalVisible(false);
+    console.log('cencel snack');
   };
   return (
     <div>
       <h2>{plan}</h2>
       {/* {currentWeak && currentWeak["Monday"].map((item) => <div>{item}</div>)} */}
-      <ul style={{ listStyle: "none" }}>
+      <ul style={{ listStyle: 'none' }}>
         {weekItems.map((item, i) => (
           <>
-            <h3 key={i}>{item}</h3>{" "}
+            <h3 key={i}>{item}</h3>{' '}
             <h4>
               {/* {currentWeak !== undefined
                 ? currentWeak.hasOwnProperty(item) &&
@@ -62,6 +69,15 @@ const WeekDays = ({ plan }) => {
           isModalVisible={isModalVisible}
           handleOk={handleOk}
           handleCancel={handleCancel}
+          weakIndex={plan}
+          dayIndex={dayIndex}
+          setIsSnackModalVisible={setIsSnackModalVisible}
+        />
+        <SnackCard
+          handleOk={handleOk}
+          isSnackModalVisible={isSnackModalVisible}
+          setIsSnackModalVisible={setIsSnackModalVisible}
+          handleCancelSnack={handleCancelSnack}
           weakIndex={plan}
           dayIndex={dayIndex}
         />
