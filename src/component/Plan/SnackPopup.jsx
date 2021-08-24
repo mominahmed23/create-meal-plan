@@ -1,23 +1,23 @@
-import { Input, Space, Form, Button, Row, Col, Select } from 'antd';
-import Modal from 'antd/lib/modal/Modal';
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { Option } from 'antd/lib/mentions';
+import { Input, Space, Form, Button, Row, Col, Select } from "antd";
+import Modal from "antd/lib/modal/Modal";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { Option } from "antd/lib/mentions";
 const snackData = [
   {
-    key: '3',
-    name: 'Apple',
+    key: "3",
+    name: "Apple",
   },
   {
-    key: '4',
-    name: 'Mango',
+    key: "4",
+    name: "Mango",
   },
 ];
 
 const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
   const [dataSource, setDataSource] = useState(snackData);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [snackForm, setsnackForm] = useState(null);
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
       visible={isModalVisible}
       onOk={onModalOk}
       onCancel={handleCancel}
-      title={'Choose a Snack Ingredient (2 max)'}
+      title={"Choose a Snack Ingredient (2 max)"}
     >
       <Input
         placeholder="Search ingredients"
@@ -73,21 +73,21 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
               <Row>
                 <Form onFinish={onFinish}>
                   <Space
-                    style={{ display: 'flex', marginBottom: 8 }}
+                    style={{ display: "flex", marginBottom: 8 }}
                     align="baseline"
                   >
                     <Col span={24}>
-                      <Form.Item name={'item_amount'} fieldKey={'item_amount'}>
+                      <Form.Item name={"item_amount"} fieldKey={"item_amount"}>
                         <Input placeholder="Amount" />
                       </Form.Item>
                     </Col>
-                    <Form.Item name={'fraction'} fieldKey={'fraction'}>
+                    <Form.Item name={"fraction"} fieldKey={"fraction"}>
                       <Select defaultValue="Fraction" style={{ width: 120 }}>
                         <Option value="1/2">1/2</Option>
                         <Option value="1/3">1/3</Option>
                       </Select>
                     </Form.Item>
-                    <Form.Item name={'unit'} fieldKey={'unit'}>
+                    <Form.Item name={"unit"} fieldKey={"unit"}>
                       <Select defaultValue="Unit" style={{ width: 120 }}>
                         <Option value="jack">TSB</Option>
                         <Option value="lucy">TPS</Option>

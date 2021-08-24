@@ -21,9 +21,11 @@ const WeekDays = ({ weekIndex }) => {
   const { mealPlan } = useSelector((state) => state.mealPlan);
   console.log("mealPlan", mealPlan);
   //const { weak } = mealPlan;
+
   console.log("meal week", mealPlan[`weak${weekIndex}`]);
   const currentWeak = mealPlan[`weak${weekIndex}`];
   currentWeak && console.log("cuurent weak", currentWeak["Monday"]);
+
   const [dayIndex, setDayIndex] = useState("");
   const [isMealModalVisible, setIsMealModalVisible] = useState(false);
 
@@ -70,14 +72,7 @@ const WeekDays = ({ weekIndex }) => {
           <Divider style={{ marginTop: "0" }} />
         </>
       ))}
-      {/* <PrimaryModal 
-      title="Meal Card"
-      hanldeOk={handleMealOk}
-      handelCancel={()=>setIsMealModalVisible(false)}
-      isModalVisisble={isMealModalVisible}
-      >
-        {"hello"}
-      </PrimaryModal> */}
+
       <MealCard
         isModalVisible={isMealModalVisible}
         handleOk={handleOk}
@@ -90,3 +85,13 @@ const WeekDays = ({ weekIndex }) => {
 };
 
 export default WeekDays;
+{
+  /* <PrimaryModal 
+      title="Meal Card"
+      hanldeOk={handleMealOk}
+      handelCancel={()=>setIsMealModalVisible(false)}
+      isModalVisisble={isMealModalVisible}
+      >
+        {"hello"}
+      </PrimaryModal> */
+}

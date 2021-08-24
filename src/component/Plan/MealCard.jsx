@@ -8,26 +8,7 @@ import SnackCard from "./SnackCard";
 import SnackPopup from "./SnackPopup";
 
 // const mealItems = ['Biryani', 'Burger'];
-const data = [
-  {
-    key: "1",
-    name: "Biryani",
-  },
-  {
-    key: "2",
-    name: "Burger",
-  },
-];
-const snackData = [
-  {
-    key: "3",
-    name: "Apple",
-  },
-  {
-    key: "4",
-    name: "Mango",
-  },
-];
+const data = [{ name: "Biryani" }, { name: "Burger" }];
 
 const MealCard = ({
   isModalVisible,
@@ -53,17 +34,17 @@ const MealCard = ({
   };
   const onModalOk = () => {
     handleOk();
-    // const weekplan = { [dayIndex]: mealArray };
-    // console.log(weekplan);
-    // SingleMealPlan[`weak${weakIndex}`] = weekplan;
-    // console.log("finalll", SingleMealPlan);
+    const weekplan = { [dayIndex]: mealArray };
+    console.log(weekplan);
+    SingleMealPlan[`weak${weakIndex}`] = weekplan;
+    console.log("finalll", SingleMealPlan);
     // dispatch(addMealPlanAction(SingleMealPlan));
     //mealArray.length = 0;
   };
 
   const onMealClick = (item) => {
     mealArray.push(item);
-    console.log(item);
+    console.log("meal Array", mealArray);
   };
   const FilterByNameInput = (
     <Input
@@ -139,7 +120,7 @@ const MealCard = ({
                 key={i}
                 className="mealInfoContainer"
                 onClick={() => {
-                  onMealClick(item);
+                  onMealClick(item.name);
                 }}
               >
                 <div className="d-flex align-center mt-4">
