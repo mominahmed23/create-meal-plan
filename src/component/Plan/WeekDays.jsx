@@ -1,52 +1,48 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import MealCard from './MealCard';
-import { PlusOutlined, DashOutlined } from '@ant-design/icons';
-import { Divider, Typography } from 'antd';
-import SnackCard from './SnackCard';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import MealCard from "./MealCard";
+import { PlusOutlined, DashOutlined } from "@ant-design/icons";
+import { Divider, Typography } from "antd";
+import SnackCard from "./SnackCard";
+import PrimaryModal from "../PopupModals/PrimaryModal";
 
 const { Title, Text } = Typography;
 const weekItems = [
-  'Monday',
-  'Tueday',
-  'Wenesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-  'Sunday',
+  "Monday",
+  "Tueday",
+  "Wenesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
 ];
 
-const WeekDays = ({ plan }) => {
+const WeekDays = ({ weekIndex }) => {
   const { mealPlan } = useSelector((state) => state.mealPlan);
-  console.log('mealPlan', mealPlan);
+  console.log("mealPlan", mealPlan);
   //const { weak } = mealPlan;
-  console.log('meal week', mealPlan[`weak${plan}`]);
-  const currentWeak = mealPlan[`weak${plan}`];
-  currentWeak && console.log('cuurent weak', currentWeak['Monday']);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isSnackModalVisible, setIsSnackModalVisible] = useState(false);
-  const [dayIndex, setDayIndex] = useState('');
+  console.log("meal week", mealPlan[`weak${weekIndex}`]);
+  const currentWeak = mealPlan[`weak${weekIndex}`];
+  currentWeak && console.log("cuurent weak", currentWeak["Monday"]);
+  const [dayIndex, setDayIndex] = useState("");
+  const [isMealModalVisible, setIsMealModalVisible] = useState(false);
 
   const showModal = () => {
-    setIsModalVisible(true);
+    setIsMealModalVisible(true);
   };
   const handleOk = () => {
-    setIsModalVisible(false);
-    console.log('ok');
+    setIsMealModalVisible(false);
+    console.log("ok");
   };
 
   const handleCancel = () => {
-    setIsModalVisible(false);
-    console.log('cencel');
+    setIsMealModalVisible(false);
+    console.log("cencel");
   };
 
-  const handleCancelSnack = () => {
-    setIsSnackModalVisible(false);
-    console.log('cencel snack');
-  };
   return (
     <div>
-      <Title level={3} className="mb-8">{`week ${plan}`}</Title>
+      <Title level={3} className="mb-8">{`week ${weekIndex}`}</Title>
       {/* {currentWeak && currentWeak["Monday"].map((item) => <div>{item}</div>)} */}
       {weekItems.map((item, i) => (
         <>
@@ -58,6 +54,7 @@ const WeekDays = ({ plan }) => {
               <DashOutlined className="mx-4" />
               <PlusOutlined
                 onClick={() => {
+                  setIsMealModalVisible(true);
                   showModal();
                   setDayIndex(item);
                 }}
@@ -70,23 +67,22 @@ const WeekDays = ({ plan }) => {
                   currentWeak[item].map((mealItem) => <div>{mealItem}</div>)
                 : null} */}
           </h4>
-          <Divider style={{ marginTop: '0' }} />
+          <Divider style={{ marginTop: "0" }} />
         </>
       ))}
+      {/* <PrimaryModal 
+      title="Meal Card"
+      hanldeOk={handleMealOk}
+      handelCancel={()=>setIsMealModalVisible(false)}
+      isModalVisisble={isMealModalVisible}
+      >
+        {"hello"}
+      </PrimaryModal> */}
       <MealCard
-        isModalVisible={isModalVisible}
+        isModalVisible={isMealModalVisible}
         handleOk={handleOk}
         handleCancel={handleCancel}
-        weakIndex={plan}
-        dayIndex={dayIndex}
-      />
-      \
-      <SnackCard
-        handleOk={handleOk}
-        isSnackModalVisible={isSnackModalVisible}
-        setIsSnackModalVisible={setIsSnackModalVisible}
-        handleCancelSnack={handleCancelSnack}
-        weakIndex={plan}
+        weakIndex={weekIndex}
         dayIndex={dayIndex}
       />
     </div>
