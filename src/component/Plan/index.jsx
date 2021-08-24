@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
-import { Button } from 'antd';
-import SelectPlan from './SelectPlan';
-import { useSelector } from 'react-redux';
-import WeekDays from './WeekDays';
+import React, { useState } from "react";
+import { Button } from "antd";
+import SelectPlan from "./SelectPlan";
+import { useSelector } from "react-redux";
+import WeekDays from "./WeekDays";
 
 const Plan = () => {
   const [weekChangeVisible, setWeekChangeVisible] = useState(false);
   const [weekDaysVisible, setWeekDaysVisible] = useState(false);
   const [defaultView, setDefaultView] = useState(false);
-  const [weekNumber, setWeekNumber] = useState('');
+  const [weekNumber, setWeekNumber] = useState("");
+  const [arrayIndex, setArrayIndex] = useState("");
+
+  {
+    arrayIndex && console.log("array index", arrayIndex);
+  }
   const { plan } = useSelector((state) => state.mealPlan);
 
   let rows = [];
@@ -41,6 +46,8 @@ const Plan = () => {
                 setWeekDaysVisible(true);
                 setDefaultView(true);
                 setWeekNumber(item);
+                setArrayIndex(i);
+                console.log(item, i);
               }}
             >
               {item}
@@ -49,8 +56,7 @@ const Plan = () => {
           {weekChangeVisible && <SelectPlan />}
         </>
       )}
-      {console.log(weekNumber.props?.children[0])}
-      {weekDaysVisible && <WeekDays plan={weekNumber.props?.children[0]} />}
+      {weekDaysVisible && <WeekDays plan={arrayIndex + 1} />}
     </div>
   );
 };
