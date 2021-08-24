@@ -21,10 +21,7 @@ const Plan = () => {
   for (let i = 1; i <= plan; i++) {
     rows.push(
       <>
-        <Title level={5}>
-          {/* <div className="mt-0"> */}
-          {`week ${i}`}
-        </Title>
+        <Title level={5}>{`week ${i}`}</Title>
         <Divider style={{ marginTop: "0" }} />
       </>
     );

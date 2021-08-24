@@ -17,7 +17,7 @@ const SidebarForm = () => {
   const viewHelper = [];
   if (view === null) {
     viewHelper.push(
-      <>
+      <div style={{ position: "relative" }}>
         <RecipeTitle />
         <Cover />
 
@@ -57,7 +57,7 @@ const SidebarForm = () => {
             <RightOutlined />
           </div>
         </div>
-      </>
+      </div>
     );
   }
   if (view === "description") {
