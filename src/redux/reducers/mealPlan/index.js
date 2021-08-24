@@ -4,8 +4,7 @@
 const initialState = {
   title: "",
   description: "",
-  plan: "",
-  mealPlan: {},
+  numOfWeeks: 1,
 };
 
 const mealPlanReducer = (state = initialState, action) => {
@@ -15,10 +14,7 @@ const mealPlanReducer = (state = initialState, action) => {
     case "ADD_DESCRIPTION":
       return { ...state, description: action.payload };
     case "ADD_PLAN":
-      return { ...state, plan: action.payload };
-    case "ADD_MEAL_PLAN":
-      return { ...state, mealPlan: action.payload };
-
+      return { ...state, numOfWeeks: action.payload };
     default:
       return state;
   }

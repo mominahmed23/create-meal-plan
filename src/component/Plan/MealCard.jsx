@@ -1,11 +1,12 @@
 import { Card, Input, Table } from "antd";
 import Modal from "antd/lib/modal/Modal";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addMealPlanAction } from "../../redux/actions/categories";
 import MealInfoContainer from "./MealInfoContainer";
 import SnackCard from "./SnackCard";
 import SnackPopup from "./SnackPopup";
+import { addWeekAction } from "./../../redux/actions/weeks/index";
 
 // const mealItems = ['Biryani', 'Burger'];
 const data = [{ name: "Biryani" }, { name: "Burger" }];
@@ -14,38 +15,28 @@ const MealCard = ({
   isModalVisible,
   handleOk,
   handleCancel,
-  weakIndex,
+  weekIndex,
   dayIndex,
 }) => {
   const [dataSource, setDataSource] = useState(data);
   const [value, setValue] = useState("");
   const [isRecipeVisible, setIsRecipeVisible] = useState(true);
   const [IsSnackModalVisible, setIsSnackModalVisible] = useState(false);
-
-  const dispatch = useDispatch();
-
+  // const [mealArray, setMealArray] = useState([]);
+  const { weeks } = useSelector((state) => state);
   var mealArray = [];
-  var SingleMealPlan = {};
-
-  const finalMealPlanofDay = () => {
-    console.log("day", dayIndex);
-    console.log(`weak${weakIndex}`);
-    console.log("meal Array", mealArray);
-  };
+  const dispatch = useDispatch();
+  console.log(weeks);
   const onModalOk = () => {
     handleOk();
-    finalMealPlanofDay();
     const weekplan = { [dayIndex]: mealArray };
-    console.log(weekplan);
-    SingleMealPlan[`weak${weakIndex}`] = weekplan;
-    console.log("finalll", SingleMealPlan);
-    // dispatch(addMealPlanAction(SingleMealPlan));
-    //mealArray.length = 0;
+    // const weekplan = { [`week${weekIndex}`]: mealArray };
+    console.log("YOOOOOOOO ===========>>>>", weekplan);
+    dispatch(addWeekAction(weekplan, weekIndex));
   };
 
   const onMealClick = (item) => {
     mealArray.push(item);
-    console.log("meal Array", mealArray);
   };
 
   return (

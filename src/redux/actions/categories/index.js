@@ -1,5 +1,3 @@
-/** @format */
-
 export const addTitleAction = (data) => {
   return {
     type: "ADD_TITLE",
@@ -17,13 +15,6 @@ export const addDescriptionAction = (data) => {
 export const addPlanAction = (data) => {
   return {
     type: "ADD_PLAN",
-    payload: data,
-  };
-};
-
-export const addMealPlanAction = (data) => {
-  return {
-    type: "ADD_MEAL_PLAN",
     payload: data,
   };
 };

@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import WeekDays from "./WeekDays";
 import { Typography } from "antd";
 const { Title, Text } = Typography;
+
 const Plan = () => {
   const [weekChangeVisible, setWeekChangeVisible] = useState(false);
   const [weekDaysVisible, setWeekDaysVisible] = useState(false);
@@ -12,20 +13,13 @@ const Plan = () => {
   const [weekNumber, setWeekNumber] = useState("");
   const [arrayIndex, setArrayIndex] = useState("");
 
-  {
-    arrayIndex && console.log("array index", arrayIndex);
-  }
-  const { plan } = useSelector((state) => state.mealPlan);
+  const { numOfWeeks } = useSelector((state) => state.mealPlan);
 
   let rows = [];
-  for (let i = 1; i <= plan; i++) {
-    rows.push(
-      <>
-        <Title level={5}>{`week ${i}`}</Title>
-        <Divider style={{ marginTop: "0" }} />
-      </>
-    );
+  for (let i = 1; i <= numOfWeeks; i++) {
+    rows.push(i);
   }
+  console.log(rows);
   return (
     <div>
       {!defaultView && (
@@ -50,7 +44,7 @@ const Plan = () => {
               <>
                 <h4
                   className="app-hover-cursor"
-                  key={i}
+                  key={item}
                   onClick={() => {
                     setWeekDaysVisible(true);
                     setDefaultView(true);
@@ -59,8 +53,9 @@ const Plan = () => {
                     console.log(item, i);
                   }}
                 >
-                  {item}
+                  {`week ${item}`}
                 </h4>
+                <Divider style={{ marginTop: "0" }} />
               </>
             ))}
           {weekChangeVisible && (
@@ -70,7 +65,7 @@ const Plan = () => {
           )}
         </>
       )}
-      {weekDaysVisible && <WeekDays weekIndex={arrayIndex + 1} />}
+      {weekDaysVisible && <WeekDays weekIndex={weekNumber} />}
     </div>
   );
 };

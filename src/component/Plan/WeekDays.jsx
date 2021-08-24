@@ -18,14 +18,6 @@ const weekItems = [
 ];
 
 const WeekDays = ({ weekIndex }) => {
-  const { mealPlan } = useSelector((state) => state.mealPlan);
-  console.log("mealPlan", mealPlan);
-  //const { weak } = mealPlan;
-
-  console.log("meal week", mealPlan[`weak${weekIndex}`]);
-  const currentWeak = mealPlan[`weak${weekIndex}`];
-  currentWeak && console.log("cuurent weak", currentWeak["Monday"]);
-
   const [dayIndex, setDayIndex] = useState("");
   const [isMealModalVisible, setIsMealModalVisible] = useState(false);
 
@@ -77,7 +69,7 @@ const WeekDays = ({ weekIndex }) => {
         isModalVisible={isMealModalVisible}
         handleOk={handleOk}
         handleCancel={handleCancel}
-        weakIndex={weekIndex}
+        weekIndex={weekIndex}
         dayIndex={dayIndex}
       />
     </div>

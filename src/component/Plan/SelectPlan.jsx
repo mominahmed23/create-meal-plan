@@ -8,8 +8,8 @@ const { Option } = Select;
 
 const SelectPlan = ({ getWeeks, weekChangeVisible }) => {
   const dispatch = useDispatch();
-  const { plan } = useSelector((state) => state.mealPlan);
-  const [weekCount, setWeekCount] = useState("");
+  const { numOfWeeks } = useSelector((state) => state.mealPlan);
+  const [weekCount, setWeekCount] = useState(null);
 
   const addPlan = () => {
     dispatch(addPlanAction(weekCount));
@@ -22,22 +22,22 @@ const SelectPlan = ({ getWeeks, weekChangeVisible }) => {
         <Form.Item label="Plan length: " name="plan-length">
           {/* <Input.Group compact> */}
           <Select
-            defaultValue={weekCount || `${plan} week`}
+            defaultValue={weekCount || `${numOfWeeks} week`}
             onChange={(e) => setWeekCount(e)}
             style={{ width: "315%" }}
           >
-            <Option value="1">1 week</Option>
-            <Option value="2">2 week</Option>
-            <Option value="3">3 week</Option>
-            <Option value="4">4 week</Option>
-            <Option value="5">5 week</Option>
-            <Option value="6">6 week</Option>
-            <Option value="7">7 week</Option>
-            <Option value="8">8 week</Option>
-            <Option value="9">9 week</Option>
-            <Option value="10">10 week</Option>
-            <Option value="11">11 week</Option>
-            <Option value="12">12 week</Option>
+            <Option value={1}>1 week</Option>
+            <Option value={2}>2 week</Option>
+            <Option value={3}>3 week</Option>
+            <Option value={4}>4 week</Option>
+            <Option value={5}>5 week</Option>
+            <Option value={6}>6 week</Option>
+            <Option value={7}>7 week</Option>
+            <Option value={8}>8 week</Option>
+            <Option value={9}>9 week</Option>
+            <Option value={10}>10 week</Option>
+            <Option value={11}>11 week</Option>
+            <Option value={12}>12 week</Option>
           </Select>
           {/* </Input.Group> */}
         </Form.Item>
