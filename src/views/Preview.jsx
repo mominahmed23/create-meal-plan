@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Preview = () => {
   return (
@@ -6,13 +6,13 @@ const Preview = () => {
       className="preview"
       style={{
         flexGrow: 1,
-        backgroundColor: "grey",
-        height: "100vh",
-        marginLeft: 275,
-        padding: "10px 20px",
+        backgroundColor: 'grey',
+        height: '100vh',
+        marginLeft: 300,
+        padding: '10px 20px',
       }}
     >
-      <h1 style={{ color: "red" }}>Preview</h1>
+      <h1 style={{ color: 'red' }}>Preview</h1>
     </div>
   );
 };
