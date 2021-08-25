@@ -4,7 +4,7 @@
 const initialState = {
   title: "",
   description: "",
-  numOfWeeks: 1,
+  numOfWeeks: [],
 };
 
 const mealPlanReducer = (state = initialState, action) => {

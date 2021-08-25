@@ -1,4 +1,4 @@
-import { Button, Row, Select } from 'antd';
+import { Button, Input, Row, Select } from 'antd';
 import Form from 'antd/lib/form/Form';
 import Item from 'antd/lib/list/Item';
 import { Option } from 'antd/lib/mentions';
@@ -28,10 +28,7 @@ const WeekImport = ({
     // if (weeks.hasOwnProperty(`week${weekCount}`)) {
     let copyWeek = weeks[`week${weekCount}`];
     console.log('copyWeek', copyWeek);
-    // if (weeks.hasOwnProperty(`week${weekIndex}`)) {
-    let emptyWeek = weeks[`week${weekIndex}`];
-    // console.log('empty current Week', emptyWeek);
-    // }
+
     // DELETING THE CONTENTS OF CURRENT WEEK
     // COPYING THE CONTENTS OF SELECTED WEEKK INTO CURRENT WEEK
     weeks[`week${weekIndex}`] = weeks[`week${weekCount}`];
@@ -64,11 +61,11 @@ const WeekImport = ({
           <Form name="" initialValues={{ remember: true }} layout="vertical">
             {/* <Col span={24}> */}
             <Item name="plan-length">
-              {/* <Input.Group compact> */}
+              {/* <Input compact> */}
               <Select
-                defaultValue={weekCount || `${numOfWeeks} week`}
+                defaultValue={'1 week'}
                 onChange={(e) => setWeekCount(e)}
-                style={{ width: '315%' }}
+                style={{ width: 200 }}
               >
                 <Option value={1}>1 week</Option>
                 <Option value={2}>2 week</Option>
@@ -83,7 +80,7 @@ const WeekImport = ({
                 <Option value={11}>11 week</Option>
                 <Option value={12}>12 week</Option>
               </Select>
-              {/* </Input.Group> */}
+              {/* </Input> */}
             </Item>
             {/* </Col> */}
 

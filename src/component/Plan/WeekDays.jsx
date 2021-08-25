@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import MealCard from './MealCard';
-import { PlusOutlined, DashOutlined } from '@ant-design/icons';
-import { Divider, Dropdown, Typography } from 'antd';
-// import { useDispatch, useSelector } from 'react-redux';
-
-import { Menu, Button, message, Space, Tooltip } from 'antd';
-import { DownOutlined, UserOutlined } from '@ant-design/icons';
+import {
+  PlusOutlined,
+  DashOutlined,
+  DeleteOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
+import { Divider, Dropdown, Menu, Typography } from 'antd';
+import SnackCard from './SnackCard';
+import PrimaryModal from '../PopupModals/PrimaryModal';
+import { compose } from 'redux';
+import { addWeekAction } from '../../redux/actions/weeks';
 import WeekImport from '../WeekImport';
 
 const { Title, Text } = Typography;
@@ -28,6 +33,15 @@ const WeekDays = ({ weekIndex }) => {
 
   const { weeks } = useSelector((state) => state);
 
+  const dispatch = useDispatch();
+
+  weeks && console.log('week index', weeks);
+  console.log('weekindex', weekIndex);
+
+  console.log('aaaa', weeks[`week${weekIndex}`]);
+  const singleDay = weeks[`week${weekIndex}`];
+
+  console.log('ddd', singleDay);
   const showModal = () => {
     setIsMealModalVisible(true);
   };
@@ -41,7 +55,7 @@ const WeekDays = ({ weekIndex }) => {
     console.log('cencel');
   };
   const handleWeekImportOk = () => {
-    console.log('wweeeekkk', weeks);
+    setIsWeekImportModalVisible(false);
   };
   const menu = (
     <Menu>
@@ -58,6 +72,19 @@ const WeekDays = ({ weekIndex }) => {
     </Menu>
   );
 
+  const deleteItem = (item, mealItem) => {
+    //console.log("ali", item);
+    console.log('remove item', mealItem);
+    const allData = singleDay[item];
+    //console.log("redux data", allData);
+    const filtered = allData.filter((item) => item != mealItem);
+    //console.log("filtered array", filtered);
+    const weekplan = { [item]: filtered };
+    //console.log("weekplan", weekplan);
+    // const weekplan = { [`week${weekIndex}`]: mealArray };
+    //console.log("YOOOOOOOO ===========>>>>", weekplan);
+    dispatch(addWeekAction(weekplan, weekIndex));
+  };
   return (
     <div>
       <Title level={3} className="mb-8">{`week ${weekIndex}`}</Title>
@@ -82,10 +109,18 @@ const WeekDays = ({ weekIndex }) => {
             </div>
           </div>
           <h4>
-            {/* {currentWeak !== undefined
-                ? currentWeak.hasOwnProperty(item) &&
-                  currentWeak[item].map((mealItem) => <div>{mealItem}</div>)
-                : null} */}
+            {singleDay !== undefined
+              ? singleDay.hasOwnProperty(item) &&
+                singleDay[item].map((mealItem) => (
+                  <div>
+                    {mealItem}
+                    <DeleteOutlined
+                      className="mx-4"
+                      onClick={() => deleteItem(item, mealItem)}
+                    />
+                  </div>
+                ))
+              : null}
           </h4>
           <Divider style={{ marginTop: '0' }} />
           <WeekImport
@@ -93,7 +128,7 @@ const WeekDays = ({ weekIndex }) => {
             setIsWeekImportModalVisible={() =>
               setIsWeekImportModalVisible(false)
             }
-            handleWeekImportOk={handleWeekImportOk}
+            handleWeekImportOk={() => setIsWeekImportModalVisible(false)}
             weekIndex={weekIndex}
             dayIndex={dayIndex}
           />

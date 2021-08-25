@@ -1,16 +1,16 @@
-import { Input } from 'antd';
-import Modal from 'antd/lib/modal/Modal';
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Form, Space } from 'antd';
+import { Input } from "antd";
+import Modal from "antd/lib/modal/Modal";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Form, Space } from "antd";
 const snackData = [
   {
-    key: '3',
-    name: 'Apple',
+    key: "3",
+    name: "Apple",
   },
   {
-    key: '4',
-    name: 'Mango',
+    key: "4",
+    name: "Mango",
   },
 ];
 
@@ -20,10 +20,11 @@ const SnackCard = ({
   handleCancelSnack,
 }) => {
   const [dataSource, setDataSource] = useState(snackData);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const [isFormVisible, setIsFormVisible] = useState(false);
   const dispatch = useDispatch();
   const onFinish = (values) => {
+    const data = {};
     console.log(values);
   };
   const onOkSnackModal = () => {
@@ -67,7 +68,7 @@ const SnackCard = ({
                 }}
               >
                 <div
-                  style={{ display: 'flex', alignItems: 'center' }}
+                  style={{ display: "flex", alignItems: "center" }}
                   className="mt-4"
                 >
                   <img
@@ -83,16 +84,16 @@ const SnackCard = ({
               {isFormVisible && (
                 <Form onFinish={onFinish}>
                   <Space
-                    style={{ display: 'flex', marginBottom: 8 }}
+                    style={{ display: "flex", marginBottom: 8 }}
                     align="baseline"
                   >
-                    <Form.Item name={'item_amount'} fieldKey={'item_amount'}>
+                    <Form.Item name={"item_amount"} fieldKey={"item_amount"}>
                       <Input placeholder="Amount" />
                     </Form.Item>
-                    <Form.Item name={'fraction'} fieldKey={'fraction'}>
+                    <Form.Item name={"fraction"} fieldKey={"fraction"}>
                       <Input placeholder="Fraction" />
                     </Form.Item>
-                    <Form.Item name={'unit'} fieldKey={'unit'}>
+                    <Form.Item name={"unit"} fieldKey={"unit"}>
                       <Input placeholder="Unit" />
                     </Form.Item>
                   </Space>

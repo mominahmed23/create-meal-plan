@@ -37,15 +37,18 @@ const MealCard = ({
     console.log('yesknk');
     // console.log(Object.entries(weeks['week1']));
   };
+  console.log('weeks', weeks);
   const onModalOk = () => {
     // console.log('beforeeeeeeee ===========>>>>', mealArray);
     handleOk();
     const weekplan = { [dayIndex]: mealArray };
     // const weekplan = { [`week${weekIndex}`]: mealArray };
+    console.log('YOOOOOOOO ===========>>>>', weekplan);
     dispatch(addWeekAction(weekplan, weekIndex));
     // console.log('afterrrrrrrrr ===========>>>>', mealArray);
     console.log('YOOOOOOOO ===========>>>>', weeks);
   };
+
   return (
     <div>
       <Modal
@@ -103,11 +106,11 @@ const MealCard = ({
             dataSource.map((item, i) => (
               <div
                 key={i}
-                className={
-                  isMealSelected === item.name
-                    ? 'mealSelected'
-                    : 'mealInfoContainer'
-                }
+                // className={
+                //   isMealSelected === item.name
+                //     ? 'mealSelected'
+                //     : 'mealInfoContainer'
+                // }
                 onClick={() => {
                   onMealClick(item.name);
                 }}
@@ -123,9 +126,9 @@ const MealCard = ({
                       alt=""
                     />
                     <div
-                      className={
-                        isMealSelected === item.name ? 'overlay' : 'noDisplay'
-                      }
+                    // className={
+                    //   isMealSelected === item.name ? 'overlay' : 'noDisplay'
+                    // }
                     >
                       <a href="#" className="icon" title="User Profile">
                         {isMealSelected === item.name && (

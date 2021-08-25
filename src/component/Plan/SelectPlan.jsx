@@ -12,7 +12,12 @@ const SelectPlan = ({ importWeekForm, weekChangeVisible }) => {
   const [weekCount, setWeekCount] = useState(null);
 
   const addPlan = () => {
-    dispatch(addPlanAction(weekCount));
+    let rows = [];
+    for (let i = 1; i <= weekCount; i++) {
+      rows.push(i);
+    }
+    console.log("rrrrr", rows);
+    dispatch(addPlanAction(rows));
     weekChangeVisible();
   };
   return (

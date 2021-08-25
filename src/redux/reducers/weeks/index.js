@@ -2,7 +2,7 @@ const initialState = {};
 
 const weeksReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_WEEK':
+    case "ADD_WEEK":
       let temp;
       if (state[`week${action.week}`]) {
         temp = {
@@ -19,6 +19,9 @@ const weeksReducer = (state = initialState, action) => {
         };
       }
       return temp;
+    case "DELETE_WEEK":
+      delete state[`week${action.week}`];
+    //temp = { ...state };
     default:
       return state;
   }

@@ -4,6 +4,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Option } from 'antd/lib/mentions';
+import { addSnackAction } from '../../redux/actions/snacks';
 const snackData = [
   {
     key: '3',
@@ -19,11 +20,15 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
   const [dataSource, setDataSource] = useState(snackData);
   const [value, setValue] = useState('');
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [snackForm, setsnackForm] = useState(null);
+  const [snack, setsnack] = useState(null);
   const dispatch = useDispatch();
 
   const onFinish = (values) => {
-    console.log(values);
+    const data = { [snack.name]: values };
+    dispatch(addSnackAction(data));
+    // console.log("selected item", snackForm);
+    // console.log("dataa", data);
+    // console.log("form value", val);
   };
 
   const onModalOk = () => {
@@ -55,7 +60,7 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
             className="mealInfoContainer"
             onClick={() => {
               setIsFormVisible(true);
-              setsnackForm(item);
+              setsnack(item);
             }}
           >
             <div className="d-flex align-center mt-4">
@@ -69,7 +74,7 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
             </div>
           </div>
           <div className="mt-4">
-            {snackForm === item && (
+            {snack === item && (
               <Row>
                 <Form onFinish={onFinish}>
                   <Space
@@ -94,7 +99,7 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
                       </Select>
                     </Form.Item>
                     <Form.Item>
-                      <Button>Add</Button>
+                      <Button htmlType="submit">Add</Button>
                     </Form.Item>
                   </Space>
                 </Form>
