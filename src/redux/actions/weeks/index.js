@@ -5,3 +5,9 @@ export const addWeekAction = (data, n) => {
     week: n,
   };
 };
+export const deleteWeekAction = (n) => {
+  return {
+    type: "DELETE_WEEK",
+    week: n,
+  };
+};

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import WeekDays from "./WeekDays";
 import { Typography } from "antd";
 import { addPlanAction } from "../../redux/actions/categories";
-import { addWeekAction } from "../../redux/actions/weeks";
+import { addWeekAction, deleteWeekAction } from "../../redux/actions/weeks";
 const { Title, Text } = Typography;
 
 const Plan = () => {
@@ -51,7 +51,7 @@ const Plan = () => {
     //  rows = filtered;
     //  console.log("filter row", rows.length);
     dispatch(addPlanAction(filtered));
-    //dispatch(addWeekAction(copyWeeks));
+    dispatch(deleteWeekAction(item));
   };
   return (
     <div>
