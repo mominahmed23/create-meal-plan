@@ -4,14 +4,13 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { Option } from "antd/lib/mentions";
+import { CheckOutlined } from "@ant-design/icons";
 import { addSnackAction } from "../../redux/actions/snacks";
 const snackData = [
   {
-    key: "3",
     name: "Apple",
   },
   {
-    key: "4",
     name: "Mango",
   },
 ];
@@ -21,19 +20,19 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
   const [value, setValue] = useState("");
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [snack, setsnack] = useState(null);
+  const [selectedMealName, setSelectedMealName] = useState([]);
   const dispatch = useDispatch();
 
   const onFinish = (values) => {
+    const mealArray = [...selectedMealName];
     const data = { [snack.name]: values };
     dispatch(addSnackAction(data));
-    // console.log("selected item", snackForm);
-    // console.log("dataa", data);
-    // console.log("form value", val);
   };
 
   const onModalOk = () => {
     handleOk();
   };
+
   return (
     <Modal
       visible={isModalVisible}
@@ -57,6 +56,46 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
         <>
           <div
             key={i}
+            className={
+              snack === item.name ? "mealSelected" : "mealInfoContainer"
+            }
+            onClick={() => {
+              onMealClick(item.name);
+            }}
+          >
+            <div className="d-flex align-center mt-4">
+              <div class="container">
+                {/* <img src="img_avatar.png" alt="Avatar" class="image"> */}
+                <img
+                  className={snack === item.name ? "imageSelected" : ""}
+                  src="https://media-cdn.tripadvisor.com/media/photo-s/16/5c/a9/7d/lahore-food.jpg"
+                  width="60"
+                  height="60"
+                  alt=""
+                />
+                <div className={snack === item.name ? "overlay" : "noDisplay"}>
+                  <a href="#" className="icon" title="User Profile">
+                    {snack === item.name && (
+                      <CheckOutlined
+                        style={{
+                          fontSize: "28px",
+                          color: "#ffffff",
+                        }}
+                      />
+                    )}
+                  </a>
+                </div>
+              </div>
+
+              <h3 className="ml-5">{item.name}</h3>
+              {/* {weeks &&
+                sDay &&
+                sDay.hasOwnProperty(dayIndex) &&
+                sDay[dayIndex].includes(item.name) && <div>hello</div>} */}
+            </div>
+          </div>
+          {/* <div
+            key={i}
             className="mealInfoContainer"
             onClick={() => {
               setIsFormVisible(true);
@@ -72,9 +111,9 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
               />
               <h3 className="ml-5">{item.name}</h3>
             </div>
-          </div>
+          </div> */}
           <div className="mt-4">
-            {snack === item && (
+            {snack === item.name && (
               <Row>
                 <Form onFinish={onFinish}>
                   <Space

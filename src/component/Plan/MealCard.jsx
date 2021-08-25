@@ -8,7 +8,7 @@ import { CheckOutlined } from "@ant-design/icons";
 import SnackPopup from "./SnackPopup";
 import { addWeekAction } from "./../../redux/actions/weeks/index";
 import "./MealInfo.css";
-
+// const mealItems = ['Biryani', 'Burger'];
 const data = [{ name: "Biryani" }, { name: "Burger" }];
 
 const MealCard = ({
@@ -22,7 +22,7 @@ const MealCard = ({
   const [value, setValue] = useState("");
   const [isRecipeVisible, setIsRecipeVisible] = useState(true);
   const [IsSnackModalVisible, setIsSnackModalVisible] = useState(false);
-  const [isMealSelected, setIsMealSelected] = useState(false);
+
   const [selectedMealName, setSelectedMealName] = useState([]);
 
   // const [mealArray, setMealArray] = useState([]);
@@ -65,6 +65,7 @@ const MealCard = ({
         onOk={onModalOk}
         onCancel={handleCancel}
         title={"Add Meal"}
+        destroyOnClose={true}
       >
         <Input
           placeholder="Search a Meal"
@@ -178,3 +179,10 @@ const MealCard = ({
 };
 
 export default MealCard;
+// FOR AVOIDING REPLACING ITEMS
+// if (isMealArr.length > 0) {
+//   setIsMealArr((prev) => [prev, item]);
+//   console.log('wronggg');
+// } else {
+//   setIsMealArr(item);
+// }

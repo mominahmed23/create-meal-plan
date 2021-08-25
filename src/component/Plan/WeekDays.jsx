@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MealCard from "./MealCard";
-import { PlusOutlined, DashOutlined, DeleteOutlined } from "@ant-design/icons";
-import { Divider, Typography } from "antd";
+import {
+  PlusOutlined,
+  DashOutlined,
+  DeleteOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import { Divider, Dropdown, Menu, Typography } from "antd";
 import SnackCard from "./SnackCard";
 import PrimaryModal from "../PopupModals/PrimaryModal";
 import { compose } from "redux";
 import { addWeekAction } from "../../redux/actions/weeks";
+import WeekImport from "../WeekImport";
 
 const { Title, Text } = Typography;
 const weekItems = [
@@ -22,7 +28,11 @@ const weekItems = [
 const WeekDays = ({ weekIndex }) => {
   const [dayIndex, setDayIndex] = useState("");
   const [isMealModalVisible, setIsMealModalVisible] = useState(false);
+  const [isWeekImportModalVisible, setIsWeekImportModalVisible] =
+    useState(false);
+
   const { weeks } = useSelector((state) => state);
+
   const dispatch = useDispatch();
 
   weeks && console.log("week index", weeks);
@@ -44,6 +54,23 @@ const WeekDays = ({ weekIndex }) => {
     setIsMealModalVisible(false);
     console.log("cencel");
   };
+  const handleWeekImportOk = () => {
+    setIsWeekImportModalVisible(false);
+  };
+  const menu = (
+    <Menu>
+      <Menu.Item
+        key="1"
+        icon={<UserOutlined />}
+        onClick={() => setIsWeekImportModalVisible(true)}
+      >
+        Import week
+      </Menu.Item>
+      <Menu.Item key="2" icon={<UserOutlined />}>
+        2nd menu item
+      </Menu.Item>
+    </Menu>
+  );
 
   const deleteItem = (item, mealItem) => {
     //console.log("ali", item);
@@ -69,7 +96,9 @@ const WeekDays = ({ weekIndex }) => {
               <Text strong>{item}</Text>
             </div>
             <div>
-              <DashOutlined className="mx-4" />
+              <Dropdown overlay={menu} trigger={"click"}>
+                <DashOutlined className="mx-4" overlay={menu} />
+              </Dropdown>
               <PlusOutlined
                 onClick={() => {
                   setIsMealModalVisible(true);
@@ -98,6 +127,16 @@ const WeekDays = ({ weekIndex }) => {
                 ))
               : null}
           </div>
+
+          <WeekImport
+            isWeekImportModalVisible={isWeekImportModalVisible}
+            setIsWeekImportModalVisible={() =>
+              setIsWeekImportModalVisible(false)
+            }
+            handleWeekImportOk={() => setIsWeekImportModalVisible(false)}
+            weekIndex={weekIndex}
+            dayIndex={dayIndex}
+          />
         </>
       ))}
 

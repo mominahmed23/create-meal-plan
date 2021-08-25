@@ -1,22 +1,23 @@
-import Modal from "antd/lib/modal/Modal";
-import React from "react";
+import Modal from 'antd/lib/modal/Modal';
+import React from 'react';
 
 const PrimaryModal = ({
   children,
   title,
   handleOk,
   handleCancel,
-  isModalVisisble,
+  isModalVisible,
 }) => {
   return (
     <>
       <Modal
         title={title}
-        visible={isModalVisisble}
+        visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        {children}
+        {/* {children} */}
+        <h2>hello</h2>
       </Modal>
     </>
   );
