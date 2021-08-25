@@ -79,21 +79,25 @@ const WeekDays = ({ weekIndex }) => {
               />
             </div>
           </div>
-          <h4>
+          <Divider style={{ marginTop: "0" }} />
+          <div className="mb-5" style={{ backgroundColor: "rgb(224 221 221)" }}>
             {singleDay !== undefined
               ? singleDay.hasOwnProperty(item) &&
                 singleDay[item].map((mealItem) => (
-                  <div>
-                    {mealItem}
-                    <DeleteOutlined
-                      className="mx-4"
-                      onClick={() => deleteItem(item, mealItem)}
-                    />
+                  <div className="d-flex justify-space-around">
+                    <div>
+                      <Text strong>{mealItem}</Text>
+                    </div>
+                    <div>
+                      <DeleteOutlined
+                        className="mx-4"
+                        onClick={() => deleteItem(item, mealItem)}
+                      />
+                    </div>
                   </div>
                 ))
               : null}
-          </h4>
-          <Divider style={{ marginTop: "0" }} />
+          </div>
         </>
       ))}
 

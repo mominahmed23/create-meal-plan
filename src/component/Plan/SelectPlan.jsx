@@ -27,7 +27,7 @@ const SelectPlan = ({ getWeeks, weekChangeVisible }) => {
         <Form.Item label="Plan length: " name="plan-length">
           {/* <Input.Group compact> */}
           <Select
-            defaultValue={weekCount || `${numOfWeeks} week`}
+            defaultValue={"Select a week"}
             onChange={(e) => setWeekCount(e)}
             style={{ width: "315%" }}
           >

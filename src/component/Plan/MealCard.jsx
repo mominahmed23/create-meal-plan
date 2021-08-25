@@ -8,7 +8,7 @@ import { CheckOutlined } from "@ant-design/icons";
 import SnackPopup from "./SnackPopup";
 import { addWeekAction } from "./../../redux/actions/weeks/index";
 import "./MealInfo.css";
-// const mealItems = ['Biryani', 'Burger'];
+
 const data = [{ name: "Biryani" }, { name: "Burger" }];
 
 const MealCard = ({
@@ -23,24 +23,39 @@ const MealCard = ({
   const [isRecipeVisible, setIsRecipeVisible] = useState(true);
   const [IsSnackModalVisible, setIsSnackModalVisible] = useState(false);
   const [isMealSelected, setIsMealSelected] = useState(false);
+  const [selectedMealName, setSelectedMealName] = useState([]);
 
   // const [mealArray, setMealArray] = useState([]);
   const { weeks } = useSelector((state) => state);
   var mealArray = [];
+  var abc = [];
   const dispatch = useDispatch();
-  console.log("weeks", weeks);
+  console.log("sss", weeks);
+  const sDay = weeks[`week${weekIndex}`];
+  // if (sDay) {
+  //   // setSelectedMealName(...sDay[dayIndex]);
+  //   abc = [...sDay[dayIndex]];
+  //   console.log("aaa", abc);
+  // }
+
   const onModalOk = () => {
     handleOk();
+    mealArray = [...selectedMealName];
     const weekplan = { [dayIndex]: mealArray };
-    // const weekplan = { [`week${weekIndex}`]: mealArray };
     console.log("YOOOOOOOO ===========>>>>", weekplan);
     dispatch(addWeekAction(weekplan, weekIndex));
   };
 
   const onMealClick = (item) => {
-    mealArray.push(item);
-    //setIsMealSelected(item);
-    console.log("yesknk");
+    const temp = [...selectedMealName];
+    if (temp.includes(item)) {
+      const filterd = temp.filter((value) => value !== item);
+      setSelectedMealName(filterd);
+    } else {
+      temp.push(item);
+      setSelectedMealName(temp);
+    }
+    console.log(selectedMealName);
   };
 
   return (
@@ -100,11 +115,11 @@ const MealCard = ({
             dataSource.map((item, i) => (
               <div
                 key={i}
-                // className={
-                //   isMealSelected === item.name
-                //     ? 'mealSelected'
-                //     : 'mealInfoContainer'
-                // }
+                className={
+                  selectedMealName.includes(item.name)
+                    ? "mealSelected"
+                    : "mealInfoContainer"
+                }
                 onClick={() => {
                   onMealClick(item.name);
                 }}
@@ -113,19 +128,25 @@ const MealCard = ({
                   <div class="container">
                     {/* <img src="img_avatar.png" alt="Avatar" class="image"> */}
                     <img
-                      className={isMealSelected ? "imageSelected" : ""}
+                      className={
+                        selectedMealName.includes(item.name)
+                          ? "imageSelected"
+                          : ""
+                      }
                       src="https://media-cdn.tripadvisor.com/media/photo-s/16/5c/a9/7d/lahore-food.jpg"
                       width="60"
                       height="60"
                       alt=""
                     />
                     <div
-                    // className={
-                    //   isMealSelected === item.name ? 'overlay' : 'noDisplay'
-                    // }
+                      className={
+                        selectedMealName.includes(item.name)
+                          ? "overlay"
+                          : "noDisplay"
+                      }
                     >
                       <a href="#" className="icon" title="User Profile">
-                        {isMealSelected === item.name && (
+                        {selectedMealName.includes(item.name) && (
                           <CheckOutlined
                             style={{
                               fontSize: "28px",
@@ -138,6 +159,10 @@ const MealCard = ({
                   </div>
 
                   <h3 className="ml-5">{item.name}</h3>
+                  {weeks &&
+                    sDay &&
+                    sDay.hasOwnProperty(dayIndex) &&
+                    sDay[dayIndex].includes(item.name) && <div>hello</div>}
                 </div>
               </div>
             ))}

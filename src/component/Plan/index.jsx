@@ -75,23 +75,29 @@ const Plan = () => {
           {!weekChangeVisible &&
             numOfWeeks.map((item, i) => (
               <>
-                <h4
-                  className="app-hover-cursor"
-                  key={item}
-                  onClick={() => {
-                    setWeekDaysVisible(true);
-                    setDefaultView(true);
-                    setWeekNumber(item);
-                    setArrayIndex(i);
-                    console.log("item nedde", item, i);
-                  }}
-                >
-                  {`week ${item}`}
-                </h4>
-                <DeleteOutlined
-                  className="ml-5"
-                  onClick={() => onDelete(item)}
-                />
+                <div className="d-flex">
+                  <div>
+                    <h4
+                      className="app-hover-cursor"
+                      key={item}
+                      onClick={() => {
+                        setWeekDaysVisible(true);
+                        setDefaultView(true);
+                        setWeekNumber(item);
+                        setArrayIndex(i);
+                        console.log("item nedde", item, i);
+                      }}
+                    >
+                      {`Week ${item}`}
+                    </h4>
+                  </div>
+                  <div>
+                    <DeleteOutlined
+                      className="ml-5"
+                      onClick={() => onDelete(item)}
+                    />
+                  </div>
+                </div>
                 <Divider style={{ marginTop: "0" }} />
               </>
             ))}
