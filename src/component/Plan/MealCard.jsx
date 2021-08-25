@@ -3,11 +3,11 @@ import Modal from "antd/lib/modal/Modal";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addMealPlanAction } from "../../redux/actions/categories";
-import MealInfoContainer from "./MealInfoContainer";
-import SnackCard from "./SnackCard";
+import { CheckOutlined } from "@ant-design/icons";
+
 import SnackPopup from "./SnackPopup";
 import { addWeekAction } from "./../../redux/actions/weeks/index";
-
+import "./MealInfo.css";
 // const mealItems = ['Biryani', 'Burger'];
 const data = [{ name: "Biryani" }, { name: "Burger" }];
 
@@ -22,6 +22,8 @@ const MealCard = ({
   const [value, setValue] = useState("");
   const [isRecipeVisible, setIsRecipeVisible] = useState(true);
   const [IsSnackModalVisible, setIsSnackModalVisible] = useState(false);
+  const [isMealSelected, setIsMealSelected] = useState(false);
+
   // const [mealArray, setMealArray] = useState([]);
   const { weeks } = useSelector((state) => state);
   var mealArray = [];
@@ -37,6 +39,8 @@ const MealCard = ({
 
   const onMealClick = (item) => {
     mealArray.push(item);
+    // setIsMealSelected(item);
+    console.log("yesknk");
   };
 
   return (
@@ -96,18 +100,43 @@ const MealCard = ({
             dataSource.map((item, i) => (
               <div
                 key={i}
-                className="mealInfoContainer"
+                // className={
+                //   isMealSelected === item.name
+                //     ? 'mealSelected'
+                //     : 'mealInfoContainer'
+                // }
                 onClick={() => {
                   onMealClick(item.name);
                 }}
               >
                 <div className="d-flex align-center mt-4">
-                  <img
-                    src="https://media-cdn.tripadvisor.com/media/photo-s/16/5c/a9/7d/lahore-food.jpg"
-                    width="60"
-                    height="60"
-                    alt=""
-                  />
+                  <div class="container">
+                    {/* <img src="img_avatar.png" alt="Avatar" class="image"> */}
+                    <img
+                      className={isMealSelected ? "imageSelected" : ""}
+                      src="https://media-cdn.tripadvisor.com/media/photo-s/16/5c/a9/7d/lahore-food.jpg"
+                      width="60"
+                      height="60"
+                      alt=""
+                    />
+                    <div
+                    // className={
+                    //   isMealSelected === item.name ? 'overlay' : 'noDisplay'
+                    // }
+                    >
+                      <a href="#" className="icon" title="User Profile">
+                        {isMealSelected === item.name && (
+                          <CheckOutlined
+                            style={{
+                              fontSize: "28px",
+                              color: "#ffffff",
+                            }}
+                          />
+                        )}
+                      </a>
+                    </div>
+                  </div>
+
                   <h3 className="ml-5">{item.name}</h3>
                 </div>
               </div>

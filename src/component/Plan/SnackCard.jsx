@@ -24,6 +24,7 @@ const SnackCard = ({
   const [isFormVisible, setIsFormVisible] = useState(false);
   const dispatch = useDispatch();
   const onFinish = (values) => {
+    const data = {};
     console.log(values);
   };
   const onOkSnackModal = () => {
@@ -60,7 +61,7 @@ const SnackCard = ({
               <div
                 key={i}
                 className="mealInfoContainer"
-                style={{ background: "#ecececec" }}
+                // style={{ background: '#ecececec' }}
                 onClick={() => {
                   console.log(item);
                   // finalMealPlanofDay();
