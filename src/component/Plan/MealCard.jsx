@@ -26,7 +26,7 @@ const MealCard = ({
   const { weeks } = useSelector((state) => state);
   var mealArray = [];
   const dispatch = useDispatch();
-  console.log(weeks);
+  console.log("weeks", weeks);
   const onModalOk = () => {
     handleOk();
     const weekplan = { [dayIndex]: mealArray };

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MealCard from "./MealCard";
-import { PlusOutlined, DashOutlined } from "@ant-design/icons";
+import { PlusOutlined, DashOutlined, DeleteOutlined } from "@ant-design/icons";
 import { Divider, Typography } from "antd";
 import SnackCard from "./SnackCard";
 import PrimaryModal from "../PopupModals/PrimaryModal";
+import { compose } from "redux";
+import { addWeekAction } from "../../redux/actions/weeks";
 
 const { Title, Text } = Typography;
 const weekItems = [
@@ -20,7 +22,16 @@ const weekItems = [
 const WeekDays = ({ weekIndex }) => {
   const [dayIndex, setDayIndex] = useState("");
   const [isMealModalVisible, setIsMealModalVisible] = useState(false);
+  const { weeks } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
+  weeks && console.log("week index", weeks);
+  console.log("weekindex", weekIndex);
+
+  console.log("aaaa", weeks[`week${weekIndex}`]);
+  const singleDay = weeks[`week${weekIndex}`];
+
+  console.log("ddd", singleDay);
   const showModal = () => {
     setIsMealModalVisible(true);
   };
@@ -34,6 +45,15 @@ const WeekDays = ({ weekIndex }) => {
     console.log("cencel");
   };
 
+  const deleteItem = (item, mealItem) => {
+    console.log("ali", item);
+    console.log("ali", mealItem);
+    console.log("singel day", singleDay[item]);
+    //const weekplan = { [item]: mealArray };
+    // const weekplan = { [`week${weekIndex}`]: mealArray };
+    //console.log("YOOOOOOOO ===========>>>>", weekplan);
+    //s dispatch(addWeekAction(weekplan, weekIndex));
+  };
   return (
     <div>
       <Title level={3} className="mb-8">{`week ${weekIndex}`}</Title>
@@ -56,10 +76,18 @@ const WeekDays = ({ weekIndex }) => {
             </div>
           </div>
           <h4>
-            {/* {currentWeak !== undefined
-                ? currentWeak.hasOwnProperty(item) &&
-                  currentWeak[item].map((mealItem) => <div>{mealItem}</div>)
-                : null} */}
+            {singleDay !== undefined
+              ? singleDay.hasOwnProperty(item) &&
+                singleDay[item].map((mealItem) => (
+                  <div>
+                    {mealItem}
+                    <DeleteOutlined
+                      className="mx-4"
+                      onClick={() => deleteItem(item, mealItem)}
+                    />
+                  </div>
+                ))
+              : null}
           </h4>
           <Divider style={{ marginTop: "0" }} />
         </>
