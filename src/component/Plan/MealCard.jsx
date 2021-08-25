@@ -1,15 +1,15 @@
-import { Card, Input, Table } from "antd";
-import Modal from "antd/lib/modal/Modal";
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addMealPlanAction } from "../../redux/actions/categories";
-import MealInfoContainer from "./MealInfoContainer";
-import SnackCard from "./SnackCard";
-import SnackPopup from "./SnackPopup";
-import { addWeekAction } from "./../../redux/actions/weeks/index";
+import { Card, Input, Table } from 'antd';
+import Modal from 'antd/lib/modal/Modal';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addMealPlanAction } from '../../redux/actions/categories';
+import { CheckOutlined } from '@ant-design/icons';
 
+import SnackPopup from './SnackPopup';
+import { addWeekAction } from './../../redux/actions/weeks/index';
+import './MealInfo.css';
 // const mealItems = ['Biryani', 'Burger'];
-const data = [{ name: "Biryani" }, { name: "Burger" }];
+const data = [{ name: 'Biryani' }, { name: 'Burger' }];
 
 const MealCard = ({
   isModalVisible,
@@ -19,9 +19,11 @@ const MealCard = ({
   dayIndex,
 }) => {
   const [dataSource, setDataSource] = useState(data);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const [isRecipeVisible, setIsRecipeVisible] = useState(true);
   const [IsSnackModalVisible, setIsSnackModalVisible] = useState(false);
+  const [isMealSelected, setIsMealSelected] = useState(false);
+
   // const [mealArray, setMealArray] = useState([]);
   const { weeks } = useSelector((state) => state);
   var mealArray = [];
@@ -31,12 +33,14 @@ const MealCard = ({
     handleOk();
     const weekplan = { [dayIndex]: mealArray };
     // const weekplan = { [`week${weekIndex}`]: mealArray };
-    console.log("YOOOOOOOO ===========>>>>", weekplan);
+    console.log('YOOOOOOOO ===========>>>>', weekplan);
     dispatch(addWeekAction(weekplan, weekIndex));
   };
 
   const onMealClick = (item) => {
     mealArray.push(item);
+    setIsMealSelected(item);
+    console.log('yesknk');
   };
 
   return (
@@ -45,7 +49,7 @@ const MealCard = ({
         visible={isModalVisible}
         onOk={onModalOk}
         onCancel={handleCancel}
-        title={"Add Meal"}
+        title={'Add Meal'}
       >
         <Input
           placeholder="Search a Meal"
@@ -59,13 +63,13 @@ const MealCard = ({
             setDataSource(filteredData);
           }}
         />
-        <Card style={{ width: "100%" }} className="mt-5 px-0">
+        <Card style={{ width: '100%' }} className="mt-5 px-0">
           <div
             className="d-flex align-center mt-4"
             onClick={() => {
               setIsSnackModalVisible(true);
               handleCancel();
-              console.log("clicked");
+              console.log('clicked');
             }}
           >
             <img
@@ -75,10 +79,10 @@ const MealCard = ({
               alt=""
               onClick={() => {
                 setIsSnackModalVisible(true);
-                console.log("clicked");
+                console.log('clicked');
               }}
             />
-            <h3 className="ml-5">{"Add A sanck"}</h3>
+            <h3 className="ml-5">{'Add A sanck'}</h3>
           </div>
           <div className="d-flex align-center mt-4">
             <img
@@ -87,27 +91,52 @@ const MealCard = ({
               height="60"
               alt=""
               onClick={() => {
-                console.log("clicked");
+                console.log('clicked');
               }}
             />
-            <h3 className="ml-5">{"Create New"}</h3>
+            <h3 className="ml-5">{'Create New'}</h3>
           </div>
           {isRecipeVisible &&
             dataSource.map((item, i) => (
               <div
                 key={i}
-                className="mealInfoContainer"
+                className={
+                  isMealSelected === item.name
+                    ? 'mealSelected'
+                    : 'mealInfoContainer'
+                }
                 onClick={() => {
                   onMealClick(item.name);
                 }}
               >
                 <div className="d-flex align-center mt-4">
-                  <img
-                    src="https://media-cdn.tripadvisor.com/media/photo-s/16/5c/a9/7d/lahore-food.jpg"
-                    width="60"
-                    height="60"
-                    alt=""
-                  />
+                  <div class="container">
+                    {/* <img src="img_avatar.png" alt="Avatar" class="image"> */}
+                    <img
+                      className={isMealSelected ? 'imageSelected' : ''}
+                      src="https://media-cdn.tripadvisor.com/media/photo-s/16/5c/a9/7d/lahore-food.jpg"
+                      width="60"
+                      height="60"
+                      alt=""
+                    />
+                    <div
+                      className={
+                        isMealSelected === item.name ? 'overlay' : 'noDisplay'
+                      }
+                    >
+                      <a href="#" className="icon" title="User Profile">
+                        {isMealSelected === item.name && (
+                          <CheckOutlined
+                            style={{
+                              fontSize: '28px',
+                              color: '#ffffff',
+                            }}
+                          />
+                        )}
+                      </a>
+                    </div>
+                  </div>
+
                   <h3 className="ml-5">{item.name}</h3>
                 </div>
               </div>

@@ -60,7 +60,7 @@ const SnackCard = ({
               <div
                 key={i}
                 className="mealInfoContainer"
-                style={{ background: '#ecececec' }}
+                // style={{ background: '#ecececec' }}
                 onClick={() => {
                   console.log(item);
                   // finalMealPlanofDay();

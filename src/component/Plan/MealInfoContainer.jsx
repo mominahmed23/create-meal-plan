@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './MealInfo.css';
 const MealInfoContainer = ({
   name,
   image,
@@ -8,7 +8,7 @@ const MealInfoContainer = ({
 }) => {
   return (
     <div
-      className="mealInfoContainer"
+      className="mealSelected"
       onClick={() => {
         // console.log(item);
         name === 'Add a snack' && setIsSnackModalVisible(true);
@@ -16,7 +16,7 @@ const MealInfoContainer = ({
         // finalMealPlanofDay();
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center' }} className="mt-4">
+      <div className="mealSelected mt-4">
         <img src={image} width="60" height="60" alt="" />
         <h3 className="ml-5">{name}</h3>
       </div>
