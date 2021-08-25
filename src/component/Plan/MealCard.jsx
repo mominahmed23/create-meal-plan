@@ -127,7 +127,6 @@ const MealCard = ({
               >
                 <div className="d-flex align-center mt-4">
                   <div class="container">
-                    {/* <img src="img_avatar.png" alt="Avatar" class="image"> */}
                     <img
                       className={
                         selectedMealName.includes(item.name)
