@@ -46,13 +46,17 @@ const WeekDays = ({ weekIndex }) => {
   };
 
   const deleteItem = (item, mealItem) => {
-    console.log("ali", item);
-    console.log("ali", mealItem);
-    console.log("singel day", singleDay[item]);
-    //const weekplan = { [item]: mealArray };
+    //console.log("ali", item);
+    console.log("remove item", mealItem);
+    const allData = singleDay[item];
+    //console.log("redux data", allData);
+    const filtered = allData.filter((item) => item != mealItem);
+    //console.log("filtered array", filtered);
+    const weekplan = { [item]: filtered };
+    //console.log("weekplan", weekplan);
     // const weekplan = { [`week${weekIndex}`]: mealArray };
     //console.log("YOOOOOOOO ===========>>>>", weekplan);
-    //s dispatch(addWeekAction(weekplan, weekIndex));
+    dispatch(addWeekAction(weekplan, weekIndex));
   };
   return (
     <div>

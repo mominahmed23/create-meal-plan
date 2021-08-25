@@ -19,7 +19,7 @@ const Plan = () => {
   for (let i = 1; i <= numOfWeeks; i++) {
     rows.push(i);
   }
-  console.log(rows);
+  console.log("Row Week Data", rows);
   return (
     <div>
       {!defaultView && (
