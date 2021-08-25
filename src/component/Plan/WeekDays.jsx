@@ -1,38 +1,62 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import MealCard from "./MealCard";
-import { PlusOutlined, DashOutlined } from "@ant-design/icons";
-import { Divider, Typography } from "antd";
-import SnackCard from "./SnackCard";
-import PrimaryModal from "../PopupModals/PrimaryModal";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import MealCard from './MealCard';
+import { PlusOutlined, DashOutlined } from '@ant-design/icons';
+import { Divider, Dropdown, Typography } from 'antd';
+// import { useDispatch, useSelector } from 'react-redux';
+
+import { Menu, Button, message, Space, Tooltip } from 'antd';
+import { DownOutlined, UserOutlined } from '@ant-design/icons';
+import WeekImport from '../WeekImport';
 
 const { Title, Text } = Typography;
 const weekItems = [
-  "Monday",
-  "Tueday",
-  "Wenesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
+  'Monday',
+  'Tueday',
+  'Wenesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
 ];
 
 const WeekDays = ({ weekIndex }) => {
-  const [dayIndex, setDayIndex] = useState("");
+  const [dayIndex, setDayIndex] = useState('');
   const [isMealModalVisible, setIsMealModalVisible] = useState(false);
+  const [isWeekImportModalVisible, setIsWeekImportModalVisible] =
+    useState(false);
+
+  const { weeks } = useSelector((state) => state);
 
   const showModal = () => {
     setIsMealModalVisible(true);
   };
   const handleOk = () => {
     setIsMealModalVisible(false);
-    console.log("ok");
+    console.log('ok');
   };
 
   const handleCancel = () => {
     setIsMealModalVisible(false);
-    console.log("cencel");
+    console.log('cencel');
   };
+  const handleWeekImportOk = () => {
+    console.log('wweeeekkk', weeks);
+  };
+  const menu = (
+    <Menu>
+      <Menu.Item
+        key="1"
+        icon={<UserOutlined />}
+        onClick={() => setIsWeekImportModalVisible(true)}
+      >
+        Import week
+      </Menu.Item>
+      <Menu.Item key="2" icon={<UserOutlined />}>
+        2nd menu item
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <div>
@@ -45,7 +69,9 @@ const WeekDays = ({ weekIndex }) => {
               <Text strong>{item}</Text>
             </div>
             <div>
-              <DashOutlined className="mx-4" />
+              <Dropdown overlay={menu} trigger={'click'}>
+                <DashOutlined className="mx-4" overlay={menu} />
+              </Dropdown>
               <PlusOutlined
                 onClick={() => {
                   setIsMealModalVisible(true);
@@ -61,9 +87,29 @@ const WeekDays = ({ weekIndex }) => {
                   currentWeak[item].map((mealItem) => <div>{mealItem}</div>)
                 : null} */}
           </h4>
-          <Divider style={{ marginTop: "0" }} />
+          <Divider style={{ marginTop: '0' }} />
+          <WeekImport
+            isWeekImportModalVisible={isWeekImportModalVisible}
+            setIsWeekImportModalVisible={() =>
+              setIsWeekImportModalVisible(false)
+            }
+            handleWeekImportOk={handleWeekImportOk}
+            weekIndex={weekIndex}
+            dayIndex={dayIndex}
+          />
         </>
       ))}
+
+      {/* <Modal
+        title="Basic Modal"
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal> */}
 
       <MealCard
         isModalVisible={isMealModalVisible}

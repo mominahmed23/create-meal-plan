@@ -8,6 +8,7 @@
   /* display: block;
   width: 100%;
   height: auto; */
+  transition: 0.5s all;
   /* pointer-events: none; */
   background-color: #0000001e;
 }
@@ -16,6 +17,8 @@
   /* background-color: black; */
   display: block;
   width: 60px;
+  transition: 0.5s all;
+
   height: 60px;
 }
 
@@ -30,18 +33,18 @@
   left: 0;
   right: 0;
   width: 60px;
+  transition: 0.5s all;
+
   background-color: rgba(51, 51, 51, 0.301);
 }
 .noDisplay {
   display: none;
 }
 .icon {
-  color: white;
-  font-size: 10px;
   position: absolute;
   top: 50%;
   left: 50%;
+  transition: 0.5s all;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  text-align: center;
 }

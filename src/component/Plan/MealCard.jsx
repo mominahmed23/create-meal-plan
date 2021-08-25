@@ -26,23 +26,26 @@ const MealCard = ({
 
   // const [mealArray, setMealArray] = useState([]);
   const { weeks } = useSelector((state) => state);
-  var mealArray = [];
+  let mealArray = [];
   const dispatch = useDispatch();
   console.log(weeks);
+
+  const onMealClick = (item) => {
+    // let newItem = mealArray.concat(item);
+    mealArray.push(item);
+    // setIsMealSelected(item);
+    console.log('yesknk');
+    // console.log(Object.entries(weeks['week1']));
+  };
   const onModalOk = () => {
+    // console.log('beforeeeeeeee ===========>>>>', mealArray);
     handleOk();
     const weekplan = { [dayIndex]: mealArray };
     // const weekplan = { [`week${weekIndex}`]: mealArray };
-    console.log('YOOOOOOOO ===========>>>>', weekplan);
     dispatch(addWeekAction(weekplan, weekIndex));
+    // console.log('afterrrrrrrrr ===========>>>>', mealArray);
+    console.log('YOOOOOOOO ===========>>>>', weeks);
   };
-
-  const onMealClick = (item) => {
-    mealArray.push(item);
-    setIsMealSelected(item);
-    console.log('yesknk');
-  };
-
   return (
     <div>
       <Modal
@@ -153,3 +156,10 @@ const MealCard = ({
 };
 
 export default MealCard;
+// FOR AVOIDING REPLACING ITEMS
+// if (isMealArr.length > 0) {
+//   setIsMealArr((prev) => [prev, item]);
+//   console.log('wronggg');
+// } else {
+//   setIsMealArr(item);
+// }
