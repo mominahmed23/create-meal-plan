@@ -21,7 +21,6 @@ const weeksReducer = (state = initialState, action) => {
       return temp;
     case "DELETE_WEEK":
       delete state[`week${action.week}`];
-    //temp = { ...state };
     default:
       return state;
   }

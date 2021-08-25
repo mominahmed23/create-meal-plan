@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import MealCard from './MealCard';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import MealCard from "./MealCard";
 import {
   PlusOutlined,
   DashOutlined,
   DeleteOutlined,
   UserOutlined,
-} from '@ant-design/icons';
-import { Divider, Dropdown, Menu, Typography } from 'antd';
-import SnackCard from './SnackCard';
-import PrimaryModal from '../PopupModals/PrimaryModal';
-import { compose } from 'redux';
-import { addWeekAction } from '../../redux/actions/weeks';
-import WeekImport from '../WeekImport';
+} from "@ant-design/icons";
+import { Divider, Dropdown, Menu, Typography } from "antd";
+import SnackCard from "./SnackCard";
+import PrimaryModal from "../PopupModals/PrimaryModal";
+import { compose } from "redux";
+import { addWeekAction } from "../../redux/actions/weeks";
+import WeekImport from "../WeekImport";
 
 const { Title, Text } = Typography;
 const weekItems = [
-  'Monday',
-  'Tueday',
-  'Wenesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-  'Sunday',
+  "Monday",
+  "Tueday",
+  "Wenesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
 ];
 
 const WeekDays = ({ weekIndex }) => {
-  const [dayIndex, setDayIndex] = useState('');
+  const [dayIndex, setDayIndex] = useState("");
   const [isMealModalVisible, setIsMealModalVisible] = useState(false);
   const [isWeekImportModalVisible, setIsWeekImportModalVisible] =
     useState(false);
@@ -35,24 +35,24 @@ const WeekDays = ({ weekIndex }) => {
 
   const dispatch = useDispatch();
 
-  weeks && console.log('week index', weeks);
-  console.log('weekindex', weekIndex);
+  weeks && console.log("week index", weeks);
+  console.log("weekindex", weekIndex);
 
-  console.log('aaaa', weeks[`week${weekIndex}`]);
+  console.log("aaaa", weeks[`week${weekIndex}`]);
   const singleDay = weeks[`week${weekIndex}`];
 
-  console.log('ddd', singleDay);
+  console.log("ddd", singleDay);
   const showModal = () => {
     setIsMealModalVisible(true);
   };
   const handleOk = () => {
     setIsMealModalVisible(false);
-    console.log('ok');
+    console.log("ok");
   };
 
   const handleCancel = () => {
     setIsMealModalVisible(false);
-    console.log('cencel');
+    console.log("cencel");
   };
   const handleWeekImportOk = () => {
     setIsWeekImportModalVisible(false);
@@ -74,7 +74,7 @@ const WeekDays = ({ weekIndex }) => {
 
   const deleteItem = (item, mealItem) => {
     //console.log("ali", item);
-    console.log('remove item', mealItem);
+    console.log("remove item", mealItem);
     const allData = singleDay[item];
     //console.log("redux data", allData);
     const filtered = allData.filter((item) => item != mealItem);
@@ -96,7 +96,7 @@ const WeekDays = ({ weekIndex }) => {
               <Text strong>{item}</Text>
             </div>
             <div>
-              <Dropdown overlay={menu} trigger={'click'}>
+              <Dropdown overlay={menu} trigger={"click"}>
                 <DashOutlined className="mx-4" overlay={menu} />
               </Dropdown>
               <PlusOutlined
@@ -108,21 +108,26 @@ const WeekDays = ({ weekIndex }) => {
               />
             </div>
           </div>
-          <h4>
+          <Divider style={{ marginTop: "0" }} />
+          <div className="mb-5" style={{ backgroundColor: "rgb(224 221 221)" }}>
             {singleDay !== undefined
               ? singleDay.hasOwnProperty(item) &&
                 singleDay[item].map((mealItem) => (
-                  <div>
-                    {mealItem}
-                    <DeleteOutlined
-                      className="mx-4"
-                      onClick={() => deleteItem(item, mealItem)}
-                    />
+                  <div className="d-flex justify-space-around">
+                    <div>
+                      <Text strong>{mealItem}</Text>
+                    </div>
+                    <div>
+                      <DeleteOutlined
+                        className="mx-4"
+                        onClick={() => deleteItem(item, mealItem)}
+                      />
+                    </div>
                   </div>
                 ))
               : null}
-          </h4>
-          <Divider style={{ marginTop: '0' }} />
+          </div>
+
           <WeekImport
             isWeekImportModalVisible={isWeekImportModalVisible}
             setIsWeekImportModalVisible={() =>
@@ -134,17 +139,6 @@ const WeekDays = ({ weekIndex }) => {
           />
         </>
       ))}
-
-      {/* <Modal
-        title="Basic Modal"
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Modal> */}
 
       <MealCard
         isModalVisible={isMealModalVisible}

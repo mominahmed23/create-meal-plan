@@ -1,15 +1,15 @@
-import { Card, Input, Table } from 'antd';
-import Modal from 'antd/lib/modal/Modal';
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addMealPlanAction } from '../../redux/actions/categories';
-import { CheckOutlined } from '@ant-design/icons';
+import { Card, Input, Table } from "antd";
+import Modal from "antd/lib/modal/Modal";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addMealPlanAction } from "../../redux/actions/categories";
+import { CheckOutlined } from "@ant-design/icons";
 
-import SnackPopup from './SnackPopup';
-import { addWeekAction } from './../../redux/actions/weeks/index';
-import './MealInfo.css';
+import SnackPopup from "./SnackPopup";
+import { addWeekAction } from "./../../redux/actions/weeks/index";
+import "./MealInfo.css";
 // const mealItems = ['Biryani', 'Burger'];
-const data = [{ name: 'Biryani' }, { name: 'Burger' }];
+const data = [{ name: "Biryani" }, { name: "Burger" }];
 
 const MealCard = ({
   isModalVisible,
@@ -19,34 +19,43 @@ const MealCard = ({
   dayIndex,
 }) => {
   const [dataSource, setDataSource] = useState(data);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const [isRecipeVisible, setIsRecipeVisible] = useState(true);
   const [IsSnackModalVisible, setIsSnackModalVisible] = useState(false);
-  const [isMealSelected, setIsMealSelected] = useState(false);
+
+  const [selectedMealName, setSelectedMealName] = useState([]);
 
   // const [mealArray, setMealArray] = useState([]);
   const { weeks } = useSelector((state) => state);
-  let mealArray = [];
+  var mealArray = [];
+  var abc = [];
   const dispatch = useDispatch();
-  console.log(weeks);
+  console.log("sss", weeks);
+  const sDay = weeks[`week${weekIndex}`];
+  // if (sDay) {
+  //   // setSelectedMealName(...sDay[dayIndex]);
+  //   abc = [...sDay[dayIndex]];
+  //   console.log("aaa", abc);
+  // }
+
+  const onModalOk = () => {
+    handleOk();
+    mealArray = [...selectedMealName];
+    const weekplan = { [dayIndex]: mealArray };
+    console.log("YOOOOOOOO ===========>>>>", weekplan);
+    dispatch(addWeekAction(weekplan, weekIndex));
+  };
 
   const onMealClick = (item) => {
-    // let newItem = mealArray.concat(item);
-    mealArray.push(item);
-    // setIsMealSelected(item);
-    console.log('yesknk');
-    // console.log(Object.entries(weeks['week1']));
-  };
-  console.log('weeks', weeks);
-  const onModalOk = () => {
-    // console.log('beforeeeeeeee ===========>>>>', mealArray);
-    handleOk();
-    const weekplan = { [dayIndex]: mealArray };
-    // const weekplan = { [`week${weekIndex}`]: mealArray };
-    console.log('YOOOOOOOO ===========>>>>', weekplan);
-    dispatch(addWeekAction(weekplan, weekIndex));
-    // console.log('afterrrrrrrrr ===========>>>>', mealArray);
-    console.log('YOOOOOOOO ===========>>>>', weeks);
+    const temp = [...selectedMealName];
+    if (temp.includes(item)) {
+      const filterd = temp.filter((value) => value !== item);
+      setSelectedMealName(filterd);
+    } else {
+      temp.push(item);
+      setSelectedMealName(temp);
+    }
+    console.log(selectedMealName);
   };
 
   return (
@@ -55,7 +64,8 @@ const MealCard = ({
         visible={isModalVisible}
         onOk={onModalOk}
         onCancel={handleCancel}
-        title={'Add Meal'}
+        title={"Add Meal"}
+        destroyOnClose={true}
       >
         <Input
           placeholder="Search a Meal"
@@ -69,13 +79,13 @@ const MealCard = ({
             setDataSource(filteredData);
           }}
         />
-        <Card style={{ width: '100%' }} className="mt-5 px-0">
+        <Card style={{ width: "100%" }} className="mt-5 px-0">
           <div
             className="d-flex align-center mt-4"
             onClick={() => {
               setIsSnackModalVisible(true);
               handleCancel();
-              console.log('clicked');
+              console.log("clicked");
             }}
           >
             <img
@@ -85,10 +95,10 @@ const MealCard = ({
               alt=""
               onClick={() => {
                 setIsSnackModalVisible(true);
-                console.log('clicked');
+                console.log("clicked");
               }}
             />
-            <h3 className="ml-5">{'Add A sanck'}</h3>
+            <h3 className="ml-5">{"Add A sanck"}</h3>
           </div>
           <div className="d-flex align-center mt-4">
             <img
@@ -97,45 +107,50 @@ const MealCard = ({
               height="60"
               alt=""
               onClick={() => {
-                console.log('clicked');
+                console.log("clicked");
               }}
             />
-            <h3 className="ml-5">{'Create New'}</h3>
+            <h3 className="ml-5">{"Create New"}</h3>
           </div>
           {isRecipeVisible &&
             dataSource.map((item, i) => (
               <div
                 key={i}
-                // className={
-                //   isMealSelected === item.name
-                //     ? 'mealSelected'
-                //     : 'mealInfoContainer'
-                // }
+                className={
+                  selectedMealName.includes(item.name)
+                    ? "mealSelected"
+                    : "mealInfoContainer"
+                }
                 onClick={() => {
                   onMealClick(item.name);
                 }}
               >
                 <div className="d-flex align-center mt-4">
                   <div class="container">
-                    {/* <img src="img_avatar.png" alt="Avatar" class="image"> */}
                     <img
-                      className={isMealSelected ? 'imageSelected' : ''}
+                      className={
+                        selectedMealName.includes(item.name)
+                          ? "imageSelected"
+                          : ""
+                      }
                       src="https://media-cdn.tripadvisor.com/media/photo-s/16/5c/a9/7d/lahore-food.jpg"
                       width="60"
                       height="60"
                       alt=""
                     />
                     <div
-                    // className={
-                    //   isMealSelected === item.name ? 'overlay' : 'noDisplay'
-                    // }
+                      className={
+                        selectedMealName.includes(item.name)
+                          ? "overlay"
+                          : "noDisplay"
+                      }
                     >
                       <a href="#" className="icon" title="User Profile">
-                        {isMealSelected === item.name && (
+                        {selectedMealName.includes(item.name) && (
                           <CheckOutlined
                             style={{
-                              fontSize: '28px',
-                              color: '#ffffff',
+                              fontSize: "28px",
+                              color: "#ffffff",
                             }}
                           />
                         )}
@@ -144,6 +159,10 @@ const MealCard = ({
                   </div>
 
                   <h3 className="ml-5">{item.name}</h3>
+                  {weeks &&
+                    sDay &&
+                    sDay.hasOwnProperty(dayIndex) &&
+                    sDay[dayIndex].includes(item.name) && <div>hello</div>}
                 </div>
               </div>
             ))}
