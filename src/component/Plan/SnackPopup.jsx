@@ -25,14 +25,20 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
 
   const onFinish = (values) => {
     const mealArray = [...selectedMealName];
-    const data = { [snack.name]: values };
+    const data = { [snack]: values };
     dispatch(addSnackAction(data));
   };
 
   const onModalOk = () => {
     handleOk();
   };
-
+  const setSnackItem = (name) => {
+    if (snack === name) {
+      setsnack("");
+    } else {
+      setsnack(name);
+    }
+  };
   return (
     <Modal
       visible={isModalVisible}
@@ -60,7 +66,7 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
               snack === item.name ? "mealSelected" : "mealInfoContainer"
             }
             onClick={() => {
-              onMealClick(item.name);
+              setSnackItem(item.name);
             }}
           >
             <div className="d-flex align-center mt-4">
@@ -122,7 +128,7 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
                   >
                     <Col span={24}>
                       <Form.Item name={"item_amount"} fieldKey={"item_amount"}>
-                        <Input placeholder="Amount" />
+                        <Input type="number" placeholder="Amount" />
                       </Form.Item>
                     </Col>
                     <Form.Item name={"fraction"} fieldKey={"fraction"}>
@@ -138,7 +144,9 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
                       </Select>
                     </Form.Item>
                     <Form.Item>
-                      <Button htmlType="submit">Add</Button>
+                      <Button htmlType="submit" type="primary">
+                        Add
+                      </Button>
                     </Form.Item>
                   </Space>
                 </Form>

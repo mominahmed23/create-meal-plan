@@ -1,9 +1,9 @@
-import React from 'react';
-import { Form, Button, Row, Col } from 'antd';
-import { Input, Select, InputNumber } from 'antd';
-import { addPlanAction } from '../../redux/actions/categories';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import { Form, Button, Row, Col } from "antd";
+import { Input, Select, InputNumber } from "antd";
+import { addPlanAction } from "../../redux/actions/categories";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 const { Option } = Select;
 
 const SelectPlan = ({ importWeekForm, weekChangeVisible }) => {
@@ -25,14 +25,14 @@ const SelectPlan = ({ importWeekForm, weekChangeVisible }) => {
       <Form name="" initialValues={{ remember: true }} layout="vertical">
         {/* <Col span={24}> */}
         <Form.Item
-          label={importWeekForm ? 'Plan length:' : ''}
+          label={importWeekForm ? "Plan length:" : ""}
           name="plan-length"
         >
           {/* <Input.Group compact> */}
           <Select
-            defaultValue={"Select a week"}
+            defaultValue={"Select number of week (s)"}
             onChange={(e) => setWeekCount(e)}
-            style={{ width: '315%' }}
+            style={{ width: "315%" }}
           >
             <Option value={1}>1 week</Option>
             <Option value={2}>2 week</Option>
