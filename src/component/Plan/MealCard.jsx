@@ -39,7 +39,7 @@ const MealCard = ({
 
   const onMealClick = (item) => {
     mealArray.push(item);
-    // setIsMealSelected(item);
+    //setIsMealSelected(item);
     console.log("yesknk");
   };
 

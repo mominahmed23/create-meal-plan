@@ -19,7 +19,7 @@ const Plan = () => {
 
   const { numOfWeeks } = useSelector((state) => state.mealPlan);
   const { weeks } = useSelector((state) => state);
-  //weeks && console.log("week index", weeks);
+  weeks && console.log("week", weeks);
   const dispatch = useDispatch();
   let rows = [];
   for (let i = 1; i <= numOfWeeks; i++) {
@@ -31,11 +31,27 @@ const Plan = () => {
 
   const onDelete = (item) => {
     console.log("item", item);
+
     var copyWeeks = { ...weeks };
     delete weeks[`week${item}`];
     console.log("dddd", weeks);
-    dispatch(addWeekAction("", item));
+    // dispatch(addWeekAction("", item));
     message.success("Week Deleted Successfully");
+    //const aa = weeks[item];
+
+    // weeks && console.log("week index2", copyWeeks[item]);
+    console.log("copy weks before delete", copyWeeks);
+    delete copyWeeks[`week${item}`];
+
+    console.log("copy weks after delete", copyWeeks);
+
+    // const ff = numOfWeeks.filter((data) => data);
+    const filtered = numOfWeeks.filter((data) => data != item);
+    console.log("filtered adat", filtered);
+    //  rows = filtered;
+    //  console.log("filter row", rows.length);
+    dispatch(addPlanAction(filtered));
+    //dispatch(addWeekAction(copyWeeks));
   };
   return (
     <div>
@@ -57,7 +73,7 @@ const Plan = () => {
           <Title level={4}>Manage</Title>
           <Divider style={{ marginTop: "0" }} />
           {!weekChangeVisible &&
-            rows.map((item, i) => (
+            numOfWeeks.map((item, i) => (
               <>
                 <h4
                   className="app-hover-cursor"
