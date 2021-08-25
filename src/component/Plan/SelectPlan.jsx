@@ -8,31 +8,36 @@ const { Option } = Select;
 
 const SelectPlan = ({ importWeekForm, weekChangeVisible }) => {
   const dispatch = useDispatch();
-  const { numOfWeeks } = useSelector((state) => state.mealPlan);
   const [weekCount, setWeekCount] = useState(null);
+  const [weekCountErrorMsg, setWeekCountErrorMsg] = useState("");
 
   const addPlan = () => {
-    let rows = [];
-    for (let i = 1; i <= weekCount; i++) {
-      rows.push(i);
+    if (weekCount) {
+      let rows = [];
+      for (let i = 1; i <= weekCount; i++) {
+        rows.push(i);
+      }
+      console.log("rrrrr", rows);
+      dispatch(addPlanAction(rows));
+      weekChangeVisible();
+    } else {
+      setWeekCountErrorMsg("Select something First");
     }
-    console.log("rrrrr", rows);
-    dispatch(addPlanAction(rows));
-    weekChangeVisible();
   };
   return (
     <Row>
       <Form name="" initialValues={{ remember: true }} layout="vertical">
-        {/* <Col span={24}> */}
         <Form.Item
           label={importWeekForm ? "Plan length:" : ""}
           name="plan-length"
         >
-          {/* <Input.Group compact> */}
           <Select
             defaultValue={"Select number of week (s)"}
-            onChange={(e) => setWeekCount(e)}
-            style={{ width: "315%" }}
+            onChange={(e) => {
+              setWeekCount(e);
+              setWeekCountErrorMsg("");
+            }}
+            //style={{ width: "120%" }}
           >
             <Option value={1}>1 week</Option>
             <Option value={2}>2 week</Option>
@@ -47,15 +52,16 @@ const SelectPlan = ({ importWeekForm, weekChangeVisible }) => {
             <Option value={11}>11 week</Option>
             <Option value={12}>12 week</Option>
           </Select>
-          {/* </Input.Group> */}
         </Form.Item>
-        {/* </Col> */}
 
         <Form.Item className="text-center">
           <Button type="primary" htmlType="submit" onClick={addPlan}>
             Select
           </Button>
         </Form.Item>
+        {weekCountErrorMsg && (
+          <div style={{ color: "red" }}>{weekCountErrorMsg}</div>
+        )}
       </Form>
     </Row>
   );
