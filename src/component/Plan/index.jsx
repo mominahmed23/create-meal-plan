@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Divider, message } from "antd";
-import { DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined, BorderOuterOutlined } from "@ant-design/icons";
 import SelectPlan from "./SelectPlan";
 import { useDispatch, useSelector } from "react-redux";
 import WeekDays from "./WeekDays";
@@ -74,7 +74,7 @@ const Plan = () => {
       <div className="d-flex align-center my-0 app-hover-cursor">
         <DragHandle />
         <h3
-          className="mx-4"
+          className="mx-4 mb-0"
           onClick={() => {
             setWeekDaysVisible(true);
             setDefaultView(true);
@@ -90,7 +90,7 @@ const Plan = () => {
       </div>
     )
   );
-  const DragHandle = sortableHandle(() => <span>::</span>);
+  const DragHandle = sortableHandle(() => <BorderOuterOutlined />);
   return (
     <div>
       {!defaultView && (
