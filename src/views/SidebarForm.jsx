@@ -101,11 +101,13 @@ const SidebarForm = () => {
         </div>
 
         <div
-          className="d-flex mt-20 justify-space-between"
-          //style={{ position: "absolute" }}
+          className="d-flex my-15 justify-space-between"
+          style={{ position: "sticky" }}
         >
           <Button style={{ width: "120px" }}>Post</Button>
-          <Button type="primary">Save as Draft</Button>
+          <Button type="primary" disabled={!title}>
+            Save as Draft
+          </Button>
         </div>
       </div>
     );
