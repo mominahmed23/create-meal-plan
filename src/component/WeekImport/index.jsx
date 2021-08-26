@@ -29,7 +29,8 @@ const WeekImport = ({
 
   const importFinalize = () => {
     // IF THE WEEK TO IMPORT MATCHES KEYS IN REDUX
-    if (weekIndex === weekCount) {
+    console.log("testing");
+    if (Number(weekIndex) === weekCount) {
       message.error("Same week");
     }
     if (Object.keys(weeks).includes(`week${weekCount}`)) {
