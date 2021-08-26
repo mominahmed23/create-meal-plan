@@ -11,6 +11,9 @@ import {
   LeftOutlined,
   RightOutlined,
   UnorderedListOutlined,
+  SettingOutlined,
+  CalendarOutlined,
+  PieChartOutlined,
 } from "@ant-design/icons";
 
 import { useSelector } from "react-redux";
@@ -58,12 +61,8 @@ const SidebarForm = () => {
           onClick={() => setView("plan")}
         >
           <div className="d-flex align-center">
-            <UnorderedListOutlined />
-            <Title
-              level={5}
-              className="mx-4 my-2"
-              onClick={() => setView("plan")}
-            >
+            <CalendarOutlined />
+            <Title level={5} className="mx-4 my-2">
               Plan
             </Title>
           </div>
@@ -76,12 +75,8 @@ const SidebarForm = () => {
           onClick={() => setView("nutrition")}
         >
           <div className="d-flex align-center">
-            <UnorderedListOutlined />
-            <Title
-              level={5}
-              className="mx-4 my-2"
-              onClick={() => setView("nutrition")}
-            >
+            <PieChartOutlined />
+            <Title level={5} className="mx-4 my-2">
               Nutrition
             </Title>
           </div>
@@ -94,12 +89,8 @@ const SidebarForm = () => {
           onClick={() => setView("settings")}
         >
           <div className="d-flex align-center">
-            <UnorderedListOutlined />
-            <Title
-              level={5}
-              className="mx-4 my-2"
-              onClick={() => setView("settings")}
-            >
+            <SettingOutlined />
+            <Title level={5} className="mx-4 my-2">
               Settings
             </Title>
           </div>
@@ -126,8 +117,12 @@ const SidebarForm = () => {
     viewHelper.push(
       <>
         <div className="mt-0">
-          <LeftOutlined />
-          <Button onClick={() => setView(null)} type="text" size="large">
+          <Button
+            icon={<LeftOutlined />}
+            onClick={() => setView(null)}
+            type="text"
+            size="small"
+          >
             Back
           </Button>
         </div>
@@ -138,9 +133,13 @@ const SidebarForm = () => {
   if (view === "plan") {
     viewHelper.push(
       <>
-        <div>
-          <LeftOutlined />
-          <Button onClick={() => setView(null)} type="text" size="large">
+        <div className="mt-0">
+          <Button
+            icon={<LeftOutlined />}
+            onClick={() => setView(null)}
+            type="text"
+            size="small"
+          >
             Back
           </Button>
         </div>
@@ -151,9 +150,13 @@ const SidebarForm = () => {
   if (view === "settings") {
     viewHelper.push(
       <>
-        <div>
-          <LeftOutlined />
-          <Button onClick={() => setView(null)} type="text" size="large">
+        <div className="mt-0">
+          <Button
+            icon={<LeftOutlined />}
+            onClick={() => setView(null)}
+            type="text"
+            size="small"
+          >
             Back
           </Button>
         </div>
@@ -164,9 +167,13 @@ const SidebarForm = () => {
   if (view === "nutrition") {
     viewHelper.push(
       <>
-        <div>
-          <LeftOutlined />
-          <Button onClick={() => setView(null)} type="text" size="large">
+        <div className="mt-0">
+          <Button
+            icon={<LeftOutlined />}
+            onClick={() => setView(null)}
+            type="text"
+            size="small"
+          >
             Back
           </Button>
         </div>
