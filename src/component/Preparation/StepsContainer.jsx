@@ -1,5 +1,9 @@
 import { Form, Input, Button } from "antd";
-import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import {
+  MinusCircleOutlined,
+  PlusOutlined,
+  PlusCircleFilled,
+} from "@ant-design/icons";
 
 const formItemLayout = {
   labelCol: {
@@ -29,38 +33,14 @@ const StepsContainer = () => {
       {...formItemLayoutWithOutLabel}
       onFinish={onFinish}
     >
-      <Form.List
-        name="names"
-        rules={[
-          {
-            validator: async (_, names) => {
-              if (!names || names.length < 2) {
-                return Promise.reject(new Error("At least 2 passengers"));
-              }
-            },
-          },
-        ]}
-      >
-        {(fields, { add, remove }, { errors }) => (
+      <Form.List name="names">
+        {(fields, { add }, { errors }) => (
           <>
             {fields.map((field, index) => (
-              <Form.Item
-                {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-                label={index === 0 ? "Passengers" : ""}
-                required={false}
-                key={field.key}
-              >
+              <Form.Item required={false} key={field.key}>
                 <Form.Item
                   {...field}
                   validateTrigger={["onChange", "onBlur"]}
-                  rules={[
-                    {
-                      required: true,
-                      whitespace: true,
-                      message:
-                        "Please input passenger's name or delete this field.",
-                    },
-                  ]}
                   noStyle
                 >
                   <Input
@@ -68,33 +48,24 @@ const StepsContainer = () => {
                     style={{ width: "60%" }}
                   />
                 </Form.Item>
-                {fields.length > 1 ? (
-                  <MinusCircleOutlined
-                    className="dynamic-delete-button"
-                    onClick={() => remove(field.name)}
-                  />
-                ) : null}
               </Form.Item>
             ))}
+            {console.log(fields)}
+
             <Form.Item>
               <Button
-                type="dashed"
-                onClick={() => add()}
-                style={{ width: "60%" }}
+                type="primary"
+                htmlType="submit"
+                shape={"circle"}
                 icon={<PlusOutlined />}
-              >
-                Add field
-              </Button>
+                onClick={() => add()}
+              ></Button>
               <Form.ErrorList errors={errors} />
             </Form.Item>
           </>
         )}
       </Form.List>
-      <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
+      <Form.Item></Form.Item>
     </Form>
   );
 };
