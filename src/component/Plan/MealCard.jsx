@@ -24,6 +24,7 @@ const MealCard = ({
   const [IsSnackModalVisible, setIsSnackModalVisible] = useState(false);
   const [selectedMealName, setSelectedMealName] = useState([]);
 
+  console.log("day index", dayIndex);
   // const [mealArray, setMealArray] = useState([]);
   const { weeks } = useSelector((state) => state);
   var mealArray = [];
@@ -32,20 +33,13 @@ const MealCard = ({
   console.log("sss", weeks);
   const sDay = weeks[`week${weekIndex}`];
 
-  useEffect(() => {
-    if (Object.keys(weeks) && sDay && sDay.hasOwnProperty(dayIndex)) {
-      abc = [...sDay[dayIndex]];
-      console.log("aaa", abc);
-      setSelectedMealName(abc);
-    }
-  }, [selectedMealName]);
-
   const onModalOk = () => {
     handleOk();
     mealArray = [...selectedMealName];
     const weekplan = { [dayIndex]: mealArray };
     console.log("YOOOOOOOO ===========>>>>", weekplan);
     dispatch(addWeekAction(weekplan, weekIndex));
+    setSelectedMealName("");
   };
 
   const onMealClick = (item) => {
@@ -64,6 +58,15 @@ const MealCard = ({
     console.log(selectedMealName);
   };
 
+  useEffect(() => {
+    if (Object.keys(weeks) && sDay && sDay.hasOwnProperty(dayIndex)) {
+      abc = [...sDay[dayIndex]];
+      console.log("ss", sDay[dayIndex]);
+      console.log("aaa", abc);
+      setSelectedMealName(abc);
+      console.log("selected", selectedMealName);
+    }
+  }, []);
   return (
     <div>
       <Modal
@@ -168,7 +171,7 @@ const MealCard = ({
                   {weeks &&
                     sDay &&
                     sDay.hasOwnProperty(dayIndex) &&
-                    sDay[dayIndex].includes(item.name) && <div></div>}
+                    sDay[dayIndex].includes(item.name) && <div>h</div>}
                 </div>
               </div>
             ))}
