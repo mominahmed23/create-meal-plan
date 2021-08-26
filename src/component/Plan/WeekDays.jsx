@@ -47,12 +47,10 @@ const WeekDays = ({ weekIndex }) => {
   };
   const handleOk = () => {
     setIsMealModalVisible(false);
-    console.log("ok");
   };
 
   const handleCancel = () => {
     setIsMealModalVisible(false);
-    console.log("cencel");
   };
   const handleWeekImportOk = () => {
     setIsWeekImportModalVisible(false);
@@ -66,29 +64,23 @@ const WeekDays = ({ weekIndex }) => {
       >
         Import week
       </Menu.Item>
-      <Menu.Item key="2" icon={<UserOutlined />}>
-        2nd menu item
-      </Menu.Item>
     </Menu>
   );
 
   const deleteItem = (item, mealItem) => {
-    //console.log("ali", item);
     console.log("remove item", mealItem);
     const allData = singleDay[item];
-    //console.log("redux data", allData);
+
     const filtered = allData.filter((item) => item != mealItem);
-    //console.log("filtered array", filtered);
+
     const weekplan = { [item]: filtered };
-    //console.log("weekplan", weekplan);
-    // const weekplan = { [`week${weekIndex}`]: mealArray };
-    //console.log("YOOOOOOOO ===========>>>>", weekplan);
+
     dispatch(addWeekAction(weekplan, weekIndex));
   };
   return (
     <div>
       <Title level={3} className="mb-8">{`week ${weekIndex}`}</Title>
-      {/* {currentWeak && currentWeak["Monday"].map((item) => <div>{item}</div>)} */}
+
       {weekItems.map((item, i) => (
         <>
           <div className="d-flex align-center justify-space-between">

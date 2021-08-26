@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Button, Dropdown, Form, Input } from 'antd';
-import { Menu } from 'antd';
-import { DownOutlined, UserOutlined } from '@ant-design/icons';
-import { Typography } from 'antd';
-import { Radio, Space } from 'antd';
+import React, { useState } from "react";
+import { Button, Dropdown, Form, Input } from "antd";
+import { Menu } from "antd";
+import { DownOutlined, UserOutlined } from "@ant-design/icons";
+import { Typography } from "antd";
+import { Radio, Space } from "antd";
 
 const { Title, Text } = Typography;
 
@@ -11,20 +11,20 @@ const menu = (
   <Menu>
     {/* onClick={handleMenuClick} */}
     <Menu.Item key="1" icon={<UserOutlined />}>
-      1st menu item
+      LifeStyle 1
     </Menu.Item>
     <Menu.Item key="2" icon={<UserOutlined />}>
-      2nd menu item
+      LifeStyle 2
     </Menu.Item>
     <Menu.Item key="3" icon={<UserOutlined />}>
-      3rd menu item
+      LifeStyle 3
     </Menu.Item>
   </Menu>
 );
 const Settings = () => {
   const [value, setValue] = useState(1);
   const onChange = (e) => {
-    console.log('radio checked', e.target.value);
+    console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
   return (
@@ -33,7 +33,7 @@ const Settings = () => {
       <Form layout="vertical">
         <Form.Item>
           <Title level={5} className=" my-2">
-            Title{' '}
+            Tags{" "}
             <Text level={4} disabled>
               (Up to 10)
             </Text>
@@ -49,15 +49,15 @@ const Settings = () => {
       </Form>
 
       <Title level={5} className=" my-2">
-        Liyestyles
+        Lifestyles
       </Title>
       <Dropdown overlay={menu}>
         <Button
           style={{
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
         >
           Select <DownOutlined />
@@ -73,6 +73,10 @@ const Settings = () => {
             <Radio value={3}>Private - Only I can see it</Radio>
           </Space>
         </Radio.Group>
+      </div>
+      <div className="mt-5">
+        <Text strong>SEO Preview</Text>
+        <div style={{ border: "1px solid #cecece", minHeight: "100px" }}></div>
       </div>
     </div>
   );

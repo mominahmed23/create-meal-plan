@@ -12,7 +12,7 @@ const Description = () => {
   const [maxLengthError, setMaxLengthError] = useState(false);
   const error = "Max limit reached";
   const addDescription = (desc) => {
-    if (desc.length > 1200) {
+    if (desc.length > 5000) {
       setMaxLengthError(true);
     } else {
       dispatch(addDescriptionAction(desc));
@@ -30,9 +30,9 @@ const Description = () => {
           <TextArea
             showCount
             value={description}
-            maxLength={1200}
+            maxLength={5000}
             minLength={3}
-            rows={5}
+            rows={4}
             placeholder="Describe your recipe"
             onChange={(e) => addDescription(e.target.value)}
           />
