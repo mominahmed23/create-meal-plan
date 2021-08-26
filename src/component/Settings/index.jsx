@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Dropdown, Form, Input } from "antd";
+import { Button, Dropdown, Form, Input, Tag } from "antd";
 import { Menu } from "antd";
 import { DownOutlined, UserOutlined } from "@ant-design/icons";
 import { Typography } from "antd";
@@ -21,11 +21,17 @@ const menu = (
     </Menu.Item>
   </Menu>
 );
+
 const Settings = () => {
   const [value, setValue] = useState(1);
+  const [tagValue, setTagValue] = useState(null);
   const onChange = (e) => {
     console.log("radio checked", e.target.value);
     setValue(e.target.value);
+  };
+  const tagData = (e) => {
+    setTagValue();
+    console.log("tag value", e.target.value);
   };
   return (
     <div>
@@ -40,10 +46,10 @@ const Settings = () => {
           </Title>
 
           <Input
-            // value={title}
-            // onChange={(e) => addTitle(e.target.value)}
+            value={tagValue}
+            onBlur={tagData}
             placeholder="Add tags with hashtags"
-            // name={'title'}
+            name={"tags"}
           />
         </Form.Item>
       </Form>

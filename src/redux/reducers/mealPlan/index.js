@@ -4,6 +4,7 @@
 const initialState = {
   title: "",
   description: "",
+  coverImage: null,
   numOfWeeks: [1],
 };
 
@@ -15,6 +16,8 @@ const mealPlanReducer = (state = initialState, action) => {
       return { ...state, description: action.payload };
     case "ADD_PLAN":
       return { ...state, numOfWeeks: action.payload };
+    case "ADD_COVER_IMAGE":
+      return { ...state, coverImage: action.payload };
     default:
       return state;
   }
