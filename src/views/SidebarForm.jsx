@@ -191,7 +191,7 @@ const SidebarForm = () => {
         height: "100vh",
         backgroundColor: "#ffffff",
         position: "fixed",
-        overflowY: "scroll",
+        overflowY: "auto",
       }}
     >
       {viewHelper}
