@@ -25,6 +25,8 @@ const RecipeTitle = () => {
           </Title>
 
           <Input
+            maxLength={100}
+            minLength={1}
             value={title}
             onChange={(e) => addTitle(e.target.value)}
             placeholder="Name of the meal plan"

@@ -175,6 +175,20 @@ const MealCard = ({
                   </div>
 
                   <h3 className="ml-5">{item.name}</h3>
+                  {weeks &&
+                    sDay &&
+                    sDay.hasOwnProperty(dayIndex) &&
+                    sDay[dayIndex].includes(item.name) && (
+                      <div>
+                        {" "}
+                        <CheckOutlined
+                          style={{
+                            fontSize: "10px",
+                            color: "black",
+                          }}
+                        />
+                      </div>
+                    )}
                 </div>
               </div>
             ))}
