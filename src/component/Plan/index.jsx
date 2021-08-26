@@ -7,6 +7,7 @@ import WeekDays from "./WeekDays";
 import { Typography } from "antd";
 import { addPlanAction } from "../../redux/actions/categories";
 import { addWeekAction, deleteWeekAction } from "../../redux/actions/weeks";
+import Modal from "antd/lib/modal/Modal";
 const { Title, Text } = Typography;
 
 const Plan = () => {
@@ -16,6 +17,7 @@ const Plan = () => {
   const [row, setRow] = useState([]);
   const [weekNumber, setWeekNumber] = useState("");
   const [arrayIndex, setArrayIndex] = useState("");
+  const [deleteWeek, setDeleteWeek] = useState(null);
 
   const { numOfWeeks } = useSelector((state) => state.mealPlan);
   const { weeks } = useSelector((state) => state);
@@ -26,32 +28,13 @@ const Plan = () => {
     rows.push(i);
   }
 
-  console.log("Row Week Data", rows);
-  console.log("Row Week Data state", numOfWeeks);
+  const onDelete = () => {
+    const filtered = numOfWeeks.filter((data) => data != deleteWeek);
 
-  const onDelete = (item) => {
-    console.log("item", item);
-
-    var copyWeeks = { ...weeks };
-    delete weeks[`week${item}`];
-    console.log("dddd", weeks);
-    // dispatch(addWeekAction("", item));
-    message.success("Week Deleted Successfully");
-    //const aa = weeks[item];
-
-    // weeks && console.log("week index2", copyWeeks[item]);
-    console.log("copy weks before delete", copyWeeks);
-    delete copyWeeks[`week${item}`];
-
-    console.log("copy weks after delete", copyWeeks);
-
-    // const ff = numOfWeeks.filter((data) => data);
-    const filtered = numOfWeeks.filter((data) => data != item);
-    console.log("filtered adat", filtered);
-    //  rows = filtered;
-    //  console.log("filter row", rows.length);
     dispatch(addPlanAction(filtered));
-    dispatch(deleteWeekAction(item));
+    dispatch(deleteWeekAction(deleteWeek));
+    message.success("Week Deleted Successfully");
+    setDeleteWeek(null);
   };
   return (
     <div>
@@ -94,7 +77,7 @@ const Plan = () => {
                   <div>
                     <DeleteOutlined
                       className="ml-5"
-                      onClick={() => onDelete(item)}
+                      onClick={() => setDeleteWeek(item)}
                     />
                   </div>
                 </div>
@@ -109,6 +92,30 @@ const Plan = () => {
         </>
       )}
       {weekDaysVisible && <WeekDays weekIndex={weekNumber} />}
+      {deleteWeek && (
+        <Modal
+          title="Delete Week"
+          visible={deleteWeek}
+          footer={null}
+          onCancel={() => setDeleteWeek(null)}
+        >
+          <Text strong>
+            This will delete all the content of the week {deleteWeek}
+          </Text>
+          <div className="d-flex justify-end">
+            <Button
+              type="primary"
+              onClick={() => setDeleteWeek(null)}
+              className="mr-4"
+            >
+              Go Back
+            </Button>
+            <Button danger onClick={onDelete}>
+              Ok
+            </Button>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };

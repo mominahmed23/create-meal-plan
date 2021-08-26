@@ -13,9 +13,12 @@ import {
   UnorderedListOutlined,
 } from "@ant-design/icons";
 
+import { useSelector } from "react-redux";
+
 const { Title } = Typography;
 const SidebarForm = () => {
   const [view, setView] = useState(null);
+  const { title } = useSelector((state) => state.mealPlan);
 
   const viewHelper = [];
   if (view === null) {
@@ -96,7 +99,14 @@ const SidebarForm = () => {
             <RightOutlined />
           </div>
         </div>
-        {/* </div> */}
+
+        <div
+          className="d-flex mt-20 justify-space-between"
+          //style={{ position: "absolute" }}
+        >
+          <Button style={{ width: "120px" }}>Post</Button>
+          <Button type="primary">Save as Draft</Button>
+        </div>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import { Card, Input, Table } from "antd";
+import { Card, Input, message, Table } from "antd";
 import Modal from "antd/lib/modal/Modal";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -48,12 +48,16 @@ const MealCard = ({
 
   const onMealClick = (item) => {
     const temp = [...selectedMealName];
-    if (temp.includes(item)) {
-      const filterd = temp.filter((value) => value !== item);
-      setSelectedMealName(filterd);
+    if (selectedMealName.length <= 10) {
+      if (temp.includes(item)) {
+        const filterd = temp.filter((value) => value !== item);
+        setSelectedMealName(filterd);
+      } else {
+        temp.push(item);
+        setSelectedMealName(temp);
+      }
     } else {
-      temp.push(item);
-      setSelectedMealName(temp);
+      message.warning("Can't upload more than 10");
     }
     console.log(selectedMealName);
   };
@@ -117,7 +121,11 @@ const MealCard = ({
               <div
                 key={i}
                 className={
-                  selectedMealName.includes(item.name)
+                  selectedMealName.includes(item.name) ||
+                  (weeks &&
+                    sDay &&
+                    sDay.hasOwnProperty(dayIndex) &&
+                    sDay[dayIndex].includes(item.name))
                     ? "mealSelected"
                     : "mealInfoContainer"
                 }
@@ -140,13 +148,21 @@ const MealCard = ({
                     />
                     <div
                       className={
-                        selectedMealName.includes(item.name)
+                        selectedMealName.includes(item.name) ||
+                        (weeks &&
+                          sDay &&
+                          sDay.hasOwnProperty(dayIndex) &&
+                          sDay[dayIndex].includes(item.name))
                           ? "overlay"
                           : "noDisplay"
                       }
                     >
                       <a href="#" className="icon" title="User Profile">
                         {selectedMealName.includes(item.name) && (
+                          // (weeks &&
+                          //   sDay &&
+                          //   sDay.hasOwnProperty(dayIndex) &&
+                          //   sDay[dayIndex].includes(item.name)
                           <CheckOutlined
                             style={{
                               fontSize: "28px",
@@ -159,10 +175,6 @@ const MealCard = ({
                   </div>
 
                   <h3 className="ml-5">{item.name}</h3>
-                  {weeks &&
-                    sDay &&
-                    sDay.hasOwnProperty(dayIndex) &&
-                    sDay[dayIndex].includes(item.name) && <div>hello</div>}
                 </div>
               </div>
             ))}

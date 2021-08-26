@@ -1,5 +1,5 @@
-import React from 'react';
-import './MealInfo.css';
+import React from "react";
+import "./MealInfo.css";
 const MealInfoContainer = ({
   name,
   image,
@@ -10,10 +10,8 @@ const MealInfoContainer = ({
     <div
       className="mealSelected"
       onClick={() => {
-        // console.log(item);
-        name === 'Add a snack' && setIsSnackModalVisible(true);
-        name === 'Add a snack' && handleCancel();
-        // finalMealPlanofDay();
+        name === "Add a snack" && setIsSnackModalVisible(true);
+        name === "Add a snack" && handleCancel();
       }}
     >
       <div className="mealSelected mt-4">

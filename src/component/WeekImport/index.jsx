@@ -20,21 +20,11 @@ const WeekImport = ({
   const [errorMessage, setErrorMessage] = useState(false);
   const { weeks } = useSelector((state) => state);
   const { numOfWeeks } = useSelector((state) => state.mealPlan);
-  //   console.log('weekIndex', `week${weekIndex}`);
-  //   console.log('===33333333333333333', weeks.hasOwnProperty(`week${weekIndex}`));
+
   const dispatch = useDispatch();
-  //   console.log(weekCount);
+
   const addPlan = () => {
-    // if (weeks.hasOwnProperty(`week${weekCount}`)) {
     setErrorMessage(true);
-
-    // THIS IS FOR LOOPING OVER DAYS AND FOODS
-    // console.log(Object.entries(copyWeek));
-
-    // copyWeek.map((item, i) => console.log('thissssss', item));
-    // }
-    // dispatch(addPlanAction(weekCount));
-    // weekChangeVisible();
   };
 
   const importFinalize = () => {
@@ -49,11 +39,7 @@ const WeekImport = ({
     setErrorMessage(false);
     // console.log('TESTTT', weeks[`week${weekIndex}`]);
   };
-  // Copy content by reference
-  // console.log((weeks[`week${weekIndex}`] = ''));
 
-  //Empty contents of that week
-  // console.log((weeks[`week${weekIndex}`] = ''));
   return (
     <div>
       <Modal
