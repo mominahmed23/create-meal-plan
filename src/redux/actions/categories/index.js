@@ -25,3 +25,9 @@ export const addCoverImageAction = (data) => {
     payload: data,
   };
 };
+
+export const removeCoverImageAction = () => {
+  return {
+    type: "REMOVE_COVER_IMAGE",
+  };
+};

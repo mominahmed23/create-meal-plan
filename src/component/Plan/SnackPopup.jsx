@@ -24,7 +24,6 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
   const [selectedMealName, setSelectedMealName] = useState([]);
   const dispatch = useDispatch();
   const { snack } = useSelector((state) => state);
-  snack && console.log("snack", snack);
   const onFinish = (values) => {
     const mealArray = [...selectedMealName];
     const data = { [snackItem]: values };
@@ -42,7 +41,7 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
     }
   };
   const onSnackDelete = () => {
-    console.log("delete function");
+    //console"delete function");
   };
   return (
     <Modal
@@ -87,7 +86,7 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
                 <div
                   className={snackItem === item.name ? "overlay" : "noDisplay"}
                 >
-                  <a href="#" className="icon" title="User Profile">
+                  <a className="icon" title="User Profile">
                     {snackItem === item.name && (
                       <CheckOutlined
                         style={{

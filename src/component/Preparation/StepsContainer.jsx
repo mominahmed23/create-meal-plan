@@ -24,7 +24,7 @@ const formItemLayoutWithOutLabel = {
 
 const StepsContainer = () => {
   const onFinish = (values) => {
-    console.log("Received values of form:", values);
+    //console"Received values of form:", values);
   };
 
   return (
@@ -50,7 +50,7 @@ const StepsContainer = () => {
                 </Form.Item>
               </Form.Item>
             ))}
-            {console.log(fields)}
+            {//consolefields)}
 
             <Form.Item>
               <Button

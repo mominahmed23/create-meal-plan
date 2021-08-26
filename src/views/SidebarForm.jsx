@@ -31,10 +31,18 @@ const SidebarForm = () => {
     console.log("nutrition", nutrition);
   };
 
+  const logDataFromDraft = () => {
+    console.log("===== All the Data from Draft");
+    console.log(mealPlan);
+    console.log("weekPlan", weeks);
+    console.log("SnackPlan", snack);
+    console.log("nutrition", nutrition);
+  };
+
   const viewHelper = [];
   if (view === null) {
     viewHelper.push(
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative", height: "100%" }}>
         <RecipeTitle />
         <Cover />
 
@@ -100,13 +108,17 @@ const SidebarForm = () => {
         </div>
 
         <div
-          className="d-flex my-15 justify-space-between"
-          style={{ position: "sticky" }}
+          className="d-flex justify-space-between"
+          style={{ position: "absolute", width: "100%", bottom: "30px" }}
         >
           <Button style={{ width: "120px" }} onClick={logData}>
             Post
           </Button>
-          <Button type="primary" disabled={!mealPlan.title} onClick={logData}>
+          <Button
+            type="primary"
+            disabled={!mealPlan.title}
+            onClick={logDataFromDraft}
+          >
             Save as Draft
           </Button>
         </div>

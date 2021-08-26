@@ -26,12 +26,12 @@ const Settings = () => {
   const [value, setValue] = useState(1);
   const [tagValue, setTagValue] = useState(null);
   const onChange = (e) => {
-    console.log("radio checked", e.target.value);
+    //console"radio checked", e.target.value);
     setValue(e.target.value);
   };
   const tagData = (e) => {
     setTagValue();
-    console.log("tag value", e.target.value);
+    //console"tag value", e.target.value);
   };
   return (
     <div>

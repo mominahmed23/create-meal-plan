@@ -1,29 +1,29 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import MealCard from './MealCard';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import MealCard from "./MealCard";
 import {
   PlusOutlined,
   DashOutlined,
   DeleteOutlined,
   UserOutlined,
-} from '@ant-design/icons';
-import { Divider, Dropdown, Menu, Typography } from 'antd';
-import { addWeekAction } from '../../redux/actions/weeks';
-import WeekImport from '../WeekImport';
+} from "@ant-design/icons";
+import { Divider, Dropdown, Menu, Typography } from "antd";
+import { addWeekAction } from "../../redux/actions/weeks";
+import WeekImport from "../WeekImport";
 
 const { Title, Text } = Typography;
 const weekItems = [
-  'Monday',
-  'Tueday',
-  'Wenesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-  'Sunday',
+  "Monday",
+  "Tueday",
+  "Wenesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
 ];
 
 const WeekDays = ({ weekIndex }) => {
-  const [dayIndex, setDayIndex] = useState('');
+  const [dayIndex, setDayIndex] = useState("");
   const [isMealModalVisible, setIsMealModalVisible] = useState(false);
   const [isWeekImportModalVisible, setIsWeekImportModalVisible] =
     useState(false);
@@ -31,8 +31,6 @@ const WeekDays = ({ weekIndex }) => {
   const { weeks } = useSelector((state) => state);
 
   const dispatch = useDispatch();
-
-  weeks && console.log('week index', weeks);
 
   const singleDay = weeks[`week${weekIndex}`];
 
@@ -59,7 +57,7 @@ const WeekDays = ({ weekIndex }) => {
   );
 
   const deleteItem = (item, mealItem) => {
-    console.log('remove item', mealItem);
+    //console'remove item', mealItem);
     const allData = singleDay[item];
 
     const filtered = allData.filter((item) => item != mealItem);
@@ -79,7 +77,7 @@ const WeekDays = ({ weekIndex }) => {
               <Text strong>{item}</Text>
             </div>
             <div>
-              <Dropdown overlay={menu} trigger={'click'}>
+              <Dropdown overlay={menu} trigger={"click"}>
                 <DashOutlined className="mx-4" overlay={menu} />
               </Dropdown>
               <PlusOutlined
@@ -91,8 +89,8 @@ const WeekDays = ({ weekIndex }) => {
               />
             </div>
           </div>
-          <Divider style={{ marginTop: '0' }} />
-          <div className="mb-5" style={{ backgroundColor: 'rgb(224 221 221)' }}>
+          <Divider style={{ marginTop: "0" }} />
+          <div className="mb-5" style={{ backgroundColor: "rgb(224 221 221)" }}>
             {singleDay !== undefined
               ? singleDay.hasOwnProperty(item) &&
                 singleDay[item].map((mealItem) => (

@@ -38,11 +38,10 @@ const Plan = () => {
 
   const { numOfWeeks } = useSelector((state) => state.mealPlan);
   useEffect(() => {
-    console.log("number of weeks", numOfWeeks);
+    //console"number of weeks", numOfWeeks);
     setItems(numOfWeeks);
   }, [numOfWeeks]);
   const { weeks } = useSelector((state) => state);
-  weeks && console.log("week", weeks);
   const dispatch = useDispatch();
 
   let rows = [];
@@ -51,7 +50,7 @@ const Plan = () => {
   }
 
   const onDelete = () => {
-    console.log("iiii", deleteWeek.slice(-1));
+    //console"iiii", deleteWeek.slice(-1));
 
     const filtered = numOfWeeks.filter((data) => data != deleteWeek.slice(-1));
 
@@ -80,8 +79,8 @@ const Plan = () => {
             setDefaultView(true);
             setWeekNumber(value.slice(-1));
             setArrayIndex(index);
-            console.log("item nedde", key);
-            console.log("index nedde", index);
+            //console"item nedde", key);
+            //console"index nedde", index);
           }}
         >
           {value}
@@ -145,7 +144,7 @@ const Plan = () => {
             //           setDefaultView(true);
             //           setWeekNumber(item);
             //           setArrayIndex(i);
-            //           console.log('item nedde', item, i);
+            //           //console'item nedde', item, i);
             //         }}
             //       >
             //         {`Week ${item}`}
@@ -165,7 +164,7 @@ const Plan = () => {
             //   <SortableContainer onSortEnd={onSortEnd} distance={1}>
             //     {items?.map((item, index) => (
             //       <>
-            //         {/* {console.log(item, index)} */}
+            //         {/* {//consoleitem, index)} */}
             //         <SortableItem
             //           key={item}
             //           index={index}

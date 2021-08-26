@@ -19,7 +19,7 @@ const Description = () => {
       setMaxLengthError(false);
     }
   };
-  console.log(description);
+  //consoledescription);
   return (
     <>
       <Form layout="vertical">

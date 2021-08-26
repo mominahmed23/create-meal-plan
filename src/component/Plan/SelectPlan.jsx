@@ -17,7 +17,7 @@ const SelectPlan = ({ importWeekForm, weekChangeVisible }) => {
       for (let i = 1; i <= weekCount; i++) {
         rows.push(i);
       }
-      console.log("rrrrr", rows);
+      //console"rrrrr", rows);
       dispatch(addPlanAction(rows));
       weekChangeVisible();
     } else {

@@ -7,9 +7,9 @@ import reportWebVitals from "./reportWebVitals";
 import "antd-css-utilities/utility.min.css";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <>
     <App />
-  </React.StrictMode>,
+  </>,
   document.getElementById("root")
 );
 

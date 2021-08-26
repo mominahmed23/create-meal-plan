@@ -24,20 +24,20 @@ const MealCard = ({
   const [IsSnackModalVisible, setIsSnackModalVisible] = useState(false);
   const [selectedMealName, setSelectedMealName] = useState([]);
 
-  console.log("day index", dayIndex);
+  //console"day index", dayIndex);
   // const [mealArray, setMealArray] = useState([]);
   const { weeks } = useSelector((state) => state);
   var mealArray = [];
   var abc = [];
   const dispatch = useDispatch();
-  console.log("sss", weeks);
+  //console"sss", weeks);
   const sDay = weeks[`week${weekIndex}`];
 
   const onModalOk = () => {
     handleOk();
     mealArray = [...selectedMealName];
     const weekplan = { [dayIndex]: mealArray };
-    console.log("YOOOOOOOO ===========>>>>", weekplan);
+    //console"YOOOOOOOO ===========>>>>", weekplan);
     dispatch(addWeekAction(weekplan, weekIndex));
     setSelectedMealName("");
   };
@@ -55,7 +55,7 @@ const MealCard = ({
     } else {
       message.warning("Can't upload more than 10");
     }
-    console.log(selectedMealName);
+    //consoleselectedMealName);
   };
 
   useEffect(() => {
@@ -91,7 +91,7 @@ const MealCard = ({
             onClick={() => {
               setIsSnackModalVisible(true);
               handleCancel();
-              console.log("clicked");
+              //console"clicked");
             }}
           >
             <img
@@ -101,7 +101,7 @@ const MealCard = ({
               alt=""
               onClick={() => {
                 setIsSnackModalVisible(true);
-                console.log("clicked");
+                //console"clicked");
               }}
             />
             <h3 className="ml-5">{"Add A sanck"}</h3>
@@ -113,7 +113,7 @@ const MealCard = ({
               height="60"
               alt=""
               onClick={() => {
-                console.log("clicked");
+                //console"clicked");
               }}
             />
             <h3 className="ml-5">{"Create New"}</h3>
@@ -198,7 +198,7 @@ export default MealCard;
 // FOR AVOIDING REPLACING ITEMS
 // if (isMealArr.length > 0) {
 //   setIsMealArr((prev) => [prev, item]);
-//   console.log('wronggg');
+//   //console'wronggg');
 // } else {
 //   setIsMealArr(item);
 // }

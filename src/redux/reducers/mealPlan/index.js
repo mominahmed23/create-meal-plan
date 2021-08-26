@@ -18,6 +18,8 @@ const mealPlanReducer = (state = initialState, action) => {
       return { ...state, numOfWeeks: action.payload };
     case "ADD_COVER_IMAGE":
       return { ...state, coverImage: action.payload };
+    case "REMOVE_COVER_IMAGE":
+      return { ...state, coverImage: null };
     default:
       return state;
   }
