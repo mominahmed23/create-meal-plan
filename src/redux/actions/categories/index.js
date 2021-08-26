@@ -18,3 +18,10 @@ export const addPlanAction = (data) => {
     payload: data,
   };
 };
+
+export const addCoverImageAction = (data) => {
+  return {
+    type: "ADD_COVER_IMAGE",
+    payload: data,
+  };
+};
