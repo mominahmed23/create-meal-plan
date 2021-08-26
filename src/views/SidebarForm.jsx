@@ -18,7 +18,15 @@ import { useSelector } from "react-redux";
 const { Title } = Typography;
 const SidebarForm = () => {
   const [view, setView] = useState(null);
-  const { title } = useSelector((state) => state.mealPlan);
+  const { mealPlan, weeks, snack, nutrition } = useSelector((state) => state);
+
+  const logData = () => {
+    console.log("===== All the Data from Redux");
+    console.log(mealPlan);
+    console.log("weekPlan", weeks);
+    console.log("SnackPlan", snack);
+    console.log("nutrition", nutrition);
+  };
 
   const viewHelper = [];
   if (view === null) {
@@ -104,8 +112,10 @@ const SidebarForm = () => {
           className="d-flex my-15 justify-space-between"
           style={{ position: "sticky" }}
         >
-          <Button style={{ width: "120px" }}>Post</Button>
-          <Button type="primary" disabled={!title}>
+          <Button style={{ width: "120px" }} onClick={logData}>
+            Post
+          </Button>
+          <Button type="primary" disabled={!mealPlan.title} onClick={logData}>
             Save as Draft
           </Button>
         </div>
