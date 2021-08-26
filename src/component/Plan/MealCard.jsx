@@ -61,10 +61,7 @@ const MealCard = ({
   useEffect(() => {
     if (Object.keys(weeks) && sDay && sDay.hasOwnProperty(dayIndex)) {
       abc = [...sDay[dayIndex]];
-      console.log("ss", sDay[dayIndex]);
-      console.log("aaa", abc);
       setSelectedMealName(abc);
-      console.log("selected", selectedMealName);
     }
   }, []);
   return (
@@ -171,7 +168,18 @@ const MealCard = ({
                   {weeks &&
                     sDay &&
                     sDay.hasOwnProperty(dayIndex) &&
-                    sDay[dayIndex].includes(item.name) && <div>h</div>}
+                    sDay[dayIndex].includes(item.name) && (
+                      <div>
+                        {" "}
+                        <CheckOutlined
+                          style={{
+                            fontSize: "10px",
+                            color: "black",
+                            marginLeft: "5px",
+                          }}
+                        />
+                      </div>
+                    )}
                 </div>
               </div>
             ))}
