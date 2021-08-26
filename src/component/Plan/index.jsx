@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { Button, Divider, message } from "antd";
-import { DeleteOutlined } from "@ant-design/icons";
-import SelectPlan from "./SelectPlan";
-import { useDispatch, useSelector } from "react-redux";
-import WeekDays from "./WeekDays";
-import { Typography } from "antd";
-import { addPlanAction } from "../../redux/actions/categories";
-import { addWeekAction, deleteWeekAction } from "../../redux/actions/weeks";
+import React, { useState, useEffect } from 'react';
+import { Button, Divider, message } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
+import SelectPlan from './SelectPlan';
+import { useDispatch, useSelector } from 'react-redux';
+import WeekDays from './WeekDays';
+import { Typography } from 'antd';
+import { addPlanAction } from '../../redux/actions/categories';
+import { addWeekAction, deleteWeekAction } from '../../redux/actions/weeks';
 import {
   sortableContainer,
   sortableElement,
   sortableHandle,
-} from "react-sortable-hoc";
-import { arrayMoveImmutable } from "array-move";
-import Modal from "antd/lib/modal/Modal";
+} from 'react-sortable-hoc';
+import { arrayMoveImmutable } from 'array-move';
+import Modal from 'antd/lib/modal/Modal';
 
 const { Title, Text } = Typography;
 
@@ -32,17 +32,17 @@ const Plan = () => {
   const onSortEnd = ({ oldIndex, newIndex }) => {
     setItems(arrayMoveImmutable(items, oldIndex, newIndex));
   };
-  const [weekNumber, setWeekNumber] = useState("");
-  const [arrayIndex, setArrayIndex] = useState("");
+  const [weekNumber, setWeekNumber] = useState('');
+  const [arrayIndex, setArrayIndex] = useState('');
   const [deleteWeek, setDeleteWeek] = useState(null);
 
   const { numOfWeeks } = useSelector((state) => state.mealPlan);
   useEffect(() => {
-    console.log("number of weeks", numOfWeeks);
+    console.log('number of weeks', numOfWeeks);
     setItems(numOfWeeks);
   }, [numOfWeeks]);
   const { weeks } = useSelector((state) => state);
-  weeks && console.log("week", weeks);
+  weeks && console.log('week', weeks);
   const dispatch = useDispatch();
 
   let rows = [];
@@ -51,13 +51,13 @@ const Plan = () => {
   }
 
   const onDelete = () => {
-    console.log("iiii", deleteWeek.slice(-1));
+    console.log('iiii', deleteWeek.slice(-1));
 
     const filtered = numOfWeeks.filter((data) => data != deleteWeek.slice(-1));
 
     dispatch(addPlanAction(filtered));
     dispatch(deleteWeekAction(deleteWeek));
-    message.success("Week Deleted Successfully");
+    message.success('Week Deleted Successfully');
     setDeleteWeek(null);
   };
 
@@ -80,8 +80,8 @@ const Plan = () => {
             setDefaultView(true);
             setWeekNumber(value.slice(-1));
             setArrayIndex(index);
-            console.log("item nedde", key);
-            console.log("index nedde", index);
+            console.log('item nedde', key);
+            console.log('index nedde', index);
           }}
         >
           {value}
@@ -109,7 +109,7 @@ const Plan = () => {
             </Button>
           </div>
           <Title level={4}>Manage</Title>
-          <Divider style={{ marginTop: "0" }} />
+          <Divider style={{ marginTop: '0' }} />
           {!weekChangeVisible && (
             <div className="d-flex">
               <SortableContainer
@@ -183,14 +183,8 @@ const Plan = () => {
             // </div>
           )}
 
-          <div>
-            {/* <DeleteOutlined *
-                  //     className="ml-5"
-                  //     onClick={() => setDeleteWeek(item)}
-                  //   />
-                     // </div>*/}
-          </div>
-          <Divider style={{ marginTop: "0" }} />
+          <div></div>
+          <Divider style={{ marginTop: '0' }} />
           {weekChangeVisible && (
             <SelectPlan
               weekChangeVisible={() => setWeekChangeVisible(!weekChangeVisible)}
