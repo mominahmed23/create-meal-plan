@@ -30,7 +30,7 @@ const WeekImport = ({
   const importFinalize = () => {
     let copyWeek = weeks[`week${weekCount}`];
     console.log("copyWeek", copyWeek);
-
+    console.log("week index", weekIndex);
     // DELETING THE CONTENTS OF CURRENT WEEK
     // COPYING THE CONTENTS OF SELECTED WEEKK INTO CURRENT WEEK
     weeks[`week${weekIndex}`] = weeks[`week${weekCount}`];

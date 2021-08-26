@@ -78,7 +78,7 @@ const Plan = () => {
           onClick={() => {
             setWeekDaysVisible(true);
             setDefaultView(true);
-            // setWeekNumber(item);
+            setWeekNumber(value.slice(-1));
             setArrayIndex(index);
             console.log("item nedde", key);
             console.log("index nedde", index);
