@@ -94,19 +94,32 @@ const Plan = () => {
     <div>
       {!defaultView && (
         <>
-          <Title level={3} className=" my-2">
-            Plan
-          </Title>
-          <div className="d-flex align-centerx mb-3">
-            <Text strong>How many weeks in plan?</Text>
-
-            <Button
-              type="link"
-              onClick={() => setWeekChangeVisible(!weekChangeVisible)}
-            >
-              Change
-            </Button>
+          <span className="page-heading">Plan</span>
+          <div className="d-flex justify-space-between">
+            <div>
+              {" "}
+              <Title level={4}>Weeks</Title>
+            </div>
+            <div>
+              <Text strong>1</Text>
+            </div>
           </div>
+          <div className="d-flex justify-space-between">
+            <div>
+              {" "}
+              <Text disabled>How many weeks in plan?</Text>
+            </div>
+            <div>
+              {" "}
+              <Button
+                type="link"
+                onClick={() => setWeekChangeVisible(!weekChangeVisible)}
+              >
+                Change
+              </Button>
+            </div>
+          </div>
+
           <Title level={4}>Manage</Title>
           <Divider style={{ marginTop: "0" }} />
           {!weekChangeVisible && (

@@ -14,11 +14,12 @@ import {
   SettingOutlined,
   CalendarOutlined,
   PieChartOutlined,
+  CloseOutlined,
 } from "@ant-design/icons";
 
 import { useSelector } from "react-redux";
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 const SidebarForm = () => {
   const [view, setView] = useState(null);
   const { mealPlan, weeks, snack, nutrition } = useSelector((state) => state);
@@ -43,6 +44,14 @@ const SidebarForm = () => {
   if (view === null) {
     viewHelper.push(
       <div style={{ position: "relative", height: "100%" }}>
+        <div className="d-flex mb-5">
+          <div className="mr-13">
+            <CloseOutlined />
+          </div>
+          <div>
+            <Text strong>Create Meal Plan</Text>
+          </div>
+        </div>
         <RecipeTitle />
         <Cover />
 
@@ -128,7 +137,7 @@ const SidebarForm = () => {
   if (view === "description") {
     viewHelper.push(
       <>
-        <div className="mt-0">
+        <div className="mt-0 ml-0">
           <Button
             icon={<LeftOutlined />}
             onClick={() => setView(null)}

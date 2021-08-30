@@ -34,7 +34,7 @@ const Settings = () => {
     //console"tag value", e.target.value);
   };
   return (
-    <div>
+    <div className="p-10">
       <h2 className="mt-5">Settings & SEO</h2>
       <Form layout="vertical">
         <Form.Item>
@@ -82,7 +82,9 @@ const Settings = () => {
       </div>
       <div className="mt-5">
         <Text strong>SEO Preview</Text>
-        <div style={{ border: "1px solid #cecece", minHeight: "100px" }}></div>
+        <div style={{ border: "1px solid #cecece", minHeight: "100px" }}>
+          <a>New Meal Plan by Talha</a>
+        </div>
       </div>
     </div>
   );

@@ -24,9 +24,8 @@ const Description = () => {
     <>
       <Form layout="vertical">
         <Form.Item>
-          <Title level={3} className="mx-2 mb-4">
-            Description
-          </Title>
+          <span className="page-heading">Description</span>
+
           <TextArea
             showCount
             value={description}

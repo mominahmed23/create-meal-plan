@@ -33,7 +33,7 @@ const Cover = () => {
   return (
     <div>
       <Title level={5} className=" my-2">
-        Media{" "}
+        Cover{" "}
         <Text level={6} disabled>
           (required)
         </Text>
