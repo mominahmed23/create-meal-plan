@@ -1,25 +1,27 @@
 .mealInfoContainer {
   display: 'flex';
+  transition: 0.5s all;
+
   cursor: pointer;
 }
 .mealSelected {
   display: 'flex';
-  align-items: 'center';
+  /* align-items: 'center'; */
   /* display: block;
   width: 100%;
   height: auto; */
   transition: 0.5s all;
   /* pointer-events: none; */
-  background-color: #0000001e;
+  /* background-color: #0000001e; */
 }
 
 .imageSelected {
   /* background-color: black; */
   display: block;
-  width: 60px;
+  width: 70px;
   transition: 0.5s all;
 
-  height: 60px;
+  height: 70px;
 }
 
 .container {
@@ -32,9 +34,9 @@
   bottom: 0;
   left: 0;
   right: 0;
-  width: 60px;
+  width: 70px;
   transition: 0.5s all;
-
+  cursor: pointer;
   background-color: rgba(51, 51, 51, 0.301);
 }
 .noDisplay {
