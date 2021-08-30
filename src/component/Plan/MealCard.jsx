@@ -1,15 +1,15 @@
-import { Card, Input, message, Table } from "antd";
-import Modal from "antd/lib/modal/Modal";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addMealPlanAction } from "../../redux/actions/categories";
-import { CheckOutlined } from "@ant-design/icons";
+import { Card, Input, message, Table } from 'antd';
+import Modal from 'antd/lib/modal/Modal';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addMealPlanAction } from '../../redux/actions/categories';
+import { CheckOutlined, SearchOutlined } from '@ant-design/icons';
 
-import SnackPopup from "./SnackPopup";
-import { addWeekAction } from "./../../redux/actions/weeks/index";
-import "./MealInfo.css";
+import SnackPopup from './SnackPopup';
+import { addWeekAction } from './../../redux/actions/weeks/index';
+import './MealInfo.css';
 // const mealItems = ['Biryani', 'Burger'];
-const data = [{ name: "Biryani" }, { name: "Burger" }];
+const data = [{ name: 'Biryani' }, { name: 'Burger' }];
 
 const MealCard = ({
   isModalVisible,
@@ -19,7 +19,7 @@ const MealCard = ({
   dayIndex,
 }) => {
   const [dataSource, setDataSource] = useState(data);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const [isRecipeVisible, setIsRecipeVisible] = useState(true);
   const [IsSnackModalVisible, setIsSnackModalVisible] = useState(false);
   const [selectedMealName, setSelectedMealName] = useState([]);
@@ -39,7 +39,7 @@ const MealCard = ({
     const weekplan = { [dayIndex]: mealArray };
     //console"YOOOOOOOO ===========>>>>", weekplan);
     dispatch(addWeekAction(weekplan, weekIndex));
-    setSelectedMealName("");
+    setSelectedMealName('');
   };
 
   const onMealClick = (item) => {
@@ -70,11 +70,15 @@ const MealCard = ({
         visible={isModalVisible}
         onOk={onModalOk}
         onCancel={handleCancel}
-        title={"Add Meal"}
-        destroyOnClose={true}
+        title={'Add Meal'}
+        closeIcon={false}
+        // destroyOnClose={true}
+        // className="ant-modal-header"
       >
         <Input
           placeholder="Search a Meal"
+          prefix={<SearchOutlined style={{ fontSize: '20px' }} />}
+          size={'medium'}
           value={value}
           onChange={(e) => {
             const currValue = e.target.value.toLowerCase();
@@ -85,7 +89,7 @@ const MealCard = ({
             setDataSource(filteredData);
           }}
         />
-        <Card style={{ width: "100%" }} className="mt-5 px-0">
+        <Card style={{ width: '100%' }} className="mt-5 px-0">
           <div
             className="d-flex align-center mt-4"
             onClick={() => {
@@ -104,7 +108,7 @@ const MealCard = ({
                 //console"clicked");
               }}
             />
-            <h3 className="ml-5">{"Add A sanck"}</h3>
+            <h3 className="ml-5">{'Add A sanck'}</h3>
           </div>
           <div className="d-flex align-center mt-4">
             <img
@@ -116,7 +120,7 @@ const MealCard = ({
                 //console"clicked");
               }}
             />
-            <h3 className="ml-5">{"Create New"}</h3>
+            <h3 className="ml-5">{'Create New'}</h3>
           </div>
           {isRecipeVisible &&
             dataSource.map((item, i) => (
@@ -124,8 +128,8 @@ const MealCard = ({
                 key={i}
                 className={
                   selectedMealName.includes(item.name)
-                    ? "mealSelected"
-                    : "mealInfoContainer"
+                    ? 'mealSelected'
+                    : 'mealInfoContainer'
                 }
                 onClick={() => {
                   onMealClick(item.name);
@@ -136,8 +140,8 @@ const MealCard = ({
                     <img
                       className={
                         selectedMealName.includes(item.name)
-                          ? "imageSelected"
-                          : ""
+                          ? 'imageSelected'
+                          : ''
                       }
                       src="https://media-cdn.tripadvisor.com/media/photo-s/16/5c/a9/7d/lahore-food.jpg"
                       width="60"
@@ -147,16 +151,16 @@ const MealCard = ({
                     <div
                       className={
                         selectedMealName.includes(item.name)
-                          ? "overlay"
-                          : "noDisplay"
+                          ? 'overlay'
+                          : 'noDisplay'
                       }
                     >
                       <a href="#" className="icon" title="User Profile">
                         {selectedMealName.includes(item.name) && (
                           <CheckOutlined
                             style={{
-                              fontSize: "28px",
-                              color: "#ffffff",
+                              fontSize: '28px',
+                              color: '#ffffff',
                             }}
                           />
                         )}
@@ -170,12 +174,12 @@ const MealCard = ({
                     sDay.hasOwnProperty(dayIndex) &&
                     sDay[dayIndex].includes(item.name) && (
                       <div>
-                        {" "}
+                        {' '}
                         <CheckOutlined
                           style={{
-                            fontSize: "10px",
-                            color: "black",
-                            marginLeft: "5px",
+                            fontSize: '10px',
+                            color: 'black',
+                            marginLeft: '5px',
                           }}
                         />
                       </div>

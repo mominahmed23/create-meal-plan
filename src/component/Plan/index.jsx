@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { Button, Divider, message } from "antd";
-import { DeleteOutlined, BorderOuterOutlined } from "@ant-design/icons";
-import SelectPlan from "./SelectPlan";
-import { useDispatch, useSelector } from "react-redux";
-import WeekDays from "./WeekDays";
-import { Typography } from "antd";
-import { addPlanAction } from "../../redux/actions/categories";
-import { addWeekAction, deleteWeekAction } from "../../redux/actions/weeks";
+import React, { useState, useEffect } from 'react';
+import { Button, Divider, message } from 'antd';
+import { DeleteOutlined, BorderOuterOutlined } from '@ant-design/icons';
+import SelectPlan from './SelectPlan';
+import { useDispatch, useSelector } from 'react-redux';
+import WeekDays from './WeekDays';
+import { Typography } from 'antd';
+import { addPlanAction } from '../../redux/actions/categories';
+import { addWeekAction, deleteWeekAction } from '../../redux/actions/weeks';
 import {
   sortableContainer,
   sortableElement,
   sortableHandle,
-} from "react-sortable-hoc";
-import { arrayMoveImmutable } from "array-move";
-import Modal from "antd/lib/modal/Modal";
+} from 'react-sortable-hoc';
+import { arrayMoveImmutable } from 'array-move';
+import Modal from 'antd/lib/modal/Modal';
 
 const { Title, Text } = Typography;
 
@@ -32,8 +32,8 @@ const Plan = () => {
   const onSortEnd = ({ oldIndex, newIndex }) => {
     setItems(arrayMoveImmutable(items, oldIndex, newIndex));
   };
-  const [weekNumber, setWeekNumber] = useState("");
-  const [arrayIndex, setArrayIndex] = useState("");
+  const [weekNumber, setWeekNumber] = useState('');
+  const [arrayIndex, setArrayIndex] = useState('');
   const [deleteWeek, setDeleteWeek] = useState(null);
 
   const { numOfWeeks } = useSelector((state) => state.mealPlan);
@@ -56,7 +56,7 @@ const Plan = () => {
 
     dispatch(addPlanAction(filtered));
     dispatch(deleteWeekAction(deleteWeek));
-    message.success("Week Deleted Successfully");
+    message.success('Week Deleted Successfully');
     setDeleteWeek(null);
   };
 
@@ -97,8 +97,10 @@ const Plan = () => {
           <span className="page-heading">Plan</span>
           <div className="d-flex justify-space-between">
             <div>
-              {" "}
-              <Title level={4}>Weeks</Title>
+              {' '}
+              <Title level={4} className="page-heading">
+                Weeks
+              </Title>
             </div>
             <div>
               <Text strong>1</Text>
@@ -106,11 +108,11 @@ const Plan = () => {
           </div>
           <div className="d-flex justify-space-between">
             <div>
-              {" "}
+              {' '}
               <Text disabled>How many weeks in plan?</Text>
             </div>
             <div>
-              {" "}
+              {' '}
               <Button
                 type="link"
                 onClick={() => setWeekChangeVisible(!weekChangeVisible)}
@@ -121,7 +123,7 @@ const Plan = () => {
           </div>
 
           <Title level={4}>Manage</Title>
-          <Divider style={{ marginTop: "0" }} />
+          <Divider style={{ marginTop: '0' }} />
           {!weekChangeVisible && (
             <div className="d-flex">
               <SortableContainer
@@ -196,7 +198,7 @@ const Plan = () => {
           )}
 
           <div></div>
-          <Divider style={{ marginTop: "0" }} />
+          <Divider style={{ marginTop: '0' }} />
           {weekChangeVisible && (
             <SelectPlan
               weekChangeVisible={() => setWeekChangeVisible(!weekChangeVisible)}
