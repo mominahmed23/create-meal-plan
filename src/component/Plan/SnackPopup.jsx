@@ -109,10 +109,6 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
               </div>
 
               <h3 className="ml-5">{item.name}</h3>
-              {/* {weeks &&
-                sDay &&
-                sDay.hasOwnProperty(dayIndex) &&
-                sDay[dayIndex].includes(item.name) && <div>hello</div>} */}
             </div>
           </div>
 

@@ -16,7 +16,11 @@ import {
   PieChartOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
-
+import DiscriptionICon from "../icons/DiscriptionIcon.png";
+import PlanIcon from "../icons/PlanIcon.png";
+import NutritionIcon from "../icons/NutritionIcon.png";
+import SettingsIcon from "../icons/SettingsIcon.png";
+import Set from "../icons/Set.png";
 import { useSelector } from "react-redux";
 
 const { Title, Text } = Typography;
@@ -44,72 +48,96 @@ const SidebarForm = () => {
   if (view === null) {
     viewHelper.push(
       <div style={{ position: "relative", height: "100%" }}>
-        <div className="d-flex mb-5">
-          <div className="mr-13">
-            <CloseOutlined />
+        <div className="position-relative mb-9">
+          <div className="position-absolute">
+            <CloseOutlined size="large" />
           </div>
-          <div>
-            <Text strong>Create Meal Plan</Text>
-          </div>
+
+          <h4 className="default-title text-center" strong>
+            Create Meal Plan
+          </h4>
         </div>
         <RecipeTitle />
         <Cover />
 
-        <div
-          className="d-flex align-center justify-space-between app-hover-cursor mt-4"
-          onClick={() => setView("description")}
-        >
+        <div className="side-bar-item" onClick={() => setView("description")}>
           <div className="d-flex align-center">
-            <UnorderedListOutlined />
-            <Title
-              level={5}
-              className="mx-4 my-2"
-              onClick={() => setView("description")}
-            >
+            <div className="mr-4">
+              <img src={DiscriptionICon}></img>
+            </div>
+            <h4 className="default-title text-center" strong>
               Description
-            </Title>
+            </h4>
           </div>
           <div>
             <RightOutlined />
           </div>
         </div>
-        <div
-          className="d-flex align-center justify-space-between app-hover-cursor"
-          onClick={() => setView("plan")}
-        >
+        <div className="side-bar-item" onClick={() => setView("plan")}>
           <div className="d-flex align-center">
-            <CalendarOutlined />
-            <Title level={5} className="mx-4 my-2">
+            <div className="mr-4">
+              <img src={PlanIcon}></img>
+            </div>
+            <h4 className="default-title text-center" strong>
               Plan
-            </Title>
+            </h4>
           </div>
           <div>
             <RightOutlined />
           </div>
         </div>
-        <div
-          className="d-flex align-center justify-space-between app-hover-cursor"
-          onClick={() => setView("nutrition")}
-        >
+        <div className="side-bar-item" onClick={() => setView("nutrition")}>
           <div className="d-flex align-center">
-            <PieChartOutlined />
-            <Title level={5} className="mx-4 my-2">
-              Nutrition
-            </Title>
+            <div className="mr-4">
+              <img src={NutritionIcon}></img>
+            </div>
+            <h4 className="default-title text-center" strong>
+              nutrition
+            </h4>
           </div>
           <div>
             <RightOutlined />
           </div>
         </div>
-        <div
-          className="d-flex align-center justify-space-between app-hover-cursor"
-          onClick={() => setView("settings")}
-        >
+        <div className="side-bar-item" onClick={() => setView("nutrition")}>
           <div className="d-flex align-center">
-            <SettingOutlined />
-            <Title level={5} className="mx-4 my-2">
-              Settings
-            </Title>
+            <div className="mr-4">
+              <img src={NutritionIcon}></img>
+            </div>
+            <div>
+              <div>
+                <h4 className="default-title text-center" strong>
+                  Monitization
+                </h4>
+              </div>
+              <div>
+                <h4 className="default-subtitle text-center" strong>
+                  Monitization
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div>
+            <RightOutlined />
+          </div>
+        </div>
+        <div className="side-bar-item" onClick={() => setView("settings")}>
+          <div className="d-flex align-center">
+            <div className="mr-4">
+              <img src={Set}></img>
+            </div>
+            <div>
+              <div>
+                <h4 className="default-title text-center" strong>
+                  Settings
+                </h4>
+              </div>
+              <div>
+                <h4 className="default-subtitle text-center" strong>
+                  Manage Comments, PRivacy, SEO
+                </h4>
+              </div>
+            </div>
           </div>
           <div>
             <RightOutlined />
@@ -118,17 +146,18 @@ const SidebarForm = () => {
 
         <div
           className="d-flex justify-space-between"
-          style={{ position: "absolute", width: "100%", bottom: "30px" }}
+          style={{ position: "absolute", width: "100%", bottom: "0px" }}
         >
-          <Button style={{ width: "120px" }} onClick={logData}>
-            Post
+          <Button style={{ width: "155px" }} onClick={logDataFromDraft}>
+            Save as Draft
           </Button>
           <Button
             type="primary"
             disabled={!mealPlan.title}
-            onClick={logDataFromDraft}
+            onClick={logData}
+            style={{ width: "155px" }}
           >
-            Save as Draft
+            Post
           </Button>
         </div>
       </div>
@@ -205,9 +234,9 @@ const SidebarForm = () => {
 
   return (
     <div
-      className="custom-sidebar pt-4 px-3 pb-2"
+      className="custom-sidebar pt-4 px-4 pb-2"
       style={{
-        width: 300,
+        width: 355,
         flexShrink: 0,
         height: "100vh",
         backgroundColor: "#ffffff",

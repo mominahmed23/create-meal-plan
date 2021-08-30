@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Image, Steps, Upload } from "antd";
 import { message } from "antd";
-import { InboxOutlined } from "@ant-design/icons";
+import { InboxOutlined, ArrowUpOutlined } from "@ant-design/icons";
 import { Typography } from "antd";
 import {
   addCoverImageAction,
   removeCoverImageAction,
 } from "../../redux/actions/categories";
+import Arrowup from "../../icons/Arrowup.png";
 import { useDispatch, useSelector } from "react-redux";
 const { Title, Text } = Typography;
 
@@ -32,12 +33,15 @@ const Cover = () => {
 
   return (
     <div>
-      <Title level={5} className=" my-2">
-        Cover{" "}
-        <Text level={6} disabled>
+      <div className="d-flex align-center mb-3">
+        <h4 className="default-title text-center" strong>
+          Cover{" "}
+        </h4>
+        <h4 className="default-subtitle text-center" strong>
+          {" "}
           (required)
-        </Text>
-      </Title>
+        </h4>
+      </div>
       <div className="draggerContainer">
         <Dragger
           onRemove={() => dispatch(removeCoverImageAction())}
@@ -58,10 +62,13 @@ const Cover = () => {
           ) : (
             <>
               <p className="ant-upload-drag-icon">
-                <InboxOutlined />
+                {/* <img src={Arrowup}></img> */}
+                <ArrowUpOutlined
+                  style={{ color: "#999999", fontSize: "25px" }}
+                />
               </p>
-              <p className="ant-upload-text">
-                Click or drag images to this area to upload
+              <p className="default-subtitle">
+                Click to upload or drag image here
               </p>
             </>
           )}

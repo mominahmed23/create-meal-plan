@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import MealCard from './MealCard';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import MealCard from "./MealCard";
 import {
   PlusOutlined,
   DashOutlined,
   DeleteOutlined,
   UserOutlined,
-} from '@ant-design/icons';
-import { Divider, Dropdown, Menu, Typography } from 'antd';
-import { addWeekAction } from '../../redux/actions/weeks';
-import WeekImport from '../WeekImport';
-import '../../App.css';
-import WeekDelete from '../WeekDelete';
+} from "@ant-design/icons";
+import { Divider, Dropdown, Menu, Typography } from "antd";
+import { addWeekAction } from "../../redux/actions/weeks";
+import WeekImport from "../WeekImport";
+import "../../App.css";
+import WeekDelete from "../WeekDelete";
 
 const { Title, Text } = Typography;
 const weekItems = [
-  'Monday',
-  'Tueday',
-  'Wenesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-  'Sunday',
+  "Monday",
+  "Tueday",
+  "Wenesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
 ];
 
-const WeekDays = ({ weekIndex }) => {
-  const [dayIndex, setDayIndex] = useState('');
+const WeekDays = ({ weekIndex, setWeekDaysVisibleFalse }) => {
+  const [dayIndex, setDayIndex] = useState("");
   const [isMealModalVisible, setIsMealModalVisible] = useState(false);
   const [deleteWeek, setDeleteWeek] = useState(false);
   const [isWeekImportModalVisible, setIsWeekImportModalVisible] =
@@ -87,7 +87,7 @@ const WeekDays = ({ weekIndex }) => {
               <h2 className="week-items">{item}</h2>
             </div>
             <div>
-              <Dropdown overlay={menu} trigger={'click'}>
+              <Dropdown overlay={menu} trigger={"click"}>
                 <DashOutlined className="mx-4" overlay={menu} />
               </Dropdown>
               <PlusOutlined
@@ -99,8 +99,8 @@ const WeekDays = ({ weekIndex }) => {
               />
             </div>
           </div>
-          <Divider style={{ marginTop: '0' }} />
-          <div className="mb-5" style={{ backgroundColor: 'rgb(224 221 221)' }}>
+          <Divider style={{ marginTop: "0" }} />
+          <div className="mb-5" style={{ backgroundColor: "rgb(224 221 221)" }}>
             {singleDay !== undefined
               ? singleDay.hasOwnProperty(item) &&
                 singleDay[item].map((mealItem) => (
@@ -129,10 +129,11 @@ const WeekDays = ({ weekIndex }) => {
             dayIndex={dayIndex}
           />
           <WeekDelete
-            isWeekDeleteModalVisible={deleteWeek}
+            isDeleteModalVisible={deleteWeek}
             setIsDeleteModalVisible={() => setDeleteWeek(false)}
             handleDeleteOk={() => setDeleteWeek(false)}
             weekIndex={weekIndex}
+            setWeekDaysVisibleFalse={setWeekDaysVisibleFalse}
           />
         </>
       ))}

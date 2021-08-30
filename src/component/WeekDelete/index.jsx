@@ -1,12 +1,34 @@
+import { Alert, Button, message, Select, Space } from "antd";
 import Modal from "antd/lib/modal/Modal";
-import React from "react";
+import React, { useState } from "react";
+import Item from "antd/lib/list/Item";
+import { useDispatch, useSelector } from "react-redux";
+import Form from "antd/lib/form/Form";
+import { deleteWeekAction } from "../../redux/actions/weeks";
+import { addPlanAction } from "../../redux/actions/categories";
+import { Typography } from "antd";
+const { Title, Text } = Typography;
 
 const WeekDelete = ({
   isDeleteModalVisible,
   setIsDeleteModalVisible,
   handleDeleteOk,
   weekIndex,
+  setWeekDaysVisibleFalse,
 }) => {
+  const [errorMessage, setErrorMessage] = useState(false);
+  const dispatch = useDispatch();
+  const { numOfWeeks } = useSelector((state) => state.mealPlan);
+
+  const onDelete = () => {
+    const filtered = numOfWeeks.filter((data) => data != weekIndex);
+    //   console.log(deleteWeek.slice(-1))
+    dispatch(addPlanAction(filtered));
+    dispatch(deleteWeekAction(weekIndex));
+    message.success("Week Deleted Successfully");
+    handleDeleteOk();
+    setWeekDaysVisibleFalse();
+  };
   return (
     <div>
       <Modal
@@ -15,52 +37,26 @@ const WeekDelete = ({
         onCancel={setIsDeleteModalVisible}
         onOk={handleDeleteOk}
         mask={false}
+        footer={null}
       >
-        <h3>{"hh"}</h3>
-        {/* <Row> */}
-        {/* <Form name="" initialValues={{ remember: true }} layout="vertical">
-          {/* <Col span={24}> */}
-        {/* <Item name="plan-length"> */}
-        {/* <Input compact> 
-            <Select
-              defaultValue={"week 1"}
-              onChange={(e) => setWeekCount(e)}
-              style={{ width: 200 }}
-            >
-              {numOfWeeks.map((item) => {
-                return (
-                  <Select.Option value={item}>{`week ${item}`}</Select.Option>
-                );
-              })}
-            </Select>
-          </Item>
-          <Item className="text-center">
-            <Button type="primary" htmlType="submit" onClick={() => addPlan()}>
-              Delete
-            </Button>
-          </Item>
-          {errorMessage && (
-            <Alert
-              message="Warning"
-              description="This will delete current week"
-              type="warning"
-              showIcon
-              closable
-              wis
-              action={
-                <Space>
-                  <Button
-                    size="small"
-                    type="ghost"
-                    onClick={() => deleteFinalize()}
-                  >
-                    Continue
-                  </Button>
-                </Space>
-              }
-            />
-          )}
-        </Form> */}
+        {" "}
+        <Text strong>
+          This will delete all the content of the week {weekIndex}
+        </Text>
+        <div className="d-flex justify-end">
+          <Button
+            type="primary"
+            onClick={() => {
+              setIsDeleteModalVisible();
+            }}
+            className="mr-4"
+          >
+            Go Back
+          </Button>
+          <Button danger onClick={onDelete}>
+            Ok
+          </Button>
+        </div>
       </Modal>
     </div>
   );
