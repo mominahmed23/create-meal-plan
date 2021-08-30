@@ -100,10 +100,6 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
               </div>
 
               <h3 className="ml-5">{item.name}</h3>
-              {/* {weeks &&
-                sDay &&
-                sDay.hasOwnProperty(dayIndex) &&
-                sDay[dayIndex].includes(item.name) && <div>hello</div>} */}
             </div>
           </div>
 
@@ -112,8 +108,8 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
               <Row>
                 <Form onFinish={onFinish}>
                   <Space
-                    style={{ display: "flex", marginBottom: 8 }}
-                    align="baseline"
+                  // style={{ display: "flex", marginBottom: 8 }}
+                  // align="baseline"
                   >
                     <Col span={24}>
                       <Form.Item name={"item_amount"} fieldKey={"item_amount"}>
@@ -127,49 +123,59 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
                         />
                       </Form.Item>
                     </Col>
-                    <Form.Item name={"fraction"} fieldKey={"fraction"}>
-                      <Select
-                        defaultValue={
-                          snack.hasOwnProperty(item.name) && snack[item.name]
-                            ? snack[item.name]["fraction"]
-                            : "fraction"
-                        }
-                        style={{ width: 120 }}
-                      >
-                        <Option value="1/2">1/2</Option>
-                        <Option value="1/3">1/3</Option>
-                      </Select>
-                    </Form.Item>
-                    <Form.Item name={"unit"} fieldKey={"unit"}>
-                      <Select
-                        defaultValue={
-                          snack.hasOwnProperty(item.name) && snack[item.name]
-                            ? snack[item.name]["unit"]
-                            : "unit"
-                        }
-                        style={{ width: 120 }}
-                      >
-                        <Option value="jack">TSB</Option>
-                        <Option value="lucy">TPS</Option>
-                      </Select>
-                    </Form.Item>
-                    {snack.hasOwnProperty(item.name) && snack[item.name] ? (
-                      <>
-                        <DeleteOutlined onClick={onSnackDelete} />
+                    <Col span={24}>
+                      <Form.Item name={"fraction"} fieldKey={"fraction"}>
+                        <Select
+                          defaultValue={
+                            snack.hasOwnProperty(item.name) && snack[item.name]
+                              ? snack[item.name]["fraction"]
+                              : "fraction"
+                          }
+                          style={{ width: 140 }}
+                        >
+                          <Option value="1/2">1/2</Option>
+                          <Option value="1/3">1/3</Option>
+                        </Select>
+                      </Form.Item>
+                    </Col>
+                    <Col span={24}>
+                      <Form.Item name={"unit"} fieldKey={"unit"}>
+                        <Select
+                          defaultValue={
+                            snack.hasOwnProperty(item.name) && snack[item.name]
+                              ? snack[item.name]["unit"]
+                              : "unit"
+                          }
+                          style={{ width: 140 }}
+                        >
+                          <Option value="jack">TSB</Option>
+                          <Option value="lucy">TPS</Option>
+                        </Select>
+                      </Form.Item>
+                    </Col>
+                  </Space>
+                  {snack.hasOwnProperty(item.name) && snack[item.name] ? (
+                    <>
+                      <span>
                         <Form.Item>
-                          <Button htmlType="submit" type="primary">
+                          <DeleteOutlined onClick={onSnackDelete} />
+                        </Form.Item>
+                      </span>
+                      <Form.Item>
+                        <span style={{ width: "100%" }}>
+                          <Button htmlType="submit" type="primary" block>
                             Update
                           </Button>
-                        </Form.Item>
-                      </>
-                    ) : (
-                      <Form.Item>
-                        <Button htmlType="submit" type="primary">
-                          Add
-                        </Button>
+                        </span>
                       </Form.Item>
-                    )}
-                  </Space>
+                    </>
+                  ) : (
+                    <Form.Item>
+                      <Button htmlType="submit" type="primary" block>
+                        Add
+                      </Button>
+                    </Form.Item>
+                  )}
                 </Form>
               </Row>
             )}

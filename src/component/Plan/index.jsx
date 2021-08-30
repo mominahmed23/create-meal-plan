@@ -53,16 +53,16 @@ const Plan = () => {
     rows.push(i);
   }
 
-  const onDelete = () => {
-    //console"iiii", deleteWeek.slice(-1));
+  // const onDelete = () => {
+  //   //console"iiii", deleteWeek.slice(-1));
 
-    const filtered = numOfWeeks.filter((data) => data != deleteWeek.slice(-1));
+  //   const filtered = numOfWeeks.filter((data) => data != deleteWeek.slice(-1));
 
-    dispatch(addPlanAction(filtered));
-    dispatch(deleteWeekAction(deleteWeek));
-    message.success("Week Deleted Successfully");
-    setDeleteWeek(null);
-  };
+  //   dispatch(addPlanAction(filtered));
+  //   dispatch(deleteWeekAction(deleteWeek));
+  //   message.success("Week Deleted Successfully");
+  //   setDeleteWeek(null);
+  // };
 
   const SortableItem = sortableElement(
     ({
@@ -75,26 +75,20 @@ const Plan = () => {
       setArrayIndex,
     }) => (
       <>
-        <div className="week-days d-flex align-center app-hover-cursor">
+        <div
+          className="week-days d-flex align-center app-hover-cursor"
+          onClick={() => {
+            setWeekDaysVisible(true);
+            setDefaultView(true);
+            setWeekNumber(value.slice(-1));
+            setArrayIndex(index);
+          }}
+        >
           <div className="d-flex ">
-            <h3
-              className="mx-4 mb-0"
-              onClick={() => {
-                setWeekDaysVisible(true);
-                setDefaultView(true);
-                setWeekNumber(value.slice(-1));
-                setArrayIndex(index);
-              }}
-            >
-              {value}
-            </h3>
-            <DeleteOutlined
-              style={{ marginRight: "150px" }}
-              onClick={() => setDeleteWeek(value)}
-            />
+            <h3 className="mx-4 mb-0">{value}</h3>
           </div>
           <div>
-            <RightOutlined />
+            <RightOutlined style={{ marginLeft: "150px" }} />
           </div>
         </div>
         <Divider />
@@ -161,8 +155,13 @@ const Plan = () => {
           )}
         </>
       )}
-      {weekDaysVisible && <WeekDays weekIndex={weekNumber} />}
-      {deleteWeek && (
+      {weekDaysVisible && (
+        <WeekDays
+          weekIndex={weekNumber}
+          setWeekDaysVisibleFalse={() => setWeekDaysVisible(false)}
+        />
+      )}
+      {/* {deleteWeek && (
         <Modal
           title="Delete Week"
           visible={deleteWeek}
@@ -185,7 +184,7 @@ const Plan = () => {
             </Button>
           </div>
         </Modal>
-      )}
+      )} */}
     </div>
   );
 };

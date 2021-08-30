@@ -23,7 +23,7 @@ const weekItems = [
   "Sunday",
 ];
 
-const WeekDays = ({ weekIndex }) => {
+const WeekDays = ({ weekIndex, setWeekDaysVisibleFalse }) => {
   const [dayIndex, setDayIndex] = useState("");
   const [isMealModalVisible, setIsMealModalVisible] = useState(false);
   const [deleteWeek, setDeleteWeek] = useState(false);
@@ -128,10 +128,11 @@ const WeekDays = ({ weekIndex }) => {
             dayIndex={dayIndex}
           />
           <WeekDelete
-            isWeekDeleteModalVisible={deleteWeek}
+            isDeleteModalVisible={deleteWeek}
             setIsDeleteModalVisible={() => setDeleteWeek(false)}
             handleDeleteOk={() => setDeleteWeek(false)}
             weekIndex={weekIndex}
+            setWeekDaysVisibleFalse={setWeekDaysVisibleFalse}
           />
         </>
       ))}
