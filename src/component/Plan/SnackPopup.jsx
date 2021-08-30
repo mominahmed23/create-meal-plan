@@ -182,8 +182,10 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
                             // type="primary"
                             style={{
                               width: '90%',
-                              background: '#151515',
+                              background: '#000000',
                               color: 'white',
+                              borderRadius: '2px',
+                              borderColor: 'none',
                             }}
                           >
                             Update
@@ -194,7 +196,14 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
                   ) : (
                     <Form.Item>
                       <Button
-                        style={{ width: '100%' }}
+                        style={{
+                          width: '100%',
+                          background: '#000000',
+                          color: 'white',
+                          borderColor: 'none',
+
+                          borderRadius: '2px',
+                        }}
                         htmlType="submit"
                         type="primary"
                       >
