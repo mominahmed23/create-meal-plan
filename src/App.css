@@ -5,3 +5,13 @@
   font-size: 28px;
   font-weight: 600;
 }
+ul {
+  margin: -8px -45px;
+}
+ul .ant-divider-horizontal {
+  display: flex;
+  clear: both;
+  width: 100%;
+  min-width: 100%;
+  margin: 15px 0;
+}

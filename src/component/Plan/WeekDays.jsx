@@ -10,6 +10,7 @@ import {
 import { Divider, Dropdown, Menu, Typography } from "antd";
 import { addWeekAction } from "../../redux/actions/weeks";
 import WeekImport from "../WeekImport";
+import WeekDelete from "../WeekDelete";
 
 const { Title, Text } = Typography;
 const weekItems = [
@@ -25,6 +26,7 @@ const weekItems = [
 const WeekDays = ({ weekIndex }) => {
   const [dayIndex, setDayIndex] = useState("");
   const [isMealModalVisible, setIsMealModalVisible] = useState(false);
+  const [deleteWeek, setDeleteWeek] = useState(false);
   const [isWeekImportModalVisible, setIsWeekImportModalVisible] =
     useState(false);
 
@@ -52,6 +54,13 @@ const WeekDays = ({ weekIndex }) => {
         onClick={() => setIsWeekImportModalVisible(true)}
       >
         Import week
+      </Menu.Item>
+      <Menu.Item
+        key="1"
+        icon={<UserOutlined />}
+        onClick={() => setDeleteWeek(true)}
+      >
+        Remove week
       </Menu.Item>
     </Menu>
   );
@@ -117,6 +126,12 @@ const WeekDays = ({ weekIndex }) => {
             handleWeekImportOk={() => setIsWeekImportModalVisible(false)}
             weekIndex={weekIndex}
             dayIndex={dayIndex}
+          />
+          <WeekDelete
+            isWeekDeleteModalVisible={deleteWeek}
+            setIsDeleteModalVisible={() => setDeleteWeek(false)}
+            handleDeleteOk={() => setDeleteWeek(false)}
+            weekIndex={weekIndex}
           />
         </>
       ))}

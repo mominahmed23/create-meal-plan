@@ -1,10 +1,10 @@
-import { Form, Input } from 'antd';
-import TextArea from 'antd/lib/input/TextArea';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addDescriptionAction } from '../../redux/actions/categories';
-import { useState } from 'react';
-import { Typography } from 'antd';
+import { Form, Input } from "antd";
+import TextArea from "antd/lib/input/TextArea";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addDescriptionAction } from "../../redux/actions/categories";
+import { useState } from "react";
+import { Typography } from "antd";
 const { Title, Text } = Typography;
 const Description = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const Description = () => {
     setIsReadMore(!isReadMore);
   };
   let text = description;
-  const error = 'Max limit reached';
+  const error = "Max limit reached";
   const addDescription = (desc) => {
     if (desc.length > 5000) {
       setMaxLengthError(true);
@@ -41,7 +41,7 @@ const Description = () => {
             onChange={(e) => addDescription(e.target.value)}
           />
           <span onClick={toggleReadMore} className="read-or-hide">
-            {isReadMore && text.length > 120 ? '...read more' : ''}
+            {isReadMore && text.length > 1200 ? "...read more" : ""}
           </span>
 
           {maxLengthError && (
