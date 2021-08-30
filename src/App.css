@@ -24,3 +24,11 @@ ul .ant-divider-horizontal {
   min-width: 100%;
   margin: 15px 0;
 }
+
+.default-title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}

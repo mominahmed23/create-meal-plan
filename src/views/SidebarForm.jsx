@@ -44,13 +44,14 @@ const SidebarForm = () => {
   if (view === null) {
     viewHelper.push(
       <div style={{ position: "relative", height: "100%" }}>
-        <div className="d-flex mb-5">
-          <div className="mr-13">
-            <CloseOutlined />
+        <div className="position-relative mb-9">
+          <div className="position-absolute">
+            <CloseOutlined size="large" />
           </div>
-          <div>
-            <Text strong>Create Meal Plan</Text>
-          </div>
+
+          <h4 className="default-title text-center" strong>
+            Create Meal Plan
+          </h4>
         </div>
         <RecipeTitle />
         <Cover />
@@ -118,7 +119,7 @@ const SidebarForm = () => {
 
         <div
           className="d-flex justify-space-between"
-          style={{ position: "absolute", width: "100%", bottom: "30px" }}
+          style={{ position: "absolute", width: "100%", bottom: "0px" }}
         >
           <Button style={{ width: "120px" }} onClick={logData}>
             Post
@@ -205,9 +206,9 @@ const SidebarForm = () => {
 
   return (
     <div
-      className="custom-sidebar pt-4 px-3 pb-2"
+      className="custom-sidebar pt-4 px-4 pb-2"
       style={{
-        width: 300,
+        width: 355,
         flexShrink: 0,
         height: "100vh",
         backgroundColor: "#ffffff",
