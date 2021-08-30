@@ -45,7 +45,7 @@ const SidebarForm = () => {
     viewHelper.push(
       <div style={{ position: "relative", height: "100%" }}>
         <div className="d-flex mb-5">
-          <div className="mr-13">
+          <div>
             <CloseOutlined />
           </div>
           <div>

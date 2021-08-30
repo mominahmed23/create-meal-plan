@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Image, Steps, Upload } from "antd";
 import { message } from "antd";
-import { InboxOutlined } from "@ant-design/icons";
+import { InboxOutlined, ArrowUpOutlined } from "@ant-design/icons";
 import { Typography } from "antd";
 import {
   addCoverImageAction,
@@ -58,10 +58,10 @@ const Cover = () => {
           ) : (
             <>
               <p className="ant-upload-drag-icon">
-                <InboxOutlined />
+                <ArrowUpOutlined />
               </p>
               <p className="ant-upload-text">
-                Click or drag images to this area to upload
+                Click to upload or drag image here
               </p>
             </>
           )}
