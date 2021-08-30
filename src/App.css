@@ -3,7 +3,16 @@
 }
 .page-heading {
   font-size: 28px;
+  font-weight: 700;
+  line-height: 42px;
+}
+.week-items {
+  font-size: 14px;
   font-weight: 600;
+}
+.ant-modal-header {
+  padding-bottom: 0px;
+  border-bottom: 0px;
 }
 ul {
   margin: -8px -45px;

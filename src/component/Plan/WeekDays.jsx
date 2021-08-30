@@ -10,6 +10,7 @@ import {
 import { Divider, Dropdown, Menu, Typography } from "antd";
 import { addWeekAction } from "../../redux/actions/weeks";
 import WeekImport from "../WeekImport";
+import "../../App.css";
 import WeekDelete from "../WeekDelete";
 
 const { Title, Text } = Typography;
@@ -77,13 +78,13 @@ const WeekDays = ({ weekIndex, setWeekDaysVisibleFalse }) => {
   };
   return (
     <div>
-      <Title level={3} className="mb-8">{`week ${weekIndex}`}</Title>
+      <h2 className="page-heading">{`Week ${weekIndex}`}</h2>
 
       {weekItems.map((item, i) => (
         <>
           <div className="d-flex align-center justify-space-between">
             <div>
-              <Text strong>{item}</Text>
+              <h2 className="week-items">{item}</h2>
             </div>
             <div>
               <Dropdown overlay={menu} trigger={"click"}>

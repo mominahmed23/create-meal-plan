@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import WeekDays from "./WeekDays";
+import { Typography } from "antd";
 import { Button, Divider, message } from "antd";
 import {
   DeleteOutlined,
@@ -7,8 +9,6 @@ import {
 } from "@ant-design/icons";
 import SelectPlan from "./SelectPlan";
 import { useDispatch, useSelector } from "react-redux";
-import WeekDays from "./WeekDays";
-import { Typography } from "antd";
 import { addPlanAction } from "../../redux/actions/categories";
 import { addWeekAction, deleteWeekAction } from "../../redux/actions/weeks";
 import {
@@ -104,7 +104,9 @@ const Plan = () => {
           <div className="d-flex justify-space-between align-center mr-9">
             <div>
               {" "}
-              <Title level={4}>Weeks</Title>
+              <Title level={4} className="page-heading">
+                Weeks
+              </Title>
             </div>
             <div>
               <Text strong>1</Text>
@@ -148,6 +150,8 @@ const Plan = () => {
             </div>
           )}
 
+          <div></div>
+          <Divider style={{ marginTop: "0" }} />
           {weekChangeVisible && (
             <SelectPlan
               weekChangeVisible={() => setWeekChangeVisible(!weekChangeVisible)}
