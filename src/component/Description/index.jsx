@@ -1,16 +1,21 @@
-import { Form, Input } from "antd";
-import TextArea from "antd/lib/input/TextArea";
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addDescriptionAction } from "../../redux/actions/categories";
-import { useState } from "react";
-import { Typography } from "antd";
+import { Form, Input } from 'antd';
+import TextArea from 'antd/lib/input/TextArea';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addDescriptionAction } from '../../redux/actions/categories';
+import { useState } from 'react';
+import { Typography } from 'antd';
 const { Title, Text } = Typography;
 const Description = () => {
   const dispatch = useDispatch();
   const { description } = useSelector((state) => state.mealPlan);
   const [maxLengthError, setMaxLengthError] = useState(false);
-  const error = "Max limit reached";
+  const [isReadMore, setIsReadMore] = useState(true);
+  const toggleReadMore = () => {
+    setIsReadMore(!isReadMore);
+  };
+  let text = description;
+  const error = 'Max limit reached';
   const addDescription = (desc) => {
     if (desc.length > 5000) {
       setMaxLengthError(true);
@@ -28,13 +33,16 @@ const Description = () => {
 
           <TextArea
             showCount
-            value={description}
+            value={isReadMore ? text.slice(0, 120) : text}
             maxLength={5000}
             minLength={3}
             rows={4}
             placeholder="Describe your recipe"
             onChange={(e) => addDescription(e.target.value)}
           />
+          <span onClick={toggleReadMore} className="read-or-hide">
+            {isReadMore && text.length > 120 ? '...read more' : ''}
+          </span>
 
           {maxLengthError && (
             <div>
