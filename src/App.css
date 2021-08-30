@@ -1,10 +1,11 @@
 .app-hover-cursor {
   cursor: pointer;
 }
-.page-heading {
+.default-component-heading {
   font-size: 28px;
   font-weight: 700;
   line-height: 42px;
+  color: #000000;
 }
 .week-items {
   font-size: 14px;
@@ -23,4 +24,30 @@ ul .ant-divider-horizontal {
   width: 100%;
   min-width: 100%;
   margin: 15px 0;
+}
+
+.default-title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}
+.default-subtitle {
+  margin-bottom: 0;
+  font-size: 14px;
+  margin-right: 3px;
+  line-height: 17px;
+  font-weight: 400;
+  color: #999999;
+}
+.side-bar-item {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  cursor: pointer;
+  margin: 10px 0px;
+}
+.ant-upload.ant-upload-drag {
+  border: 2px dashed #d9d9d9;
 }

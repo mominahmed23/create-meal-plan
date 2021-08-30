@@ -76,7 +76,7 @@ const Plan = () => {
     }) => (
       <>
         <div
-          className="week-days d-flex align-center app-hover-cursor"
+          className="d-flex align-center app-hover-cursor"
           onClick={() => {
             setWeekDaysVisible(true);
             setDefaultView(true);
@@ -85,10 +85,10 @@ const Plan = () => {
           }}
         >
           <div className="d-flex ">
-            <h3 className="mx-4 mb-0">{value}</h3>
+            <h3 className="mx-2 mb-0">{value}</h3>
           </div>
           <div>
-            <RightOutlined style={{ marginLeft: "150px" }} />
+            <RightOutlined style={{ marginLeft: "220px" }} />
           </div>
         </div>
         <Divider />
@@ -97,10 +97,10 @@ const Plan = () => {
   );
   const DragHandle = sortableHandle(() => <span> </span>);
   return (
-    <div>
+    <div className="px-3">
       {!defaultView && (
         <>
-          <span className="page-heading">Plan</span>
+          <span className="default-component-heading">Plan</span>
           <div className="d-flex justify-space-between align-center mr-9">
             <div>
               {" "}
@@ -150,8 +150,6 @@ const Plan = () => {
             </div>
           )}
 
-          <div></div>
-          <Divider style={{ marginTop: "0" }} />
           {weekChangeVisible && (
             <SelectPlan
               weekChangeVisible={() => setWeekChangeVisible(!weekChangeVisible)}

@@ -26,10 +26,10 @@ const Description = () => {
   };
   //consoledescription);
   return (
-    <>
+    <div className="px-3">
       <Form layout="vertical">
         <Form.Item>
-          <span className="page-heading">Description</span>
+          <span className="default-component-heading">Description</span>
 
           <TextArea
             showCount
@@ -51,7 +51,7 @@ const Description = () => {
           )}
         </Form.Item>
       </Form>
-    </>
+    </div>
   );
 };
 
