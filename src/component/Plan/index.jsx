@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Divider, message } from 'antd';
-import { DeleteOutlined, BorderOuterOutlined } from '@ant-design/icons';
-import SelectPlan from './SelectPlan';
-import { useDispatch, useSelector } from 'react-redux';
 import WeekDays from './WeekDays';
 import { Typography } from 'antd';
+import { Button, Divider, message } from 'antd';
+import {
+  DeleteOutlined,
+  BorderOuterOutlined,
+  RightOutlined,
+} from '@ant-design/icons';
+import SelectPlan from './SelectPlan';
+import { useDispatch, useSelector } from 'react-redux';
 import { addPlanAction } from '../../redux/actions/categories';
 import { addWeekAction, deleteWeekAction } from '../../redux/actions/weeks';
 import {
@@ -70,32 +74,40 @@ const Plan = () => {
       setWeekNumber,
       setArrayIndex,
     }) => (
-      <div className="d-flex align-center my-0 app-hover-cursor">
-        <DragHandle />
-        <h3
-          className="mx-4 mb-0"
-          onClick={() => {
-            setWeekDaysVisible(true);
-            setDefaultView(true);
-            setWeekNumber(value.slice(-1));
-            setArrayIndex(index);
-            //console"item nedde", key);
-            //console"index nedde", index);
-          }}
-        >
-          {value}
-        </h3>
-        <DeleteOutlined className="ml-5" onClick={() => setDeleteWeek(value)} />
-      </div>
+      <>
+        <div className="week-days d-flex align-center app-hover-cursor">
+          <div className="d-flex ">
+            <h3
+              className="mx-4 mb-0"
+              onClick={() => {
+                setWeekDaysVisible(true);
+                setDefaultView(true);
+                setWeekNumber(value.slice(-1));
+                setArrayIndex(index);
+              }}
+            >
+              {value}
+            </h3>
+            <DeleteOutlined
+              style={{ marginRight: '150px' }}
+              onClick={() => setDeleteWeek(value)}
+            />
+          </div>
+          <div>
+            <RightOutlined />
+          </div>
+        </div>
+        <Divider />
+      </>
     )
   );
-  const DragHandle = sortableHandle(() => <BorderOuterOutlined />);
+  const DragHandle = sortableHandle(() => <span> </span>);
   return (
     <div>
       {!defaultView && (
         <>
           <span className="page-heading">Plan</span>
-          <div className="d-flex justify-space-between">
+          <div className="d-flex justify-space-between align-center mr-9">
             <div>
               {' '}
               <Title level={4} className="page-heading">
@@ -106,7 +118,7 @@ const Plan = () => {
               <Text strong>1</Text>
             </div>
           </div>
-          <div className="d-flex justify-space-between">
+          <div className="d-flex justify-space-between align-center mt-0">
             <div>
               {' '}
               <Text disabled>How many weeks in plan?</Text>
@@ -126,17 +138,13 @@ const Plan = () => {
           <Divider style={{ marginTop: '0' }} />
           {!weekChangeVisible && (
             <div className="d-flex">
-              <SortableContainer
-                onSortEnd={onSortEnd}
-                distance={1}
-                useDragHandle
-              >
+              <SortableContainer onSortEnd={onSortEnd} distance={1}>
                 {items?.map((item, index) => (
                   <>
                     <SortableItem
                       key={item}
                       index={index}
-                      value={`week${item}`}
+                      value={`Week ${item}`}
                       setWeekDaysVisible={setWeekDaysVisible}
                       setDefaultView={setDefaultView}
                       setWeekNumber={setWeekNumber}
@@ -146,55 +154,6 @@ const Plan = () => {
                 ))}
               </SortableContainer>
             </div>
-
-            // numOfWeeks.map((item, i) => (
-            // <>
-            //   <div className="d-flex">
-            //     <div>
-            //       <h4
-            //         className="app-hover-cursor"
-            //         key={item}
-            //         onClick={() => {
-            //           setWeekDaysVisible(true);
-            //           setDefaultView(true);
-            //           setWeekNumber(item);
-            //           setArrayIndex(i);
-            //           //console'item nedde', item, i);
-            //         }}
-            //       >
-            //         {`Week ${item}`}
-            //       </h4>
-            //     </div>
-            //     <div>
-            //       <DeleteOutlined
-            //         className="ml-5"
-            //         onClick={() => onDelete(item)}
-            //       />
-            //     </div>
-            //   </div>
-            //   <Divider style={{ marginTop: '0' }} />
-            // </>
-
-            // <div className="d-flex">
-            //   <SortableContainer onSortEnd={onSortEnd} distance={1}>
-            //     {items?.map((item, index) => (
-            //       <>
-            //         {/* {//consoleitem, index)} */}
-            //         <SortableItem
-            //           key={item}
-            //           index={index}
-            //           value={`week ${item}`}
-            //           setWeekDaysVisible={setWeekDaysVisible}
-            //           setDefaultView={setDefaultView}
-            //           setWeekNumber={setWeekNumber}
-            //           setArrayIndex={setArrayIndex}
-            //         >
-
-            //         </SortableItem>
-            //       </>
-            //     ))}
-            //   </SortableContainer>
-            // </div>
           )}
 
           <div></div>

@@ -14,7 +14,6 @@ const WeekImport = ({
   setIsWeekImportModalVisible,
   handleWeekImportOk,
   weekIndex,
-  dayIndex,
 }) => {
   const [weekCount, setWeekCount] = useState(null);
   const [errorMessage, setErrorMessage] = useState(false);
