@@ -77,6 +77,14 @@ ul .ant-divider-horizontal {
   color: #000000;
   float: left;
 }
+.main-title {
+  font-family: SF Pro Text;
+  margin: 0;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}
 .default-subtitle {
   font-family: SF Pro Text;
   margin-bottom: 0;

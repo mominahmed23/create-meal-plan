@@ -53,7 +53,7 @@ const SidebarForm = () => {
             <CloseOutlined size="large" />
           </div>
 
-          <h4 className="text-center" strong>
+          <h4 className="main-title text-center" strong>
             Create Meal Plan
           </h4>
         </div>
