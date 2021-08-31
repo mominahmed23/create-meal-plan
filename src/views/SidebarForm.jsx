@@ -15,6 +15,7 @@ import {
   CalendarOutlined,
   PieChartOutlined,
   CloseOutlined,
+  DollarOutlined,
 } from "@ant-design/icons";
 import DiscriptionICon from "../icons/DiscriptionIcon.png";
 import PlanIcon from "../icons/PlanIcon.png";
@@ -103,8 +104,9 @@ const SidebarForm = () => {
           onClick={() => message.info("Not Working right now")}
         >
           <div className="d-flex align-center">
-            <div className="mr-4">
-              <img src={Dollar} className="dollar-sign-style"></img>
+            <div className="mr-3">
+              <DollarOutlined style={{ fontSize: "18px" }} />
+              {/* <img src={Dollar} className="dollar-sign-style"></img> */}
             </div>
             <div>
               <div>

@@ -2,6 +2,7 @@
   cursor: pointer;
 }
 .default-component-heading {
+  font-family: SF Pro Display;
   font-size: 28px;
   font-weight: 700;
   line-height: 42px;
@@ -62,11 +63,13 @@ ul .ant-divider-horizontal {
   display: none;
 }
 .snackTitle {
+  font-family: SF Pro Text;
   font-size: 14px;
   font-weight: 400;
   line-height: 19.6px;
 }
 .default-title {
+  font-family: SF Pro Text;
   margin: 0;
   font-weight: 600;
   font-size: 14px;
@@ -75,6 +78,7 @@ ul .ant-divider-horizontal {
   float: left;
 }
 .default-subtitle {
+  font-family: SF Pro Text;
   margin-bottom: 0;
   font-size: 14px;
   margin-right: 3px;
@@ -84,6 +88,7 @@ ul .ant-divider-horizontal {
   float: left;
 }
 .dragger-text {
+  font-family: SF Pro Text;
   margin-bottom: 0;
   font-size: 14px;
   margin-right: 3px;
@@ -102,7 +107,7 @@ ul .ant-divider-horizontal {
   border: 2px dashed #d9d9d9;
 }
 .week-sub-comp {
-  /* font-family: SF Pro Text; */
+  font-family: SF Pro Text;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -110,7 +115,7 @@ ul .ant-divider-horizontal {
   text-align: left;
 }
 .week-sub-comp-num {
-  /* font-family: SF Pro Text; */
+  font-family: SF Pro Text;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -118,6 +123,7 @@ ul .ant-divider-horizontal {
   /* text-align: center; */
 }
 .week-subtitle {
+  font-family: SF Pro Text;
   font-size: 13px;
   margin-top: -4px;
   margin-bottom: 5px;
@@ -126,7 +132,7 @@ ul .ant-divider-horizontal {
   color: #999999;
 }
 .week-name {
-  /* font-family: SF Pro Text; */
+  font-family: SF Pro Text;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -136,7 +142,7 @@ ul .ant-divider-horizontal {
   text-align: left;
 }
 .day-name {
-  /* font-family: SF Pro Text; */
+  font-family: SF Pro Text;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -144,7 +150,7 @@ ul .ant-divider-horizontal {
   text-align: left;
 }
 .meal-item {
-  /* font-family: SF Pro Text; */
+  font-family: SF Pro Text;
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
@@ -154,7 +160,7 @@ ul .ant-divider-horizontal {
   width: 150px;
 }
 .meal-sub-item {
-  /* font-family: SF Pro Text; */
+  font-family: SF Pro Text;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;

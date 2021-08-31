@@ -90,7 +90,9 @@ const Settings = () => {
           SEO preview
         </h4>
         <div style={{ border: "1px solid #cecece", minHeight: "100px" }}>
-          <a>New Meal Plan by Talha</a>
+          <div style={{ margin: "3px 3px" }}>
+            <a>New Meal Plan by Talha</a>
+          </div>
         </div>
       </div>
     </div>

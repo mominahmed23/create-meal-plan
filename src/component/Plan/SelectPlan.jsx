@@ -32,6 +32,7 @@ const SelectPlan = ({ importWeekForm, weekChangeVisible }) => {
           name="plan-length"
         >
           <Select
+            style={{ minWidth: "200px" }}
             defaultValue={"Select number of week (s)"}
             onChange={(e) => {
               setWeekCount(e);
