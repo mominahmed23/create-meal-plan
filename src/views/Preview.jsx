@@ -9,8 +9,8 @@ const Preview = () => {
         flexGrow: 1,
         backgroundColor: "grey",
         height: "100vh",
-        marginLeft: 300,
-        padding: "100px 50px 20px 50px",
+        marginLeft: 330,
+        padding: "70px 50px 20px 50px",
       }}
     >
       <Card

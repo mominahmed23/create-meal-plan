@@ -6,8 +6,9 @@ import {
   DashOutlined,
   DeleteOutlined,
   UserOutlined,
+  VerticalAlignBottomOutlined,
 } from "@ant-design/icons";
-import { Divider, Dropdown, Menu, Typography } from "antd";
+import { Divider, Dropdown, Menu, message, Typography } from "antd";
 import { addWeekAction } from "../../redux/actions/weeks";
 import WeekImport from "../WeekImport";
 import "../../App.css";
@@ -60,18 +61,21 @@ const WeekDays = ({ weekIndex, setWeekDaysVisibleFalse }) => {
 
     dispatch(addWeekAction(weekplan, weekIndex));
   };
+  const changeLabel = () => {
+    message.info("Not Working right now");
+  };
   const menu = (
     <Menu>
       <Menu.Item
         key="1"
-        icon={<UserOutlined />}
+        icon={<VerticalAlignBottomOutlined />}
         onClick={() => setIsWeekImportModalVisible(true)}
       >
         Import week
       </Menu.Item>
       <Menu.Item
-        key="1"
-        icon={<UserOutlined />}
+        key="2"
+        icon={<DeleteOutlined />}
         onClick={() => setDeleteWeek(true)}
       >
         Remove week
@@ -81,8 +85,11 @@ const WeekDays = ({ weekIndex, setWeekDaysVisibleFalse }) => {
 
   const deleteMealMenu = (
     <Menu>
-      <Menu.Item key="1" icon={<UserOutlined />} onClick={deleteItem}>
-        Delete Maal
+      <Menu.Item key="1" icon={<DeleteOutlined />} onClick={changeLabel}>
+        Change Label
+      </Menu.Item>
+      <Menu.Item key="2" icon={<DeleteOutlined />} onClick={deleteItem}>
+        Delete from day
       </Menu.Item>
     </Menu>
   );

@@ -17,14 +17,8 @@ const RecipeTitle = () => {
     <>
       <Form layout="vertical">
         <Form.Item>
-          {/* <Title level={5} className=" my-2">
-            Title{" "}
-            <Text level={6} disabled>
-              (required)
-            </Text> 
-          </Title>*/}
           <div className="d-flex align-center mb-3">
-            <h4 className="default-title text-center" strong>
+            <h4 className="default-title text-center mr-1" strong>
               Title{" "}
             </h4>
             <h4 className="default-subtitle text-center" strong>

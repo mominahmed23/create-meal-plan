@@ -41,8 +41,8 @@ const Plan = () => {
   const [deleteWeek, setDeleteWeek] = useState(null);
 
   const { numOfWeeks } = useSelector((state) => state.mealPlan);
+
   useEffect(() => {
-    //console"number of weeks", numOfWeeks);
     setItems(numOfWeeks);
   }, [numOfWeeks]);
   const { weeks } = useSelector((state) => state);
@@ -52,17 +52,6 @@ const Plan = () => {
   for (let i = 1; i <= numOfWeeks; i++) {
     rows.push(i);
   }
-
-  // const onDelete = () => {
-  //   //console"iiii", deleteWeek.slice(-1));
-
-  //   const filtered = numOfWeeks.filter((data) => data != deleteWeek.slice(-1));
-
-  //   dispatch(addPlanAction(filtered));
-  //   dispatch(deleteWeekAction(deleteWeek));
-  //   message.success("Week Deleted Successfully");
-  //   setDeleteWeek(null);
-  // };
 
   const SortableItem = sortableElement(
     ({
@@ -88,7 +77,7 @@ const Plan = () => {
             <span className="week-name">{value}</span>
           </div>
           <div>
-            <RightOutlined/>
+            <RightOutlined />
           </div>
         </div>
         <Divider />
@@ -106,7 +95,7 @@ const Plan = () => {
               {" "}
               <span className="week-sub-comp">Weeks </span>
             </div>
-            <span className="week-sub-comp-num">1 </span>
+            <span className="week-sub-comp-num">{numOfWeeks.length} </span>
           </div>
           <div className="d-flex justify-space-between align-center">
             <div className="week-subtitle">

@@ -34,8 +34,8 @@ const Cover = () => {
   return (
     <div>
       <div className="d-flex align-center mb-3">
-        <h4 className="default-title text-center" strong>
-          Cover{" "}
+        <h4 className="default-title text-center mr-1" strong>
+          {"Cover "}
         </h4>
         <h4 className="default-subtitle text-center" strong>
           {" "}
@@ -62,7 +62,6 @@ const Cover = () => {
           ) : (
             <>
               <p className="ant-upload-drag-icon">
-                {/* <img src={Arrowup}></img> */}
                 <ArrowUpOutlined
                   style={{ color: "#999999", fontSize: "25px" }}
                 />

@@ -19,9 +19,7 @@ import {
 import DiscriptionICon from "../icons/DiscriptionIcon.png";
 import PlanIcon from "../icons/PlanIcon.png";
 import NutritionIcon from "../icons/NutritionIcon.png";
-import SettingsIcon from "../icons/SettingsIcon.png";
-import Set from "../icons/Set.png";
-import dollar from "../icons/dollar.png";
+import Dollar from "../icons/Dollar.png";
 import { useSelector } from "react-redux";
 
 const { Title, Text } = Typography;
@@ -103,7 +101,7 @@ const SidebarForm = () => {
         <div className="side-bar-item">
           <div className="d-flex align-center">
             <div className="mr-4">
-              <img src={NutritionIcon}></img>
+              <img src={Dollar} className="dollar-sign-style"></img>
             </div>
             <div>
               <div>

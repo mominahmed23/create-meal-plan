@@ -93,10 +93,10 @@ ul .ant-divider-horizontal {
 }
 .side-bar-item {
   display: flex;
-  text-align: center;
   justify-content: space-between;
   cursor: pointer;
   margin: 17px 0px;
+  align-items: center;
 }
 .ant-upload.ant-upload-drag {
   border: 2px dashed #d9d9d9;
@@ -161,4 +161,10 @@ ul .ant-divider-horizontal {
   line-height: 17px;
   color: rgba(60, 60, 67, 0.8);
   text-align: left;
+}
+.dollar-sign-style {
+  width: 23px;
+  margin-left: -4px;
+  margin-right: -4px;
+  margin-top: 5px;
 }
