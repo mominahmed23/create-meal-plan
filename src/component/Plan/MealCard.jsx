@@ -85,7 +85,12 @@ const MealCard = ({
           <Button key="back" onClick={handleCancel}>
             Cancel
           </Button>,
-          <Button key="submit" type="primary" onClick={onModalOk}>
+          <Button
+            key="submit"
+            type="primary"
+            onClick={onModalOk}
+            disabled={selectedMealName.length === 0}
+          >
             Add
           </Button>,
         ]}

@@ -1,4 +1,4 @@
-import { Input, Space, Form, Button, Row, Col, Select } from "antd";
+import { Input, Space, Form, Button, Row, Col, Select, message } from "antd";
 import Modal from "antd/lib/modal/Modal";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,6 +39,7 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
     }
   };
   const onSnackDelete = () => {
+    message.info("Not working Right now");
     //console"delete function");
   };
   return (
@@ -175,13 +176,11 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
                           />
                           <Button
                             htmlType="submit"
-                            // type="primary"
+                            type="default"
                             style={{
                               width: "90%",
-                              background: "#000000",
-                              color: "white",
+
                               borderRadius: "2px",
-                              borderColor: "none",
                             }}
                           >
                             Update
@@ -193,15 +192,12 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
                     <Form.Item>
                       <Button
                         style={{
-                          width: "95%",
-                          background: "#000000",
-                          color: "white",
-                          borderColor: "none",
+                          width: "100%",
 
                           borderRadius: "2px",
                         }}
                         htmlType="submit"
-                        type="primary"
+                        type="default"
                       >
                         Add
                       </Button>

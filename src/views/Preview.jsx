@@ -7,17 +7,13 @@ const Preview = () => {
       className="preview"
       style={{
         flexGrow: 1,
-        backgroundColor: "grey",
         height: "100vh",
         marginLeft: 330,
         padding: "70px 50px 20px 50px",
       }}
     >
-      <Card
-        title="Preview"
-        bordered={false}
-        style={{ minHeight: "500px" }}
-      ></Card>
+      <h1 className="title-preview">Preview</h1>
+      <div className="preview-card"></div>
     </div>
   );
 };
