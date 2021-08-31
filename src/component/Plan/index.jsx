@@ -85,10 +85,10 @@ const Plan = () => {
           }}
         >
           <div className="d-flex ">
-            <h3 className="mx-2 mb-0">{value}</h3>
+            <span className="week-name">{value}</span>
           </div>
           <div>
-            <RightOutlined style={{ marginLeft: "220px" }} />
+            <RightOutlined/>
           </div>
         </div>
         <Divider />
@@ -101,21 +101,16 @@ const Plan = () => {
       {!defaultView && (
         <>
           <span className="default-component-heading">Plan</span>
-          <div className="d-flex justify-space-between align-center mr-9">
+          <div className="d-flex justify-space-between align-center mr-9 mt-5">
             <div>
               {" "}
-              <Title level={4} className="page-heading">
-                Weeks
-              </Title>
+              <span className="week-sub-comp">Weeks </span>
             </div>
-            <div>
-              <Text strong>1</Text>
-            </div>
+            <span className="week-sub-comp-num">1 </span>
           </div>
-          <div className="d-flex justify-space-between align-center mt-0">
-            <div>
-              {" "}
-              <Text disabled>How many weeks in plan?</Text>
+          <div className="d-flex justify-space-between align-center">
+            <div className="week-subtitle">
+              <span>How many weeks in plan?</span> <Text disabled></Text>
             </div>
             <div>
               {" "}
@@ -127,9 +122,11 @@ const Plan = () => {
               </Button>
             </div>
           </div>
-
-          <Title level={4}>Manage</Title>
-          <Divider style={{ marginTop: "0" }} />
+          <Divider style={{ marginTop: "5px" }} />
+          <div className="week-sub-comp">
+            <span>Manage</span>
+          </div>
+          <Divider style={{ marginTop: "15px" }} />
           {!weekChangeVisible && (
             <div className="d-flex">
               <SortableContainer onSortEnd={onSortEnd} distance={1}>

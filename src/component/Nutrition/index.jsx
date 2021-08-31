@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addNutritionAction } from "../../redux/actions/Nutrition";
 
-var Narray = ["cal", "protien", "fat", "carbs"];
+var Narray = ["Calories", "Protien", "Fat", "Carbs"];
 const Nutrition = () => {
   const dispatch = useDispatch();
   const { nutrition } = useSelector((state) => state);
@@ -16,22 +16,24 @@ const Nutrition = () => {
   };
   return (
     <div>
-      <h2 className="mt-5">Nutrition</h2>
-      <p>Enter nutrition macros per day</p>
-      {Narray.map((item) => (
-        <div className="d-flex align-center justify-space-between mb-5">
-          <h4>{item}</h4>
-          <Input
-            name={item}
-            placeholder="#"
-            suffix={item === "cal" ? item : "g"}
-            size={"middle"}
-            style={{ width: "60%" }}
-            onChange={onBlurHandle}
-            value={nutrition[item]}
-          />
-        </div>
-      ))}
+      <span className="default-component-heading">Nutrition</span>
+      <p className="dragger-text">Enter nutrition macros per day</p>
+      <div className="mt-10">
+        {Narray.map((item) => (
+          <div className="d-flex align-center justify-space-between mb-5">
+            <h4 className="default-title">{item}</h4>
+            <Input
+              name={item}
+              placeholder="#"
+              suffix={item === "Calories" ? "cal" : "g"}
+              size={"middle"}
+              style={{ width: "35%" }}
+              onChange={onBlurHandle}
+              value={nutrition[item]}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

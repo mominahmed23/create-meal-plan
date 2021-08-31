@@ -1,22 +1,22 @@
-import { Card, Input, message, Table } from 'antd';
-import Modal from 'antd/lib/modal/Modal';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addMealPlanAction } from '../../redux/actions/categories';
-import { CheckOutlined, SearchOutlined } from '@ant-design/icons';
-import SnackPopup from './SnackPopup';
-import { addWeekAction } from './../../redux/actions/weeks/index';
-import './MealInfo.css';
-import { Button } from 'antd';
-import '../../App.css';
-import addSnack from '../../assets/add_snack.png';
-import addMeal from '../../assets/add_meal.png';
-import img1 from '../../assets/img1.png';
-import img2 from '../../assets/img2.png';
+import { Card, Input, message, Table } from "antd";
+import Modal from "antd/lib/modal/Modal";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addMealPlanAction } from "../../redux/actions/categories";
+import { CheckOutlined, SearchOutlined } from "@ant-design/icons";
+import SnackPopup from "./SnackPopup";
+import { addWeekAction } from "./../../redux/actions/weeks/index";
+import "./MealInfo.css";
+import { Button } from "antd";
+import "../../App.css";
+import addSnack from "../../assets/add_snack.png";
+import addMeal from "../../assets/add_meal.png";
+import img1 from "../../assets/img1.png";
+import img2 from "../../assets/img2.png";
 // const mealItems = ['Biryani', 'Burger'];
 const data = [
-  { name: 'A recipe title can span one line or two', img: img1 },
-  { name: 'Content title', img: img2 },
+  { name: "A recipe title can span one line or two", img: img1 },
+  { name: "Content title", img: img2 },
 ];
 
 const MealCard = ({
@@ -27,7 +27,7 @@ const MealCard = ({
   dayIndex,
 }) => {
   const [dataSource, setDataSource] = useState(data);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const [isRecipeVisible, setIsRecipeVisible] = useState(true);
   const [IsSnackModalVisible, setIsSnackModalVisible] = useState(false);
   const [selectedMealName, setSelectedMealName] = useState([]);
@@ -47,7 +47,7 @@ const MealCard = ({
     const weekplan = { [dayIndex]: mealArray };
     //console"YOOOOOOOO ===========>>>>", weekplan);
     dispatch(addWeekAction(weekplan, weekIndex));
-    setSelectedMealName('');
+    setSelectedMealName("");
   };
 
   const onMealClick = (item) => {
@@ -78,9 +78,9 @@ const MealCard = ({
         visible={isModalVisible}
         onOk={onModalOk}
         onCancel={handleCancel}
-        title={'Add Meal'}
+        title={"Add Meal"}
         closeIcon={false}
-        width={'40%'}
+        width={"380px"}
         footer={[
           <Button key="back" onClick={handleCancel}>
             Cancel
@@ -92,8 +92,8 @@ const MealCard = ({
       >
         <Input
           placeholder="Search your recipes"
-          prefix={<SearchOutlined style={{ fontSize: '20px' }} />}
-          size={'medium'}
+          prefix={<SearchOutlined style={{ fontSize: "20px" }} />}
+          size={"medium"}
           value={value}
           onChange={(e) => {
             const currValue = e.target.value.toLowerCase();
@@ -127,9 +127,9 @@ const MealCard = ({
             />
           </div>
           <div className="mealDesc">
-            <h3 className="ml-5">{'Add a snack'}</h3>
+            <h3 className="ml-5">{"Add a snack"}</h3>
             <h4 className="mealDetail ml-5 ">
-              {'Just ingredients - e.g., one cup blueberries'}
+              {"Just ingredients - e.g., one cup blueberries"}
             </h4>
           </div>
         </div>
@@ -147,7 +147,7 @@ const MealCard = ({
             />
           </div>
           <div className="mealDesc">
-            <h3 className="ml-5">{'Create new recipe'}</h3>
+            <h3 className="ml-5">{"Create new recipe"}</h3>
             <h4 className="mealDetail ml-5 ">A new recipe with video</h4>
           </div>
         </div>
@@ -157,8 +157,8 @@ const MealCard = ({
               key={i}
               className={
                 selectedMealName.includes(item.name)
-                  ? 'mealSelected'
-                  : 'mealInfoContainer'
+                  ? "mealSelected"
+                  : "mealInfoContainer"
               }
               onClick={() => {
                 onMealClick(item.name);
@@ -169,8 +169,8 @@ const MealCard = ({
                   <img
                     className={
                       selectedMealName.includes(item.name)
-                        ? 'imageSelected'
-                        : ''
+                        ? "imageSelected"
+                        : ""
                     }
                     src={item.img}
                     width="70"
@@ -180,16 +180,16 @@ const MealCard = ({
                   <div
                     className={
                       selectedMealName.includes(item.name)
-                        ? 'overlay'
-                        : 'noDisplay'
+                        ? "overlay"
+                        : "noDisplay"
                     }
                   >
                     <a href="#" className="icon" title="User Profile">
                       {selectedMealName.includes(item.name) && (
                         <CheckOutlined
                           style={{
-                            fontSize: '28px',
-                            color: '#ffffff',
+                            fontSize: "28px",
+                            color: "#ffffff",
                           }}
                         />
                       )}
@@ -203,12 +203,12 @@ const MealCard = ({
                   sDay.hasOwnProperty(dayIndex) &&
                   sDay[dayIndex].includes(item.name) && (
                     <div>
-                      {' '}
+                      {" "}
                       <CheckOutlined
                         style={{
-                          fontSize: '10px',
-                          color: 'black',
-                          marginLeft: '5px',
+                          fontSize: "10px",
+                          color: "black",
+                          marginLeft: "5px",
                         }}
                       />
                     </div>

@@ -30,25 +30,15 @@ const Description = () => {
       <Form layout="vertical">
         <Form.Item>
           <span className="default-component-heading">Description</span>
-
-          <TextArea
-            showCount
-            value={isReadMore ? text.slice(0, 120) : text}
-            maxLength={5000}
-            minLength={3}
-            rows={4}
-            placeholder="Describe your recipe"
-            onChange={(e) => addDescription(e.target.value)}
-          />
-          <span onClick={toggleReadMore} className="read-or-hide">
-            {isReadMore && text.length > 1200 ? "...read more" : ""}
-          </span>
-
-          {maxLengthError && (
-            <div>
-              <Text type="danger">{error}</Text>
-            </div>
-          )}
+          <div className="mt-5">
+            <TextArea
+              showCount
+              maxLength={5000}
+              autoSize={{ minRows: 4 }}
+              placeholder="Describe your recipe"
+              onChange={(e) => addDescription(e.target.value)}
+            />
+          </div>
         </Form.Item>
       </Form>
     </div>

@@ -21,6 +21,7 @@ import PlanIcon from "../icons/PlanIcon.png";
 import NutritionIcon from "../icons/NutritionIcon.png";
 import SettingsIcon from "../icons/SettingsIcon.png";
 import Set from "../icons/Set.png";
+import dollar from "../icons/dollar.png";
 import { useSelector } from "react-redux";
 
 const { Title, Text } = Typography;
@@ -53,7 +54,7 @@ const SidebarForm = () => {
             <CloseOutlined size="large" />
           </div>
 
-          <h4 className="default-title text-center" strong>
+          <h4 className="text-center" strong>
             Create Meal Plan
           </h4>
         </div>
@@ -62,7 +63,7 @@ const SidebarForm = () => {
 
         <div className="side-bar-item" onClick={() => setView("description")}>
           <div className="d-flex align-center">
-            <div className="mr-4">
+            <div className="mr-5">
               <img src={DiscriptionICon}></img>
             </div>
             <h4 className="default-title text-center" strong>
@@ -92,14 +93,14 @@ const SidebarForm = () => {
               <img src={NutritionIcon}></img>
             </div>
             <h4 className="default-title text-center" strong>
-              nutrition
+              Nutrition
             </h4>
           </div>
           <div>
             <RightOutlined />
           </div>
         </div>
-        <div className="side-bar-item" onClick={() => setView("nutrition")}>
+        <div className="side-bar-item">
           <div className="d-flex align-center">
             <div className="mr-4">
               <img src={NutritionIcon}></img>
@@ -112,7 +113,7 @@ const SidebarForm = () => {
               </div>
               <div>
                 <h4 className="default-subtitle text-center" strong>
-                  Monitization
+                  Enable tipping
                 </h4>
               </div>
             </div>
@@ -124,38 +125,38 @@ const SidebarForm = () => {
         <div className="side-bar-item" onClick={() => setView("settings")}>
           <div className="d-flex align-center">
             <div className="mr-4">
-              <img src={Set}></img>
+              <SettingOutlined />
             </div>
             <div>
               <div>
-                <h4 className="default-title text-center" strong>
+                <h4 className="default-title" strong>
                   Settings
                 </h4>
               </div>
               <div>
-                <h4 className="default-subtitle text-center" strong>
-                  Manage Comments, PRivacy, SEO
+                <h4 className="default-subtitle" strong>
+                  Manage Comments, Privacy, SEO
                 </h4>
               </div>
             </div>
           </div>
-          <div>
+          <div className="align-center">
             <RightOutlined />
           </div>
         </div>
 
         <div
           className="d-flex justify-space-between"
-          style={{ position: "absolute", width: "100%", bottom: "0px" }}
+          style={{ position: "absolute", width: "100%", bottom: "7px" }}
         >
-          <Button style={{ width: "155px" }} onClick={logDataFromDraft}>
+          <Button style={{ width: "157px" }} onClick={logDataFromDraft}>
             Save as Draft
           </Button>
           <Button
             type="primary"
             disabled={!mealPlan.title}
             onClick={logData}
-            style={{ width: "155px" }}
+            style={{ width: "157px" }}
           >
             Post
           </Button>
@@ -166,7 +167,7 @@ const SidebarForm = () => {
   if (view === "description") {
     viewHelper.push(
       <>
-        <div className="mt-0 ml-0">
+        <div className="mt-0 ml-0 mb-5">
           <Button
             icon={<LeftOutlined />}
             onClick={() => setView(null)}
@@ -183,7 +184,7 @@ const SidebarForm = () => {
   if (view === "plan") {
     viewHelper.push(
       <>
-        <div className="mt-0">
+        <div className="mt-0 mb-5">
           <Button
             icon={<LeftOutlined />}
             onClick={() => setView(null)}
@@ -200,7 +201,7 @@ const SidebarForm = () => {
   if (view === "settings") {
     viewHelper.push(
       <>
-        <div className="mt-0">
+        <div className="mt-0 mb-5">
           <Button
             icon={<LeftOutlined />}
             onClick={() => setView(null)}
@@ -217,7 +218,7 @@ const SidebarForm = () => {
   if (view === "nutrition") {
     viewHelper.push(
       <>
-        <div className="mt-0">
+        <div className="mt-0 mb-5">
           <Button
             icon={<LeftOutlined />}
             onClick={() => setView(null)}

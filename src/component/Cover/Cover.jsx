@@ -67,9 +67,7 @@ const Cover = () => {
                   style={{ color: "#999999", fontSize: "25px" }}
                 />
               </p>
-              <p className="default-subtitle">
-                Click to upload or drag image here
-              </p>
+              <p className="dragger-text">Click to upload or drag image here</p>
             </>
           )}
         </Dragger>

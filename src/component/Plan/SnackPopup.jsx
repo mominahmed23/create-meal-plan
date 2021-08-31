@@ -1,22 +1,22 @@
-import { Input, Space, Form, Button, Row, Col, Select } from 'antd';
-import Modal from 'antd/lib/modal/Modal';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
-import { Option } from 'antd/lib/mentions';
-import { CheckOutlined, SearchOutlined } from '@ant-design/icons';
-import { addSnackAction } from '../../redux/actions/snacks';
-import { DeleteOutlined } from '@ant-design/icons';
-import appleImg from '../../assets/snack_apple.png';
+import { Input, Space, Form, Button, Row, Col, Select } from "antd";
+import Modal from "antd/lib/modal/Modal";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { Option } from "antd/lib/mentions";
+import { CheckOutlined, SearchOutlined } from "@ant-design/icons";
+import { addSnackAction } from "../../redux/actions/snacks";
+import { DeleteOutlined } from "@ant-design/icons";
+import appleImg from "../../assets/snack_apple.png";
 const snackData = [
   {
-    name: 'Apple',
+    name: "Apple",
   },
 ];
 
 const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
   const [dataSource, setDataSource] = useState(snackData);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [snackItem, setsnack] = useState(null);
   const [selectedMealName, setSelectedMealName] = useState([]);
@@ -33,7 +33,7 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
   };
   const setSnackItem = (name) => {
     if (snackItem === name) {
-      setsnack('');
+      setsnack("");
     } else {
       setsnack(name);
     }
@@ -46,8 +46,8 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
       visible={isModalVisible}
       onOk={onModalOk}
       onCancel={handleCancel}
-      width={'45%'}
-      title={'Choose snack Ingredients (2 max)'}
+      width={"380px"}
+      title={"Choose snack Ingredients (2 max)"}
       footer={[
         <Button key="back" onClick={handleCancel}>
           Cancel
@@ -59,8 +59,8 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
     >
       <Input
         placeholder="Search ingredients"
-        prefix={<SearchOutlined style={{ fontSize: '20px' }} />}
-        size={'medium'}
+        prefix={<SearchOutlined style={{ fontSize: "20px" }} />}
+        size={"medium"}
         value={value}
         onChange={(e) => {
           const currValue = e.target.value.toLowerCase();
@@ -76,7 +76,7 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
           <div
             key={i}
             className={
-              snackItem === item.name ? 'mealSelected' : 'mealInfoContainer'
+              snackItem === item.name ? "mealSelected" : "mealInfoContainer"
             }
             onClick={() => {
               setSnackItem(item.name);
@@ -86,21 +86,21 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
               <div class="container">
                 {/* <img src="img_avatar.png" alt="Avatar" class="image"> */}
                 <img
-                  className={snackItem === item.name ? 'imageSelected' : ''}
+                  className={snackItem === item.name ? "imageSelected" : ""}
                   src={appleImg}
                   width="70"
                   height="70"
                   alt=""
                 />
                 <div
-                  className={snackItem === item.name ? 'overlay' : 'noDisplay'}
+                  className={snackItem === item.name ? "overlay" : "noDisplay"}
                 >
                   <a className="icon" title="User Profile">
                     {snackItem === item.name && (
                       <CheckOutlined
                         style={{
-                          fontSize: '28px',
-                          color: '#ffffff',
+                          fontSize: "28px",
+                          color: "#ffffff",
                         }}
                       />
                     )}
@@ -117,42 +117,42 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
               <Row>
                 <Form onFinish={onFinish}>
                   <Space
-                    style={{ display: 'flex', marginBottom: -10 }}
+                    style={{ display: "flex", marginBottom: -10 }}
                     align="baseline"
                   >
                     <Col span={24}>
-                      <Form.Item name={'item_amount'} fieldKey={'item_amount'}>
+                      <Form.Item name={"item_amount"} fieldKey={"item_amount"}>
                         <Input
                           type="number"
                           placeholder="Amount"
                           value={
                             snack.hasOwnProperty(item.name) &&
-                            snack[item.name]['item_amount']
+                            snack[item.name]["item_amount"]
                           }
                         />
                       </Form.Item>
                     </Col>
-                    <Form.Item name={'fraction'} fieldKey={'fraction'}>
+                    <Form.Item name={"fraction"} fieldKey={"fraction"}>
                       <Select
                         defaultValue={
                           snack.hasOwnProperty(item.name) && snack[item.name]
-                            ? snack[item.name]['fraction']
-                            : 'fraction'
+                            ? snack[item.name]["fraction"]
+                            : "fraction"
                         }
-                        style={{ width: 120 }}
+                        style={{ width: 100 }}
                       >
                         <Option value="1/2">1/2</Option>
                         <Option value="1/3">1/3</Option>
                       </Select>
                     </Form.Item>
-                    <Form.Item name={'unit'} fieldKey={'unit'}>
+                    <Form.Item name={"unit"} fieldKey={"unit"}>
                       <Select
                         defaultValue={
                           snack.hasOwnProperty(item.name) && snack[item.name]
-                            ? snack[item.name]['unit']
-                            : 'unit'
+                            ? snack[item.name]["unit"]
+                            : "unit"
                         }
-                        style={{ width: 120 }}
+                        style={{ width: 100 }}
                       >
                         <Option value="jack">TSB</Option>
                         <Option value="lucy">TPS</Option>
@@ -164,24 +164,24 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
                       <Form.Item>
                         <div
                           style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
                           }}
                         >
                           <DeleteOutlined
                             onClick={onSnackDelete}
-                            style={{ fontSize: '20px' }}
+                            style={{ fontSize: "20px" }}
                           />
                           <Button
                             htmlType="submit"
                             // type="primary"
                             style={{
-                              width: '90%',
-                              background: '#000000',
-                              color: 'white',
-                              borderRadius: '2px',
-                              borderColor: 'none',
+                              width: "90%",
+                              background: "#000000",
+                              color: "white",
+                              borderRadius: "2px",
+                              borderColor: "none",
                             }}
                           >
                             Update
@@ -193,12 +193,12 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
                     <Form.Item>
                       <Button
                         style={{
-                          width: '100%',
-                          background: '#000000',
-                          color: 'white',
-                          borderColor: 'none',
+                          width: "95%",
+                          background: "#000000",
+                          color: "white",
+                          borderColor: "none",
 
-                          borderRadius: '2px',
+                          borderRadius: "2px",
                         }}
                         htmlType="submit"
                         type="primary"
@@ -214,20 +214,20 @@ const SnackPopup = ({ isModalVisible, handleOk, handleCancel }) => {
               <div className="imageBackground"></div>
               <div className="mealDesc">
                 <h3 className="snackTitle ml-5">
-                  {'Ingredient title can be two lines or three'}
+                  {"Ingredient title can be two lines or three"}
                 </h3>
               </div>
             </div>
             <div className="d-flex align-center mt-4">
               <div className="imageBackground"></div>
               <div className="mealDesc">
-                <h3 className="snackTitle ml-5">{'Ingredient title'}</h3>
+                <h3 className="snackTitle ml-5">{"Ingredient title"}</h3>
               </div>
             </div>
             <div className="d-flex align-center mt-4">
               <div className="imageBackground"></div>
               <div className="mealDesc">
-                <h3 className="snackTitle ml-5">{'Ingredient title'}</h3>
+                <h3 className="snackTitle ml-5">{"Ingredient title"}</h3>
               </div>
             </div>
           </div>
