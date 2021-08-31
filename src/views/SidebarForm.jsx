@@ -170,7 +170,7 @@ const SidebarForm = () => {
   if (view === "description") {
     viewHelper.push(
       <>
-        <div className="mt-0 ml-0 mb-5">
+        <div className="week-sub-comp-num mt-0 ml-0 mb-5">
           <Button
             icon={<LeftOutlined />}
             onClick={() => setView(null)}
