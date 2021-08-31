@@ -7,6 +7,7 @@ import {
   DeleteOutlined,
   UserOutlined,
   VerticalAlignBottomOutlined,
+  MessageOutlined,
 } from "@ant-design/icons";
 import { Divider, Dropdown, Menu, message, Typography } from "antd";
 import { addWeekAction } from "../../redux/actions/weeks";
@@ -85,7 +86,7 @@ const WeekDays = ({ weekIndex, setWeekDaysVisibleFalse }) => {
 
   const deleteMealMenu = (
     <Menu>
-      <Menu.Item key="1" icon={<DeleteOutlined />} onClick={changeLabel}>
+      <Menu.Item key="1" icon={<MessageOutlined />} onClick={changeLabel}>
         Change Label
       </Menu.Item>
       <Menu.Item key="2" icon={<DeleteOutlined />} onClick={deleteItem}>

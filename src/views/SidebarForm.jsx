@@ -1,4 +1,4 @@
-import { Button, Menu } from "antd";
+import { Button, Menu, message } from "antd";
 import React, { useState } from "react";
 import Cover from "../component/Cover/Cover";
 import Description from "../component/Description";
@@ -98,7 +98,10 @@ const SidebarForm = () => {
             <RightOutlined />
           </div>
         </div>
-        <div className="side-bar-item">
+        <div
+          className="side-bar-item"
+          onClick={() => message.info("Not Working right now")}
+        >
           <div className="d-flex align-center">
             <div className="mr-4">
               <img src={Dollar} className="dollar-sign-style"></img>

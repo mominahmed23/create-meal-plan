@@ -115,7 +115,7 @@ ul .ant-divider-horizontal {
   font-style: normal;
   font-weight: 400;
   line-height: 17px;
-  text-align: center;
+  /* text-align: center; */
 }
 .week-subtitle {
   font-size: 13px;

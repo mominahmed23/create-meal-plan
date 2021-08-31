@@ -35,15 +35,18 @@ const Settings = () => {
   };
   return (
     <div className="p-10">
-      <h2 className="mt-5">Settings & SEO</h2>
+      <span className="default-component-heading">Settings & SEO</span>
       <Form layout="vertical">
         <Form.Item>
-          <Title level={5} className=" my-2">
-            Tags{" "}
-            <Text level={4} disabled>
-              (Up to 10)
-            </Text>
-          </Title>
+          <div className="d-flex align-center mb-3 mt-6">
+            <h4 className="default-title text-center mr-1" strong>
+              Tags{" "}
+            </h4>
+            <h4 className="default-subtitle text-center" strong>
+              {" "}
+              (up to 10)
+            </h4>
+          </div>
 
           <Input
             value={tagValue}
@@ -54,9 +57,9 @@ const Settings = () => {
         </Form.Item>
       </Form>
 
-      <Title level={5} className=" my-2">
-        Lifestyles
-      </Title>
+      <h4 className="default-title text-center mb-3" strong>
+        Lifestyles{" "}
+      </h4>
       <Dropdown overlay={menu}>
         <Button
           style={{
@@ -71,7 +74,9 @@ const Settings = () => {
       </Dropdown>
 
       <div className="visibilityContainer mt-8">
-        <h4>Visibility</h4>
+        <h4 className="week-sub-comp-num mb-3" strong>
+          Visibility
+        </h4>
         <Radio.Group onChange={onChange} value={value}>
           <Space direction="vertical">
             <Radio value={1}>Public - Anyone can see it</Radio>
@@ -81,7 +86,9 @@ const Settings = () => {
         </Radio.Group>
       </div>
       <div className="mt-5">
-        <Text strong>SEO Preview</Text>
+        <h4 className="week-sub-comp-num " strong>
+          SEO preview
+        </h4>
         <div style={{ border: "1px solid #cecece", minHeight: "100px" }}>
           <a>New Meal Plan by Talha</a>
         </div>
