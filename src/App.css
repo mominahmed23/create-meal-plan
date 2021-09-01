@@ -10,11 +10,31 @@ body {
   background: #f8f8f8;
 }
 
-textarea:focus.ant-input:focus {
+.ant-input:hover {
+  border: 1px solid #000000 !important;
+}
+
+.ant-input:focus {
   border: 2px solid black !important;
   box-shadow: none !important;
   border-right-width: 2px !important;
 }
+
+.ant-input-affix-wrapper:hover {
+  border: 1px solid #000000 !important;
+}
+
+.ant-input-affix-wrapper:focus-within {
+  border: 2px solid black !important;
+  box-shadow: none !important;
+  border-right-width: 2px !important;
+}
+
+.ant-input-affix-wrapper .ant-input:hover,
+.ant-input:focus {
+  border: none !important;
+}
+
 .app-hover-cursor {
   cursor: pointer;
 }
